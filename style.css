@@ -10,16 +10,23 @@ button
 	border: none;
 	font-size: large;
 }
-.main_info ul{
-	overflow-x:hidden;
-	white-space:nowrap;
+ul.main_info{
+
+	display: table;      
+  	padding: 0;          
+  	margin: 0;           
+  	width: 100%;         
+  	text-align: center;
+
 }
 
-.main_info 
+ul.main_info>li 
 {
-	display: flex;
-	/* display: inline; */
+	
+	display: table-cell;
+	text-align: center;
 }
+
 .dropnav {
 	width : 500px; 
 	max-width: 500px;
@@ -68,3 +75,21 @@ button
 
 #sttouch {position: absolute; opacity: 0; height: 0px;}    
 #sttouch:checked + .slide {height: 500px;}
+
+@media (max-width: 960px) and (min-width: 501px) {
+	ul.main_info>li  { width: 50%; } /* Show 2 logos per row on medium devices (tablets, phones in landscape) */
+}
+  
+@media (max-width: 500px) {
+	ul.main_info>li  { width: 100%; } /* On small screens, show one logo per row */
+}
+  
+@media (max-width: 960px) {
+	.ul.main_info {
+	  display: block;
+	}
+	
+	ul.main_info>li {
+	  display: inline;
+	}
+}
