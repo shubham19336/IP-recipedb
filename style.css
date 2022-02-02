@@ -1,0 +1,93 @@
+/* .main_info
+{
+	display: table;
+} */
+.sbnav {
+	width : 50%; 
+	max-width: 500px;
+	background: #d9d9d9;
+	margin : 40px auto; 
+	text-align: center;
+  }
+.stnav {
+	width : 50%; 
+	max-width: 500px;
+	background: #d9d9d9;
+	margin : 40px auto; 
+	text-align: center;
+  }
+ul
+{
+	list-style-type: none;
+	padding: 0;
+  	margin: 0;
+}
+button
+{
+	background-color: transparent;
+	border: none;
+	font-size: large;
+}
+.main_info ul li:hover {
+	background-color: rgb(119, 235, 167);
+	font-weight: 900;
+	letter-spacing: 1px;
+	transition: background-color .8s ease;
+}
+.searchby {
+	padding : 30px;
+	background : #2d2f31; 
+	color : white;
+	font-size : 1.2em;
+	font-variant : small-caps;
+	cursor : pointer;
+	display: block;
+}
+  
+.searchby::after {
+	float: right;
+	right: 10%;
+	content: "X";
+}
+.statistics {
+	padding : 30px;
+	background : #2d2f31; 
+	color : white;
+	font-size : 1.2em;
+	font-variant : small-caps;
+	cursor : pointer;
+	display: block;
+}
+  
+.statistics::after {
+	float: right;
+	right: 10%;
+	content: "X";
+}
+.sbslide {
+	clear:both;
+	width:100%;
+	height:0px;
+	overflow: hidden;
+	text-align: center;
+	transition: height .4s ease;
+}
+.stslide {
+	clear:both;
+	width:100%;
+	height:0px;
+	overflow: hidden;
+	text-align: center;
+	transition: height .4s ease;
+} 
+.sbslide li {padding : 30px; }
+  
+#sbtouch {position: absolute; opacity: 0; height: 0px;}    
+  
+#sbtouch:checked + .sbslide {height: 400px;} 
+
+.stslide li {padding : 30px; }
+  
+#sttouch {position: absolute; opacity: 0; height: 0px;}    
+  
+#sttouch:checked + .stslide {height: 500px;}
