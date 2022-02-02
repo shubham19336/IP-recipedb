@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8"> 
     <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Document</title>
     <body>
-        <h2>HTML Forms</h2>
+        <h2>RECIPE DB 2.0</h2>
 	<ul class="main_info"> 
 		<li>
 			<nav class="dropnav" >
@@ -41,7 +45,25 @@
 
 
 	</div>
-	<p id="query_handle"></p>
+	<div class="formc">
+		<form class="form-inline" action="/action_page.php">
+			<div>
+				<label for="recipe">REGION</label>
+				<input type="text" id="recipe" placeholder="Enter Region" name="recipe">	
+			</div>
+			<div>
+				<label for="recipe2">COUNTRY</label>
+				<input type="text" id="recipe2" placeholder="Enter Country" name="recipe2">
+			</div>
+			<div> 
+				<label for="recipe3">RECIPE TITLE</label>
+			<input type="text" id="recipe3" placeholder="Enter Recipe Title" name="recipe3">
+			</div>
+			
+			<button type="submit">FETCH</button>
+		  </form>
+		</div>
+		
 	<script src="first.js"></script>
     </body>
 </div>
