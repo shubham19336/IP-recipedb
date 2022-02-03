@@ -1,3 +1,11 @@
+$(function(){
+    $("#header").load("header.html"); 
+  });
+
+$(function(){
+    $("#footer").load("footer.html"); 
+  });
+
 function name_printer1()
 {   
     //get element by refernce and then modify

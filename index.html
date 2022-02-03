@@ -7,10 +7,15 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="first.js"></script>
     <title>Document</title>
-    <body>
-        <h2>RECIPE DB 2.0</h2>
+</head>
+<header>
+	<div id="header"></div>
+</header>
+<body>
+    <h2>RECIPE DB 2.0</h2>
 	<ul class="main_info"> 
 		<li>
 			<nav class="dropnav" >
@@ -23,7 +28,6 @@
 					<li><button value="nutrition" onclick="name_printer4()">NUTRITION</button></li>
 					<li><button value="advanced" onclick="name_printer5()">ADVANCED</button></li>
 				</ul>
-				
 			</nav> 
 		</li>
 		<li>
@@ -38,13 +42,10 @@
 					<li><button value="processes" onclick="name_printer10()">PROCESSES</button></li>
 					<li><button value="utensils" onclick="name_printer11()">UTENSILS</button></li>
 				</ul>
-			</nav>
-			
+			</nav>	
 		</li>
 	</ul>
 
-
-	</div>
 	<div class="formc">
 		<form class="form-inline" id="cform-inline"  action="/action_page.php">
 			<div>
@@ -61,10 +62,12 @@
 			</div>
 			
 			<button type="submit">FETCH</button>
-		  </form>
-		</div>
+		</form>
+	</div>
 		
-	<script src="first.js"></script>
-    </body>
-</div>
-<body>
+	<footer>
+		<div id="footer"></div>
+	</footer>
+	
+</body>
+</html>
