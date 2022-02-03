@@ -22,11 +22,11 @@
 				<label for="sbtouch" class="drop">SEARCH BY</label>               
 				<input type="checkbox" id="sbtouch"> 
 				<ul class="slide">
-					<li><button value="cuisine" onclick="name_printer1()">CUISINE</button></li> 
-					<li><button value="ingredient" onclick="name_printer2()">INGREDIENT</button></li>
-					<li><button value="category" onclick="name_printer3()">CATEGORY</button></li>
-					<li><button value="nutrition" onclick="name_printer4()">NUTRITION</button></li>
-					<li><button value="advanced" onclick="name_printer5()">ADVANCED</button></li>
+					<li><button value="cuisine" onclick="form_print('cform-inline')">CUISINE</button></li> 
+					<li><button value="ingredient" onclick="form_print('iform-inline')">INGREDIENT</button></li>
+					<li><button value="category" onclick="form_print('caform-inline')">CATEGORY</button></li>
+					<li><button value="nutrition" onclick="form_print()">NUTRITION</button></li>
+					<li><button value="advanced" onclick="form_print()">ADVANCED</button></li>
 				</ul>
 			</nav> 
 		</li>
@@ -49,16 +49,46 @@
 	<div class="formc">
 		<form class="form-inline" id="cform-inline"  action="/action_page.php">
 			<div>
-				<label for="recipe">REGION</label>
-				<input type="text" id="recipe" placeholder="Enter Region" name="recipe">	
+				<label for="cregion">REGION</label>
+				<input type="text" id="region" placeholder="Enter Region" name="cregion">	
 			</div>
 			<div>
-				<label for="recipe2">COUNTRY</label>
-				<input type="text" id="recipe2" placeholder="Enter Country" name="recipe2">
+				<label for="ccountry">COUNTRY</label>
+				<input type="text" id="ccountry" placeholder="Enter Country" name="ccountry">
 			</div>
 			<div> 
-				<label for="recipe3">RECIPE TITLE</label>
-			<input type="text" id="recipe3" placeholder="Enter Recipe Title" name="recipe3">
+				<label for="crecipe">RECIPE TITLE</label>
+			<input type="text" id="crecipe" placeholder="Enter Recipe Title" name="crecipe">
+			</div>
+			
+			<button type="submit">FETCH</button>
+		</form>
+	</div>
+
+	<div class="formc">
+		<form class="form-inline" id="iform-inline"  action="/action_page.php">
+			<div>
+				<label for="iused">USED</label>
+				<input type="text" id="iused" placeholder="Enter Ingredient" name="iused">	
+			</div>
+			<div>
+				<label for="inotused">NOT USED</label>
+				<input type="text" id="inotused" placeholder="Enter Ingredient" name="inotused">
+			</div>
+			
+			<button type="submit">FETCH</button>
+		</form>
+	</div>
+
+	<div class="formc">
+		<form class="form-inline" id="caform-inline"  action="/action_page.php">
+			<div>
+				<label for="caused">USED</label>
+				<input type="text" id="caused" placeholder="Enter Ingredient" name="caused">	
+			</div>
+			<div>
+				<label for="canotused">NOT USED</label>
+				<input type="text" id="canotused" placeholder="Enter Ingredient" name="canotused">
 			</div>
 			
 			<button type="submit">FETCH</button>

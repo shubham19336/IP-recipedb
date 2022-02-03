@@ -1,36 +1,20 @@
 $(function(){
     $("#header").load("header.html"); 
-  });
-
-$(function(){
     $("#footer").load("footer.html"); 
   });
 
-function name_printer1()
+function form_print(form)
 {   
     //get element by refernce and then modify
-    var x=(document.getElementById("cform-inline"));
+    var items=document.getElementsByClassName("form-inline");
+    for(var i=0;i<items.length;i++){
+        items[i].style.display='none';
+    }
+    var x=(document.getElementById(form));
     if(x.style.display=='none'){
         x.style.display='flex';
     }
     else{
         x.style.display='none';
     }
-
-}
-function name_printer2()
-{
-    document.getElementById("query_handle").innerHTML = "hello2";
-}
-function name_printer3()
-{
-    document.getElementById("query_handle").innerHTML = "hello3";
-}
-function name_printer4()
-{
-    document.getElementById("query_handle").innerHTML = "hello4";
-}
-function name_printer5()
-{
-    document.getElementById("query_handle").innerHTML = "hello5";
 }
