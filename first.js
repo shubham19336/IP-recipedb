@@ -1,6 +1,14 @@
 function name_printer1()
-{
-    document.getElementById("query_handle").innerHTML = "hello1";
+{   
+    //get element by refernce and then modify
+    var x=(document.getElementById("cform-inline"));
+    if(x.style.display=='none'){
+        x.style.display='flex';
+    }
+    else{
+        x.style.display='none';
+    }
+
 }
 function name_printer2()
 {
