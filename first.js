@@ -2,41 +2,41 @@ $(function(){
     $("#header").load("header.html"); 
     $("#footer").load("footer.html"); 
   });
-$(function()
-{
-    const slider = document.getElementById('sliderPrice');
-  const rangeMin = parseInt(slider.dataset.min);
-  const rangeMax = parseInt(slider.dataset.max);
-  const step = 1;
-  const filterInputs = document.querySelectorAll('input.filter__input');
+// $(function()
+// {
+//     const slider = document.getElementById('sliderPrice');
+//   const rangeMin = parseInt(slider.dataset.min);
+//   const rangeMax = parseInt(slider.dataset.max);
+//   const step = 1;
+//   const filterInputs = document.querySelectorAll('input.filter__input');
   
-  noUiSlider.create(slider, {
-      start: [rangeMin, rangeMax],
-      connect: true,
-      step: step,
-      range: {
-          'min': rangeMin,
-          'max': rangeMax
-      },
+//   noUiSlider.create(slider, {
+//       start: [rangeMin, rangeMax],
+//       connect: true,
+//       step: step,
+//       range: {
+//           'min': rangeMin,
+//           'max': rangeMax
+//       },
     
-      // make numbers whole
-      format: {
-        to: value => value,
-        from: value => value
-      }
-  });
+//       // make numbers whole
+//       format: {
+//         to: value => value,
+//         from: value => value
+//       }
+//   });
   
-  // bind inputs with noUiSlider 
-  slider.noUiSlider.on('update', (values, handle) => { 
-    filterInputs[handle].value = Math.round(values[handle]); 
-  });
+//   // bind inputs with noUiSlider 
+//   slider.noUiSlider.on('update', (values, handle) => { 
+//     filterInputs[handle].value = Math.round(values[handle]); 
+//   });
   
-  filterInputs.forEach((input, indexInput) => { 
-    input.addEventListener('change', () => {
-      slider.noUiSlider.setHandle(indexInput, input.value);
-    })
-  });
-});
+//   filterInputs.forEach((input, indexInput) => { 
+//     input.addEventListener('change', () => {
+//       slider.noUiSlider.setHandle(indexInput, input.value);
+//     })
+//   });
+// });
   
 
 
@@ -54,5 +54,17 @@ function form_print(form)
     else{
         x.style.display='none';
     }
+}
+
+// concept map
+$(function(){
+  plotConceptMap();
+});
+function plotConceptMap()
+{
+  d3.json("/metadata.json", function(err,dataJson) {
+    console.log(err, dataJson);
+    var plot = new ConceptMap("graph", "graph-info", dataJson);
+  });
 }
 
