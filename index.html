@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"> 
-    <link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="pc.css">
+	<link rel="stylesheet" href="style.css">
+	
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
@@ -22,9 +22,11 @@
 	<script src="https://www.amcharts.com/lib/4/core.js"></script>
 	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
 	
+	<!-- for pie chart  -->
+	<link rel="stylesheet" href="pie_chart_style.css">
 	<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
 	<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
-	<script src="pcj.js"></script>
+	<script src="pie_chart.js"></script>
 
 	<!-- for concept map (visual search)-->
 	<link href="/lib/concept-map.css" rel="stylesheet"></link>
@@ -33,12 +35,22 @@
 	<script src="/lib/concept-map.js" type="text/javascript"></script>
 
 	
+	<!-- for heat map  -->
+	<link rel="stylesheet" href="heat_map_style.css">
+	<script src="heat_map.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
 	<title>Recipe DB 2.0</title>
 </head>
 <header>
 	<div id="header"></div>
 </header>
 <body>
+	<div id="concept_parent">
+		<div id="graph" class="conceptmap" ></div>
+		<!-- <div id="graph-info"></div> --> 
+		<!-- the above line was for rendering an href for graph info -->
+	</div>
 	<ul class="main_info"> 
 		<li>
 			<nav class="dropnav" >
@@ -58,12 +70,12 @@
 				<label for="sttouch" class="drop">STATISTICS</label>               
 				<input type="checkbox" id="sttouch"> 
 				<ul class="slide">
-					<li><button value="recipes" onclick="name_printer6()">RECIPES</button></li> 
-					<li><button value="categories" onclick="name_printer7()">CATEGORIES</button></li>
-					<li><button value="ingredients" onclick="name_printer8()">INGREDIENTS</button></li>
-					<li><button value="nutrition" onclick="name_printer9()">NUTRITION</button></li>
-					<li><button value="processes" onclick="name_printer10()">PROCESSES</button></li>
-					<li><button value="utensils" onclick="name_printer11()">UTENSILS</button></li>
+					<li><button value="recipes" onclick="stats_display('')">RECIPES</button></li> 
+					<li><button value="categories" onclick="stats_display('heat_map')">CATEGORIES</button></li>
+					<li><button value="ingredients" onclick="stats_display('chartdiv1')">INGREDIENTS</button></li>
+					<li><button value="nutrition" onclick="stats_display('')">NUTRITION</button></li>
+					<li><button value="processes" onclick="stats_display('chartdiv2')">PROCESSES</button></li>
+					<li><button value="utensils" onclick="stats_display('chartdiv3')">UTENSILS</button></li>
 				</ul>
 			</nav>	
 		</li>
@@ -117,16 +129,15 @@
 			<button type="submit">FETCH</button>
 		</form>
 	</div>
-	
-	
-	<div id="chartdiv"></div>
 
-	<div id="concept_parent">
-		<div id="graph" class="conceptmap" ></div>
-		<!-- <div id="graph-info"></div> --> 
-		<!-- the above line was for rendering an href for graph info -->
+		<div class="statistics chartdiv" id="chartdiv1"></div>
+		<div class="statistics chartdiv" id="chartdiv2"></div>
+		<div class="statistics chartdiv" id="chartdiv3"></div>		
+	
+	
+	<div id="heat_parent">
+		<div class="statistics mapdiv" id="heat_map"></div>
 	</div>
-
 	<footer>
 		<div id="footer"></div>
 	</footer>

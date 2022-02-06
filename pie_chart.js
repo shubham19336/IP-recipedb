@@ -1,6 +1,7 @@
 
 anychart.onDocumentReady(function () {
-var chart = am4core.create("chartdiv", am4charts.PieChart);
+  
+var chart = am4core.create("chartdiv1", am4charts.PieChart);
 
 // Add data
 chart.data = [{
@@ -53,7 +54,6 @@ chart.legend = new am4charts.Legend();
 chart.legend.position = "right";
 chart.legend.scrollable = true; 
 chart.legend.labels.template.truncate = true;
-// chart.label.x = am4core.percent(10);
 
 chart.innerRadius = am4core.percent(60);
 

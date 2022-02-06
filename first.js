@@ -68,3 +68,22 @@ function plotConceptMap()
   });
 }
 
+function stats_display(stats)
+{
+  document.getElementById("sttouch").checked=false;
+  var items=document.getElementsByClassName("statistics");
+  for(var i=0;i<items.length;i++){
+      items[i].style.display='none';
+  }
+  var x=(document.getElementById(stats));
+  if(x.style.display=='none'){
+      x.style.display='flex';
+      if(stats == 'heat_map')
+      {
+        x.style.display = 'inline-block';
+      }
+  }
+  else{
+      x.style.display='none';
+  }
+}

@@ -1,35 +1,25 @@
-/* #container {
-  display: flex;
-  width: 70%;
-  height: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
-} */
-
-#chartdiv {
-  border: 1px solid red;
-  /* width: 60%; */
+.chartdiv {
+  display: none;
   margin: 0 auto;
   height: 400px;
 }
 @media (min-width: 1200px)
 {
-  #chartdiv
+  .chartdiv
   {
     width: 60%;
   }
 }
 @media (max-width: 1200px) and (min-width: 900px)
 {
-  #chartdiv
+  .chartdiv
   {
     width: 80%;
   }
 }
 @media (max-width: 900px)
 {
-  #chartdiv
+  .chartdiv
   {
     width: 100%;
   }
