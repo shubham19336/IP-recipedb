@@ -172,3 +172,39 @@ ul.main_info>li
 	  align-items: stretch;
 	}
   }
+
+.energym
+{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+.filter__input
+{
+	display: inline-block;
+	border: 1px solid rgb(0, 0, 0);
+	text-align: center;
+	font-weight: bold;
+	border-radius: 5px;
+	width: 10%;
+}
+.energys
+{	
+	margin-top: 5px;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+#sliderPrice
+{
+	display: inline-block;
+	text-align: center;
+	width: 70%;
+
+}
+.noUi-horizontal .noUi-handle {
+	border-radius: 100%;
+	background-image: url("button.png");
+	background-size: cover;
+}
+
