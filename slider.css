@@ -1,0 +1,56 @@
+.slider-styled{
+    padding: 0 0px;
+    margin: 1% 10% 50px 10%;
+    height: 5px;
+    /* border: 1px solid red; */
+}
+
+/* remove shadows */
+.slider-styled,
+.slider-styled .noUi-handle {
+    box-shadow: none;
+}
+/* hide markers */
+.slider-styled .noUi-handle::before,
+.slider-styled .noUi-handle::after {
+    display: none;
+}
+
+.slider-styled .noUi-connect {
+    background: #2bc069;
+}
+.slider-styled .noUi-pips{
+    /* width: 100px; */
+    left: -7px;
+}
+/* slider handles  */
+.slider-styled .noUi-handle {
+    height: 18px;
+    width: 18px;
+    /* top: -7px;
+    right: 10%;  */
+    /* half the width  */
+    border-radius: 9px; 
+    box-shadow: none;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0); 
+}
+
+/* hiding tooltips and making visible on movement */
+.slider-styled .noUi-tooltip {
+    display: none;
+    border-radius: 50%;
+    left: -20px;
+}
+.slider-styled .noUi-active .noUi-tooltip {
+    display: block;
+}
+/* for hover effects */
+/* .slider-styled .noUi-handle:hover {
+    background-color: rgb(168, 31, 31);
+    height: 30px;
+} */
+
+
+

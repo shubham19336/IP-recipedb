@@ -221,15 +221,14 @@ ul.main_info>li
 	width: 100%;
 	text-align: center;
 }
-#sliderPrice
-{
-	display: inline-block;
-	text-align: center;
-	width: 70%;
 
+#Nutrition{
+    display: none;
+    /* border: 1px solid red; */
+    padding-left: 50px;
+    padding-right: 50px;
 }
-.noUi-horizontal .noUi-handle {
-	border-radius: 100%;
-	background-image: url("button.png");
-	background-size: cover;
+#Nutrition label{
+    font-size: 15px;
+    font-weight: bold;
 }

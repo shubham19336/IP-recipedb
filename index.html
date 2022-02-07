@@ -40,6 +40,12 @@
 	<script src="heat_map.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
+	<!-- for noUislider -->
+	<link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
+	<link rel="stylesheet" href="slider.css">
+    <script src="slider.js"></script>
+
 	<title>Recipe DB 2.0</title>
 </head>
 <header>
@@ -60,7 +66,7 @@
 					<li><button value="cuisine" onclick="form_print('cform-inline')">CUISINE</button></li> 
 					<li><button value="ingredient" onclick="form_print('iform-inline')">INGREDIENT</button></li>
 					<li><button value="category" onclick="form_print('caform-inline')">CATEGORY</button></li>
-					<li><button value="nutrition" onclick="form_print()">NUTRITION</button></li>
+					<li><button value="nutrition" onclick="form_print('Nutrition')">NUTRITION</button></li>
 					<li><button value="advanced" onclick="form_print()">ADVANCED</button></li>
 				</ul>
 			</nav> 
@@ -82,7 +88,7 @@
 	</ul>
 
 	<div class="formc">
-		<form class="form-inline" id="cform-inline"  action="/action_page.php">
+		<form class="search-by form-inline" id="cform-inline"  action="/action_page.php">
 			<div>
 				<label for="cregion">REGION</label>
 				<input type="text" id="region" placeholder="Enter Region" name="cregion">	
@@ -101,7 +107,7 @@
 	</div>
 
 	<div class="formc">
-		<form class="form-inline" id="iform-inline"  action="/action_page.php">
+		<form class="search-by form-inline" id="iform-inline"  action="/action_page.php">
 			<div>
 				<label for="iused">USED</label>
 				<input type="text" id="iused" placeholder="Enter Ingredient" name="iused">	
@@ -116,7 +122,7 @@
 	</div>
 
 	<div class="formc">
-		<form class="form-inline" id="caform-inline"  action="/action_page.php">
+		<form class="search-by form-inline" id="caform-inline"  action="/action_page.php">
 			<div>
 				<label for="caused">USED</label>
 				<input type="text" id="caused" placeholder="Enter Category" name="caused">	
@@ -130,9 +136,20 @@
 		</form>
 	</div>
 
-		<div class="statistics chartdiv" id="chartdiv1"></div>
-		<div class="statistics chartdiv" id="chartdiv2"></div>
-		<div class="statistics chartdiv" id="chartdiv3"></div>		
+	<div class="search-by" id="Nutrition">
+		<label for="slider-round1">Energy (calories) :</label>
+		<div class="slider-styled" id="slider-round1"></div>
+		<label for="slider-round2">Carbohydrates (g) :</label>
+		<div class="slider-styled" id="slider-round2"></div>
+		<label for="slider-round3">Protein (g) :</label>
+		<div class="slider-styled" id="slider-round3"></div>
+		<label for="slider-round4">Fat (g) :</label>
+		<div class="slider-styled" id="slider-round4"></div>
+	</div>
+
+	<div class="statistics chartdiv" id="chartdiv1"></div>
+	<div class="statistics chartdiv" id="chartdiv2"></div>
+	<div class="statistics chartdiv" id="chartdiv3"></div>		
 	
 	
 	<div id="heat_parent">
