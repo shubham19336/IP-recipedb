@@ -5,6 +5,7 @@
 }
 #heat_map
 {
+    width: 100%;
     display: none;
     margin: auto;
 }
