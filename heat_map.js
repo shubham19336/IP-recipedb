@@ -69,7 +69,7 @@ anychart.onDocumentReady(function () {
         .attr("x", width/2)
         .attr("y", gridSize * (days.length+1) + 80)
         .style("text-anchor", "middle")
-        .text("Based on Miles McCrocklin's Heatmap block");
+        .text("Enter any text");
     var countScale = d3.scale.linear()
         .domain([0, d3.max(accidents, function(d) {return d.count; })])
         .range([0, width])
@@ -125,7 +125,7 @@ anychart.onDocumentReady(function () {
         .attr("x", 0)
         .attr("y", -10)
         .style("text-anchor", "middle")
-        .text("Number of Accidents");
+        .text("Ingredient Compostion of recipes across regions (%)");
     
     //Set scale for x-axis
     var xScale = d3.scale.linear()

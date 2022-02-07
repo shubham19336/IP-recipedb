@@ -50,7 +50,7 @@ ul.main_info>li
   }
 .drop {
 	padding : 30px;
-	background : #2d2f31; 
+	background : #000000; 
 	border-radius: 10px;
 	color : white;
 	font-size : 1.2em;
@@ -101,7 +101,6 @@ ul.main_info>li
 	}
 }
 .form-inline {  
-	/* border: 1px solid red; */
 	display: none;
 	align-content: center;
 	justify-content: center;
@@ -148,7 +147,11 @@ ul.main_info>li
 	transition: background-color .4s ease;
 	transition: color .4s ease;
   }
-  
+  #advlist li
+  {
+	display: flex;
+	width: 100%;
+  }
   @media (max-width: 1200px) {
 	.form-inline input {
 		width: 100%;
@@ -157,7 +160,12 @@ ul.main_info>li
 	.form-inline button {
 		width: 100%;
 	}
-
+	#advlist li
+	{
+		padding-left: 15px;
+		padding-right: 15px;
+		display: inline-block;
+	}
 	.formc
 	{
 		display: inline;
@@ -194,11 +202,12 @@ ul.main_info>li
 		font-size: medium;
 	}
 	.form-inline {
+		padding-left: 15px;
+		padding-right: 15px;
 	  flex-direction: column;
 	  align-items: stretch;
 	}
   }
-
 .energym
 {
 	display: inline-block;

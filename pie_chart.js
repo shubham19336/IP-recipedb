@@ -54,7 +54,7 @@ chart.legend = new am4charts.Legend();
 chart.legend.position = "right";
 chart.legend.scrollable = true; 
 chart.legend.labels.template.truncate = true;
-
+am4core.addLicense("ch-custom-attribution");
 chart.innerRadius = am4core.percent(60);
 
 var label = pieSeries.createChild(am4core.Label);

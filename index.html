@@ -67,7 +67,7 @@
 					<li><button value="ingredient" onclick="search_display('iform-inline')">INGREDIENT</button></li>
 					<li><button value="category" onclick="search_display('caform-inline')">CATEGORY</button></li>
 					<li><button value="nutrition" onclick="search_display('Nutrition')">NUTRITION</button></li>
-					<li><button value="advanced" onclick="search_display()">ADVANCED</button></li>
+					<li><button value="advanced" onclick="search_display('advform-inline')">ADVANCED</button></li>
 				</ul>
 			</nav> 
 		</li>
@@ -89,30 +89,33 @@
 
 	<div class="formc">
 		<form class="search-by form-inline" id="cform-inline"  action="/action_page.php">
-			<div>
-				<label for="cregion">REGION</label>
-				<input type="text" id="region" placeholder="Enter Region" name="cregion">	
-			</div>
-			<div>
-				<label for="ccountry">COUNTRY</label>
-				<input type="text" id="ccountry" placeholder="Enter Country" name="ccountry">
-			</div>
-			<div> 
-				<label for="crecipe">RECIPE TITLE</label>
-			<input type="text" id="crecipe" placeholder="Enter Recipe Title" name="crecipe">
-			</div>
-			
+				<div class="advcontent">
+					<label for="ccontinent">CONTINENT</label>
+					<input type="text" id="ccontinent" placeholder="Enter Continent" name="ccontinent">	
+				</div>
+				<div class="advcontent">
+					<label for="cregion">REGION</label>
+					<input type="text" id="cregion" placeholder="Enter Region" name="cregion">	
+				</div>
+				<div class="advcontent">
+					<label for="ccountry">COUNTRY</label>
+					<input type="text" id="ccountry" placeholder="Enter Country" name="ccountry">
+				</div>
+				<div class="advcontent"> 
+					<label for="crecipe">RECIPE TITLE</label>
+				<input type="text" id="crecipe" placeholder="Enter Recipe Title" name="crecipe">
+				</div>
 			<button type="submit">FETCH</button>
 		</form>
 	</div>
 
 	<div class="formc">
 		<form class="search-by form-inline" id="iform-inline"  action="/action_page.php">
-			<div>
+			<div class="advcontent">
 				<label for="iused">USED</label>
 				<input type="text" id="iused" placeholder="Enter Ingredient" name="iused">	
 			</div>
-			<div>
+			<div class="advcontent">
 				<label for="inotused">NOT USED</label>
 				<input type="text" id="inotused" placeholder="Enter Ingredient" name="inotused">
 			</div>
@@ -123,11 +126,11 @@
 
 	<div class="formc">
 		<form class="search-by form-inline" id="caform-inline"  action="/action_page.php">
-			<div>
+			<div class="advcontent">
 				<label for="caused">USED</label>
 				<input type="text" id="caused" placeholder="Enter Category" name="caused">	
 			</div>
-			<div>
+			<div class="advcontent">
 				<label for="canotused">NOT USED</label>
 				<input type="text" id="canotused" placeholder="Enter Category" name="canotused">
 			</div>
@@ -137,20 +140,70 @@
 	</div>
 
 	<div class="search-by" id="Nutrition">
-		<label for="slider-round1">Energy (calories) :</label>
-		<div class="slider-styled" id="slider-round1"></div>
-		<label for="slider-round2">Carbohydrates (g) :</label>
-		<div class="slider-styled" id="slider-round2"></div>
-		<label for="slider-round3">Protein (g) :</label>
-		<div class="slider-styled" id="slider-round3"></div>
-		<label for="slider-round4">Fat (g) :</label>
-		<div class="slider-styled" id="slider-round4"></div>
+		<div class="advnutrition">
+			<label for="slider-round1">Energy (calories) :</label>
+			<div class="slider-styled" id="slider-round1"></div>
+			<label for="slider-round2">Carbohydrates (g) :</label>
+			<div class="slider-styled" id="slider-round2"></div>
+			<label for="slider-round3">Protein (g) :</label>
+			<div class="slider-styled" id="slider-round3"></div>
+			<label for="slider-round4">Fat (g) :</label>
+			<div class="slider-styled" id="slider-round4"></div>
+		</div>
 	</div>
-
+<!-- ------------------------------------------------------------- -->
+	<div class="formc">
+		<form class="search-by form-inline" id="advform-inline"  action="/action_page.php"> 
+			<ul id="advlist">
+				<li ID="">
+					<div class="advcontent">
+						<label for="advcontinent">CONTINENT</label>
+						<input type="text" id="advcontinent" placeholder="Enter Continent" name="ccontinent">	
+					</div>
+					<div class="advcontent">
+						<label for="advregion">REGION</label>
+						<input type="text" id="advregion" placeholder="Enter Region" name="cregion">	
+					</div>
+					<div class="advcontent">
+						<label for="advcountry">COUNTRY</label>
+						<input type="text" id="advcountry" placeholder="Enter Country" name="ccountry">
+					</div>
+					<div class="advcontent"> 
+						<label for="advrecipe">RECIPE TITLE</label>
+					<input type="text" id="advrecipe" placeholder="Enter Recipe Title" name="crecipe">
+					</div>
+				</li>
+				<li>
+					<div class="advcontent">
+						<label for="advused">INGREDIENTS USED</label>
+						<input type="text" id="advused" placeholder="Enter Ingredient" name="iused">	
+					</div>
+					<div class="advcontent">
+						<label for="advnotused">INGREDIENTS NOT USED</label>
+						<input type="text" id="advnotused" placeholder="Enter Ingredient" name="inotused">
+					</div>
+				</li>
+				<li>
+					<div class="advcontent">
+						<label for="advcp">COOKING PROCESS</label>
+						<input type="text" id="advcp" placeholder="Enter Cooking Process" name="caused">	
+					</div>
+					<div class="advcontent">
+						<label for="advutensil">UTENSIL</label>
+						<input type="text" id="advutensil" placeholder="Enter Utensil" name="canotused">
+					</div>
+				</li>
+				<li>
+					<button type="submit">FETCH</button>
+				</li>
+			</ul>
+			
+		</form>
+	</div>
+	<!-- ------------------------------------------------------------------------- -->
 	<div class="statistics chartdiv" id="chartdiv1"></div>
 	<div class="statistics chartdiv" id="chartdiv2"></div>
 	<div class="statistics chartdiv" id="chartdiv3"></div>		
-	
 	
 	<div id="heat_parent">
 		<div class="statistics mapdiv" id="heat_map"></div>
