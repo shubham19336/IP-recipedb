@@ -52,8 +52,17 @@
 	<div id="header"></div>
 </header>
 <body>
-	<div id="concept_parent">
-		<div id="graph" class="conceptmap" ></div>
+	<div class="mvid">
+		<div class="content">
+			<h1>RECIPE DB 2.0</h1>
+			<p>Simple solution to all your recipe queries...</p>
+		  </div>
+		<video autoplay muted loop id="myVideo">
+			<source src="videor.mp4" type="video/mp4">
+		  </video>
+	</div>
+	
+	  
 		<!-- <div id="graph-info"></div> --> 
 		<!-- the above line was for rendering an href for graph info -->
 	</div>
@@ -61,7 +70,7 @@
 		<li>
 			<nav class="dropnav" >
 				<label for="sbtouch" class="drop">SEARCH BY</label>               
-				<input type="checkbox" id="sbtouch"> 
+				<input type="checkbox" id="sbtouch" onchange="navuncheck('sttouch')"> 
 				<ul class="slide">
 					<li><button value="cuisine" onclick="search_display('cform-inline')">CUISINE</button></li> 
 					<li><button value="ingredient" onclick="search_display('iform-inline')">INGREDIENT</button></li>
@@ -74,7 +83,7 @@
 		<li>
 			<nav class="dropnav">
 				<label for="sttouch" class="drop">STATISTICS</label>               
-				<input type="checkbox" id="sttouch"> 
+				<input type="checkbox" id="sttouch" onchange="navuncheck('sbtouch')"> 
 				<ul class="slide">
 					<li><button value="recipes" onclick="stats_display('')">RECIPES</button></li> 
 					<li><button value="categories" onclick="stats_display('heat_map')">CATEGORIES</button></li>
@@ -208,6 +217,8 @@
 	<div id="heat_parent">
 		<div class="statistics mapdiv" id="heat_map"></div>
 	</div>
+	<div id="concept_parent">
+		<div id="graph" class="conceptmap" ></div>
 	<footer>
 		<div id="footer"></div>
 	</footer>

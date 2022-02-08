@@ -2,6 +2,36 @@ body
 {
 	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
 }
+.mvid
+{
+	/* position: fixed; */
+	width: 100%;
+	z-index: -100;
+}
+#myVideo
+{
+	width: 100%;
+	box-shadow: 0px 12px 107px #000000;
+}
+.content {
+	position: absolute;
+	color: white;
+	margin-top: 10%;
+	background-color: rgba(0, 0, 0, 0.466);
+	text-align: center;
+	font-size: xx-large;
+	font-weight: bolder;
+	width: 100%;
+	padding: 20px;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	
+}
+.content p
+{
+	font-style: italic;
+}
+
 ul
 {
 	list-style-type: none;
@@ -80,6 +110,7 @@ ul.main_info>li
 
 #sttouch {position: absolute; opacity: 0; height: 0px;}    
 #sttouch:checked + .slide {height: 540px;}
+
 
 @media (max-width: 1200px) and (min-width: 501px) {
 	ul.main_info>li  { width: 50%; } /* Show 2 logos per row on medium devices (tablets, phones in landscape) */

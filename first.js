@@ -68,3 +68,8 @@ function plotConceptMap()
   });
 }
 
+function navuncheck(navb)
+{
+  document.getElementById(navb).checked = false;
+}
+
