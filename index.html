@@ -228,6 +228,11 @@
 	<script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
 	<div id='myDiv'></div>
+	<style>
+		.myDiv{
+			width: 95%;
+		}
+	</style>
 	<script>
 		$(function(){
 			d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv', function(err, rows){
