@@ -1,0 +1,119 @@
+body
+{
+	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+}
+ul
+{
+	list-style-type: none;
+	padding: 0;
+  	margin: 0;
+}
+button
+{
+	background-color: transparent;
+	border: none;
+	font-size: large;
+}
+
+
+.outer-faq{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.faq-categories{
+    height: 500px;
+    width: 320px;
+    border: 1px solid red;
+}
+.faq-questions{
+    margin-left: 20px;
+    width: calc(95% - 320px);
+    border: 1px solid green;
+}
+#faqnav{
+    width: auto;
+    margin: auto;
+}
+#faqnav ul li button{
+    height: 60px;
+}
+#fdrop{
+
+    padding: 15px;
+    /* height: 50px; */
+}
+#faqnav .slide{height: 300px;}
+#ftouch {position: absolute; opacity: 0; height: 0px;} 
+#ftouch:checked + .slide {height: 0px;}
+
+#fdrop::after {content: "v";}
+
+
+
+/* cpy pas */
+.faq-questions {
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+    color: #fff;
+    font-family: sans-serif;
+    padding: 1rem;
+  }
+  
+  /* marker */
+  ::-webkit-details-marker{
+      float: right;
+      margin-top: 3px;
+      color: #2c3e50;
+  }
+  
+  .faq_heading {
+    position: relative;
+  }
+  
+  .faq_heading::after {
+    content: '';
+    height: 2px;
+    background: #fff;
+    display: inline-block;
+    width: 270px;
+  }
+  
+  .faq_item {
+    border: 1px solid #2c3e50;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    /* max-width: for small devices */
+    max-width: 320px;
+  }
+  
+  .faq_title {
+    font-weight: normal;
+  }
+  
+  .faq_content {
+    font-weight: 100;
+    font-size: 0.95rem;
+    color: #c9c9c9;
+  }
+  
+  /* about */
+  .about {
+    position: absolute;
+    top: 10%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .about_content {
+    font-size: 24px;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+  }
