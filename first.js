@@ -1,6 +1,6 @@
 $(function(){
-    $("#header").load("header.html"); 
-    $("#footer").load("footer.html"); 
+    $("#header").load("/header/header.html"); 
+    $("#footer").load("/footer/footer.html"); 
   });
 
 function search_display(form)
@@ -62,7 +62,7 @@ $(function(){
 });
 function plotConceptMap()
 {
-  d3.json("/metadata.json", function(err,dataJson) {
+  d3.json("/concept_map/metadata.json", function(err,dataJson) {
     console.log(err, dataJson);
     var plot = new ConceptMap("graph", "graph-info", dataJson);
   });

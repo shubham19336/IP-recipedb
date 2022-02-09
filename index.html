@@ -16,35 +16,33 @@
 	<script src="first.js"></script>
 	<link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
-	<link href="svgMap.css" rel="stylesheet">
-	<script src="svgMap.js"></script>
 	
 	<script src="https://www.amcharts.com/lib/4/core.js"></script>
 	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
 	
 	<!-- for pie chart  -->
-	<link rel="stylesheet" href="pie_chart_style.css">
+	<link rel="stylesheet" href="/pie_chart/pie_chart_style.css">
 	<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
 	<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
-	<script src="pie_chart.js"></script>
+	<script src="/pie_chart/pie_chart.js"></script>
 
 	<!-- for concept map (visual search)-->
-	<link href="/lib/concept-map.css" rel="stylesheet"></link>
-	<script src="/lib/d3.min.js" type="text/javascript"></script>
-	<script src="/lib/packages.js" type="text/javascript"></script>
-	<script src="/lib/concept-map.js" type="text/javascript"></script>
+	<link href="/concept_map/concept-map.css" rel="stylesheet"></link>
+	<script src="/concept_map/d3.min.js" type="text/javascript"></script>
+	<script src="/concept_map/packages.js" type="text/javascript"></script>
+	<script src="/concept_map/concept-map.js" type="text/javascript"></script>
 
 	
 	<!-- for heat map  -->
-	<link rel="stylesheet" href="heat_map_style.css">
-	<script src="heat_map.js"></script>
+	<link rel="stylesheet" href="/heat_map/heat_map_style.css">
+	<script src="/heat_map/heat_map.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
 	<!-- for noUislider -->
 	<link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
-	<link rel="stylesheet" href="slider.css">
-    <script src="slider.js"></script>
+	<link rel="stylesheet" href="/slider/slider.css">
+    <script src="/slider/slider.js"></script>
 
 	<title>Recipe DB 2.0</title>
 </head>
@@ -58,7 +56,7 @@
 			<p>Simple solution to all your recipe queries...</p>
 		  </div>
 		<video autoplay muted loop id="myVideo">
-			<source src="videor.mp4" type="video/mp4">
+			<source src="/assets/videor.mp4" type="video/mp4">
 		  </video>
 	</div>
 	
@@ -219,6 +217,70 @@
 	</div>
 	<div id="concept_parent">
 		<div id="graph" class="conceptmap" ></div>
+	</div>
+
+	<!--  -------------------------------------testing embedding of plots ----------------- -->
+
+	<!-- -----------------------------------------using Iframe ---------------------------- -->
+	<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plotly.com/~ShubhamGarg/1.embed"></iframe>
+
+	<!-- ---------------------------------using plotly.js---------------------------------- -->
+	<script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+	<div id='myDiv'></div>
+	<script>
+		$(function(){
+			d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv', function(err, rows){
+      function unpack(rows, key) {
+          return rows.map(function(row) { return row[key]; });
+      }
+
+       var data = [{
+            type: 'choropleth',
+            locations: unpack(rows, 'CODE'),
+            z: unpack(rows, 'GDP (BILLIONS)'),
+            text: unpack(rows, 'COUNTRY'),
+            colorscale: [
+                [0,'rgb(5, 10, 172)'],[0.35,'rgb(40, 60, 190)'],
+                [0.5,'rgb(70, 100, 245)'], [0.6,'rgb(90, 120, 245)'],
+                [0.7,'rgb(106, 137, 247)'],[1,'rgb(220, 220, 220)']],
+            autocolorscale: false,
+            reversescale: false,
+            marker: {
+                line: {
+                    color: 'rgb(255,255,255)',
+                    width: 0.5
+                }
+            },
+            tick0: 0,
+            zmin: 0,
+            dtick: 1000,
+            colorbar: {
+                autotic: false,
+                tickprefix: '$',
+                title: 'GDP<br>Billions US$'
+            }
+      }];
+
+      var layout = {
+          title: '2014 Global GDP<br>Source: <a href="https://www.cia.gov/library/publications/the-world-factbook/fields/2195.html"> CIA World Factbook</a>',
+          geo:{
+              showframe: true,
+              showcoastlines: false,
+              projection:{
+                  type: 'mercator'
+              }
+          }
+      };
+      Plotly.newPlot("myDiv", data, layout, {showLink: false});
+});
+
+		});
+		
+	</script>
+<!-- -------------------------------------------------end testing ----------------------------------------- -->
+
+
 	<footer>
 		<div id="footer"></div>
 	</footer>
