@@ -5,6 +5,10 @@
 .conceptmap{
   margin:auto;
 }
+
+/* -----------------------css below is from a template------------------------ */
+
+
 /* hide comments */
 #hidden-comments {
   display: none;
