@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="faq.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script src="faq.js"></script>
+</head>
+
+<header>
+	<div id="header"></div>
+</header>
+
+<body>
+    <div class="outer-faq">
+
+        <div class="faq-categories">
+            <ul id="faq-cat-list">
+              <li><label>FAQs</label></li>
+              <li><button onclick="faqdisplay('faqcat1')">cat1</button></li>
+              <li><button onclick="faqdisplay('faqcat2')">cat2</button></li>
+            </ul>  
+        </div>
+
+
+
+        <div class="faq-questions">
+
+          <!-- --------------------------------------------question section starts ------------------------------------ -->
+          <div class="accordion" id="faqcat1">
+            <h2 class="accordion__heading">CATEGORY1</h2>
+            <!-- ------------------------------------------------item start ------------------------------------------ -->
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How do I figure out what to learn?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>The most important thing is that you want to learn something that interests you, because once you start learning, you’ll be with this topic for a while. Choosing something just because it’s popular or what others are doing isn’t the way to go because if you don’t have a true interest in it, you’ll lose the motivation to learn! Spend some time seriously looking into the different tech career paths before choosing one to go down.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Which programming language is the best to learn?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>I usually tell most people to start by learning HTML and CSS, then move into learning JavaScript. The reason is that JavaScript is used everywhere: frontend, backend, and even to build mobile apps. It has many use cases, which is why I think it’s smart to learn.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+
+          </div>
+          <!-- --------------------------------------------question section ends ------------------------------------ -->
+
+
+
+          <!-- --------------------------------------------question section starts ------------------------------------ -->
+          <div class="accordion" id="faqcat2">
+            <h2 class="accordion__heading">CATEGORY2</h2>
+            <!-- ------------------------------------------------item start ------------------------------------------ -->
+            <div class="accordion__item">
+              <button class="accordion__btn">
+          
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Should I learn skills in several areas?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>Personally, I’d say choose a path and stick to it! Learning too many things at once will slow you down. Here are a few ideas of things you can choose to focus on, and a little bit about each one.</p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+              <button class="accordion__btn">
+          
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Should I learn skills in several areas?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>Personally, I’d say choose a path and stick to it! Learning too many things at once will slow you down. Here are a few ideas of things you can choose to focus on, and a little bit about each one.</p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+
+          </div>
+          <!-- --------------------------------------------question section ends ------------------------------------ -->
+
+
+        </div>
+    </div>
+</body>
+
+<footer>
+  <div id="footer"></div>
+</footer>
+
+</html>

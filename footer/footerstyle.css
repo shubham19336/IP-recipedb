@@ -1,12 +1,23 @@
+body{
+    margin:0; /* removes any margin (especially at the bottom) */
+    padding:0; /* removes any padding (especially at the bottom) */
+
+    min-height: 100vh; 
+  
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+}
+footer{
+    margin-top: auto;
+}
 .foot
-{
+{   
     background-color: black;
     color: white;
     text-align: center;
     width: 100%;
-    margin:0; /* removes any margin (especially at the bottom) */
-    padding:0; /* removes any padding (especially at the bottom) */
-    height:100%;
+    margin-bottom: 0px;
 }
 .foot img
 {

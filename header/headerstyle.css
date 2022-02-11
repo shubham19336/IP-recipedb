@@ -7,6 +7,22 @@ html, body {
 * {
     box-sizing: border-box;
 }
+body
+{
+	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+}
+ul
+{
+	list-style-type: none;
+	padding: 0;
+  margin: 0;
+}
+button
+{
+	background-color: transparent;
+	border: none;
+	font-size: large;
+}
 
 .top-nav {
   display: flex;
@@ -25,6 +41,9 @@ html, body {
   margin: 0;
   padding: 0;
 
+}
+.menu label{
+  cursor: pointer;
 }
 
 .menu > li {
@@ -86,6 +105,7 @@ html, body {
 {
   color: red;
   font-size: large;
+  cursor: pointer;
 }
 @media (max-width: 700px) 
 {
