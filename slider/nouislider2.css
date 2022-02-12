@@ -1,0 +1,30 @@
+.slider-styled{
+      padding: 0 0px;
+      margin: 1% 10% 50px 10%;
+      height: 5px;
+      /* border: 1px solid red; */
+  }
+  
+  .slider-styled .noUi-connect {
+      background: #2bc069;
+  }
+ 
+  .slider-styled .noUi-handle {
+      height: 18px;
+      width: 18px;
+      left: -9px;  /* for adjusting handles to pips(half of width)*/
+      border-radius: 9px; 
+      box-shadow: none;
+      border: 1px solid black;
+      cursor: pointer;
+      background-color: rgb(0, 0, 0); 
+  }
+  .slider-styled .noUi-tooltip {
+      display: none;
+      border-radius: 50%;
+      left: -20px;
+  }
+  .slider-styled .noUi-active .noUi-tooltip {
+      display: block;
+      background-color: black;
+  }
