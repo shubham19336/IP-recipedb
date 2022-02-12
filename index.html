@@ -90,7 +90,7 @@
 				<label for="sttouch" class="drop">STATISTICS</label>               
 				<input type="checkbox" id="sttouch" onchange="navuncheck('sbtouch')"> 
 				<ul class="slide">
-					<li><button value="recipes" onclick="stats_display('')">RECIPES</button></li> 
+					<li><button value="recipes" onclick="stats_display('test')">RECIPES</button></li> 
 					<li><button value="categories" onclick="stats_display('heat_map')">CATEGORIES</button></li>
 					<li><button value="ingredients" onclick="stats_display('chartdiv1')">INGREDIENTS</button></li>
 					<li><button value="nutrition" onclick="stats_display('')">NUTRITION</button></li>
@@ -230,71 +230,73 @@
 		<!-- the above line was for rendering an href for graph info -->
 	</div>
 
-	<!--  -------------------------------------testing embedding of plots ----------------- -->
+	<div class="statistics" id="test" style="display: none;">
+		<!--  -------------------------------------testing embedding of plots ----------------- -->
 
-	<!-- -----------------------------------------using Iframe ---------------------------- -->
-	<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plotly.com/~ShubhamGarg/1.embed"></iframe>
+		<!-- -----------------------------------------using Iframe ---------------------------- -->
+		<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plotly.com/~ShubhamGarg/1.embed"></iframe>
 
-	<!-- ---------------------------------using plotly.js---------------------------------- -->
-	<script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
-	<div id='myDiv'></div>
-	<style>
-		.myDiv{
-			width: 85%;
+		<!-- ---------------------------------using plotly.js---------------------------------- -->
+		<script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+		<div id='myDiv'></div>
+		<style>
+			.myDiv{
+				width: 85%;
+			}
+		</style>
+		<script>
+			$(function(){
+				d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv', function(err, rows){
+		function unpack(rows, key) {
+		return rows.map(function(row) { return row[key]; });
 		}
-	</style>
-	<script>
-		$(function(){
-			d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv', function(err, rows){
-      function unpack(rows, key) {
-          return rows.map(function(row) { return row[key]; });
-      }
 
-       var data = [{
-            type: 'choropleth',
-            locations: unpack(rows, 'CODE'),
-            z: unpack(rows, 'GDP (BILLIONS)'),
-            text: unpack(rows, 'COUNTRY'),
-            colorscale: [
-                [0,'rgb(5, 10, 172)'],[0.35,'rgb(40, 60, 190)'],
-                [0.5,'rgb(70, 100, 245)'], [0.6,'rgb(90, 120, 245)'],
-                [0.7,'rgb(106, 137, 247)'],[1,'rgb(220, 220, 220)']],
-            autocolorscale: false,
-            reversescale: false,
-            marker: {
-                line: {
-                    color: 'rgb(255,255,255)',
-                    width: 0.5
-                }
-            },
-            tick0: 0,
-            zmin: 0,
-            dtick: 1000,
-            colorbar: {
-                autotic: false,
-                tickprefix: '$',
-                title: 'GDP<br>Billions US$'
-            }
-      }];
+		var data = [{
+			type: 'choropleth',
+			locations: unpack(rows, 'CODE'),
+			z: unpack(rows, 'GDP (BILLIONS)'),
+			text: unpack(rows, 'COUNTRY'),
+			colorscale: [
+			[0,'rgb(5, 10, 172)'],[0.35,'rgb(40, 60, 190)'],
+			[0.5,'rgb(70, 100, 245)'], [0.6,'rgb(90, 120, 245)'],
+			[0.7,'rgb(106, 137, 247)'],[1,'rgb(220, 220, 220)']],
+			autocolorscale: false,
+			reversescale: false,
+			marker: {
+			line: {
+				color: 'rgb(255,255,255)',
+				width: 0.5
+			}
+			},
+			tick0: 0,
+			zmin: 0,
+			dtick: 1000,
+			colorbar: {
+			autotic: false,
+			tickprefix: '$',
+			title: 'GDP<br>Billions US$'
+			}
+		}];
 
-      var layout = {
-          title: '2014 Global GDP<br>Source: <a href="https://www.cia.gov/library/publications/the-world-factbook/fields/2195.html"> CIA World Factbook</a>',
-          geo:{
-              showframe: true,
-              showcoastlines: false,
-              projection:{
-                  type: 'mercator'
-              }
-          }
-      };
-      Plotly.newPlot("myDiv", data, layout, {showLink: false});
-});
+		var layout = {
+		title: '2014 Global GDP<br>Source: <a href="https://www.cia.gov/library/publications/the-world-factbook/fields/2195.html"> CIA World Factbook</a>',
+		geo:{
+			showframe: true,
+			showcoastlines: false,
+			projection:{
+				type: 'mercator'
+			}
+		}
+		};
+		Plotly.newPlot("myDiv", data, layout, {showLink: false});
+	});
 
-		});
-		
-	</script>
-<!-- -------------------------------------------------end testing ----------------------------------------- -->
+			});
+			
+		</script>
+		<!-- -------------------------------------------------end testing ----------------------------------------- -->
+	</div>
 
 
 	<footer>
