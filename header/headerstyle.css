@@ -1,4 +1,4 @@
-/* wouldn't these affect whole css? */
+/* wouldn't these affect whole css of other pages? */
 html, body {
   margin: 0;
   height: 100%;
@@ -24,6 +24,7 @@ button
 	font-size: large;
 }
 
+/* -------------------------------- */
 .top-nav {
   display: flex;
   width: 100%;

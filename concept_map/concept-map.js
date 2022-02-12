@@ -1,4 +1,14 @@
-
+// concept map
+$(function(){
+    plotConceptMap();
+});
+function plotConceptMap()
+{
+    d3.json("/concept_map/metadata.json", function(err,dataJson) {
+    console.log(err, dataJson);
+    var plot = new ConceptMap("graph", "graph-info", dataJson);
+    });
+}
 
 var ConceptMap = function(chartElementId, infoElementId, dataJson){
 

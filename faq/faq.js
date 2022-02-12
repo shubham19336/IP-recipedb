@@ -3,7 +3,6 @@ $(function(){
   $("#footer").load("/footer/footer.html"); 
 });
 
-
 $(function(){
   const accItems = document.querySelectorAll(".accordion__item");  // select all accordion items
   accItems.forEach((acc) => acc.addEventListener("click", toggleAcc)); // add a click event for all items

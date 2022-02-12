@@ -6,8 +6,12 @@
   margin:auto;
 }
 
-/* -----------------------css below is from a template------------------------ */
-
+/* ----------------------------------------------- */
+/* https://github.com/gp187/d3-concept-map */
+/* https://jsfiddle.net/musakkhir/zshmxx3y/13/ */
+/* https://stackoverflow.com/questions/31919274/concept-map-network-node-issue */
+/* // Inspired by http://www.findtheconversation.com/concept-map/ */
+/* // Loosely based on http://bl.ocks.org/mbostock/4063550 */
 
 /* hide comments */
 #hidden-comments {

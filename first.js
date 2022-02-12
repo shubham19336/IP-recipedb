@@ -21,10 +21,6 @@ function search_display(form)
       else{
           x.style.display='none';
       }
-    
-
-
-
     var items=document.getElementsByClassName("statistics");
     for(var i=0;i<items.length;i++){
         items[i].style.display='none';
@@ -54,18 +50,6 @@ function stats_display(stats)
   else{
       x.style.display='none';
   }
-}
-
-// concept map
-$(function(){
-  plotConceptMap();
-});
-function plotConceptMap()
-{
-  d3.json("/concept_map/metadata.json", function(err,dataJson) {
-    console.log(err, dataJson);
-    var plot = new ConceptMap("graph", "graph-info", dataJson);
-  });
 }
 
 function navuncheck(navb)
