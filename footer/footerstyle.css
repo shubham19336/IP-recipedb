@@ -1,18 +1,14 @@
 body{
-    margin:0; /* removes any margin (especially at the bottom) */
-    padding:0; /* removes any padding (especially at the bottom) */
+    margin:0; 
+    padding:0;
 
-    min-height: 100vh; 
-  
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-
-}
-footer{
-    margin-top: auto;
 }
 .foot
 {   
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: black;
     color: white;
     text-align: center;
@@ -22,6 +18,10 @@ footer{
 .foot img
 {
     height: 50px;
+}
+.foot #cyl
+{
+    margin-top: 6px;
 }
 #iiitimg
 {
@@ -42,5 +42,7 @@ footer{
 .foot ul h3
 {
     margin-left: -52px;
-    margin-top: 12px;
+    margin-top: 21px;
+    color: #c2c2c2;
+    font-size: medium;
 }

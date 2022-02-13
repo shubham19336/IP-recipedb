@@ -26,6 +26,8 @@ button
 
 /* -------------------------------- */
 .top-nav {
+  position: fixed;
+  z-index: 100;
   display: flex;
   width: 100%;
   align-items: center;
