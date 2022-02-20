@@ -30,13 +30,13 @@
 <body>
     <div class="outer-faq">
 
-        <div class="faq-categories">
+        <!-- <div class="faq-categories">
             <ul id="faq-cat-list">
               <li><label>FAQs</label></li>
               <li><button onclick="faqdisplay('faqcat1')">cat1</button></li>
               <li><button onclick="faqdisplay('faqcat2')">cat2</button></li>
             </ul>  
-        </div>
+        </div> -->
 
 
 
@@ -44,17 +44,17 @@
 
           <!-- --------------------------------------------question section starts ------------------------------------ -->
           <div class="accordion" id="faqcat1">
-            <h2 class="accordion__heading">CATEGORY1</h2>
+            <h2 class="accordion__heading">Frequently Asked Questions (FAQs)</h2>
             <!-- ------------------------------------------------item start ------------------------------------------ -->
             <div class="accordion__item">
 
               <button class="accordion__btn">
-                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How do I figure out what to learn?</span>
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What is RecipeDB?</span>
                 <span class="accordion__icon"><i class="fa fa-plus"></i></span>
               </button>
           
               <div class="accordion__content">
-                <p>The most important thing is that you want to learn something that interests you, because once you start learning, you’ll be with this topic for a while. Choosing something just because it’s popular or what others are doing isn’t the way to go because if you don’t have a true interest in it, you’ll lose the motivation to learn! Spend some time seriously looking into the different tech career paths before choosing one to go down.</p>
+                <p>RecipeDB is a structured repository of recipes and ingredients from over 22 world regions, intended to enable data-driven explorations of recipes. In conjunction with flavor molecules data from FlavorDB; RecipeDB facilitates multi-level analysis of traditional recipes (dietary classifications, ingredient composition, nutritional profile, recipes, etc.).</p>
               </div>
 
             </div>
@@ -64,54 +64,338 @@
             <div class="accordion__item">
 
               <button class="accordion__btn">
-                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Which programming language is the best to learn?</span>
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What are the different concepts represented in RecipeDB and how do they relate to each other?</span>
                 <span class="accordion__icon"><i class="fa fa-plus"></i></span>
               </button>
           
               <div class="accordion__content">
-                <p>I usually tell most people to start by learning HTML and CSS, then move into learning JavaScript. The reason is that JavaScript is used everywhere: frontend, backend, and even to build mobile apps. It has many use cases, which is why I think it’s smart to learn.</p>
+                <p>Concepts presented in RecipeDB include recipes, the region they originated in, and the ingredients and utensils utilized in their preparation. It also includes the nutritional profiles of both recipes and their ingredients. The illustration depicts relationships among the different concepts incorporated into RecipeDB. In this example, we have the recipe ‘Prawn Nasi Goreng’ which belongs to the Southeast Asian region, specifically to the Indonesian sub-region. The estimated nutritional profile of the recipe contains information on its nutrient content such as the number of calories, proteins, etc. The recipe is characterized by its dietary attributes, list of utensils used as well as an ordered list of the processes that take place in the recipe. Each ingredient in a recipe is characterized by attributes such as quantity, unit and state as well as its own nutritional profile.
+                </p>
+                <img src="/assets/faq-2i.png" alt="Italian Trulli">
               </div>
 
             </div>
             <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
 
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What types of queries are processed by RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>RecipeDB facilitates an elastic search to query recipes based on factors such as geographical location of origin (i.e. region, country), name, dietary classification, ingredients associated/unassociated with the recipe and its nutritional information (i.e. calorie, protein, etc. content).</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How do I use “Recipe Search”?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>Refer to the “Search” section on the “How to Use” page.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How do I use “Advanced Search”?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>Refer to the “Advanced Search” section on the “How to Use” page.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What are the various recipes within RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>A list of all the recipes in RecipeDB can be obtained by simply hitting the ‘Search’ button on the recipe search page without providing any specific query.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What are RecipeDB Statistics?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>RecipeDB Statistics explain the vastness and depth of RecipeDB using interactive plots made using <a href="https://www.amcharts.com/">amChart</a> and <a href="https://plotly.com/">Plotly</a>.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What are the prerequisites required in order to use RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>A modern web browser.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How does the ‘Find Similar Recipes’ feature work?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>The similarity in recipes was ascertained based on shared category composition of ingredients and processes.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How does RecipeDB obtain the individual nutritional profiles of ingredients in a recipe?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>RecipeDB uses information such as the state and quantity of an ingredient in a recipe to calculate its estimated nutritional profile by mapping it to the USDA data.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How does RecipeDB estimate a recipe’s nutritional profile?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>For every ingredient of a recipe its features were extracted: ingredient name, state, quantity, unit, dry/fresh, temperature, and size. Using the name of the ingredient and its state, each ingredient was mapped to a unique ‘NDB ID’ from USDA database. Further using the standard nutrition data from USDA data tables, the nutritional profile of the ingredient was estimated by mapping quantity and unit. The final ‘estimated nutritional profile’ is a sum total of nutritional values of each ingredient in it.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How were the Dietary Styles (vegan, pescatarian, ovo-vegetarian, lacto-vegetarian, ovo-lacto-vegetarian) ascertained for the recipes?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>The Dietary Style of each recipe was decided based on the constraints followed by each of these categories. For this version the ingredient categories dish and bakery were refrained from the dietary style determination.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What are the categories ingredients are sorted into?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>The ingredients were manually curated into the 23 categories given below:</p>
+                <ul class="collection">
+                  <li class="collection-item">	Additive</li>
+                  <li class="collection-item">	Bakery</li>
+                  <li class="collection-item">	Beverage</li>
+                  <li class="collection-item">	Beverage-Alcoholic</li>
+                  <li class="collection-item">	Cereal</li>
+                  <li class="collection-item">	Condiment</li>
+                  <li class="collection-item">	Dairy</li>
+                  <li class="collection-item">	Dish</li>
+                  <li class="collection-item">	Essential Oil</li>
+                  <li class="collection-item">	Fish</li>
+                  <li class="collection-item">	Fruit</li>
+                  <li class="collection-item">	Fungi</li>
+                  <li class="collection-item">	Herb</li>
+                  <li class="collection-item">	Legume</li>
+                  <li class="collection-item">	Maize</li>
+                  <li class="collection-item">	Meat</li>
+                  <li class="collection-item">	Nuts and Seeds</li>
+                  <li class="collection-item">	Plant</li>
+                  <li class="collection-item">	Plant Derivative</li>
+                  <li class="collection-item">	Seafood</li>
+                  <li class="collection-item">	Spice</li>
+                  <li class="collection-item">	Vegetable</li>
+                  <br>
+                </ul>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How does the integration of RecipeDB with DietRx and FlavorDB work?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>For each ingredient found in recipes of the database, a ‘Generic Ingredient Name’ was assigned manually to account for degeneracy due to derivative products. For each generic ingredient the FlavorDB ID and DietRx ID were manually labelled. These external resources provide details of the ‘Flavor Profile’ and ‘Health Impacts’ of the ingredient, respectively.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What browsers are supported by RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>RecipeDB supports all modern web browsers, but it can be best viewed on Chrome, Firefox and Edge.</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What is the Tech Stack used to build RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>Frontend: HTML, CSS, JavaScript, Google Chart, Plotly, amChart <br>
+                  Backend: Flask, SQLite, Python</p>
+              </div>
+
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+            <!-- ------------------------------------------------item start ------------------------------------------ -->        
+            <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What are the sources of information for RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>RecipeDB has sourced the recipes from many online resources, and its nutritional information from the USDA Food Composition Databases.</p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+             <!-- ------------------------------------------------item start ------------------------------------------ -->        
+             <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Does RecipeDB use cookies?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>RecipeDB uses cookies to provide statistics that help us give the best possible experience for our site.</p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+             <!-- ------------------------------------------------item start ------------------------------------------ -->        
+             <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Can I access RecipeDB using my mobile phone?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>Although RecipeDB is best viewed on a desktop, the website is accessible from most modern mobile web browsers.</p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+             <!-- ------------------------------------------------item start ------------------------------------------ -->        
+             <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How do I contribute to the data from RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p>You may contact us at bagler+RecipeDB@iiitd.ac.in for errata along with relevant references.</p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+             <!-- ------------------------------------------------item start ------------------------------------------ -->        
+             <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>What is the license under which RecipeDB is available?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p></p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+             <!-- ------------------------------------------------item start ------------------------------------------ -->        
+             <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Who is the team behind RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p></p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
+             <!-- ------------------------------------------------item start ------------------------------------------ -->        
+             <div class="accordion__item">
+
+              <button class="accordion__btn">
+                <span class="accordion__caption"><i class="far fa-lightbulb"></i>How do I cite RecipeDB?</span>
+                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+              </button>
+          
+              <div class="accordion__content">
+                <p></p>
+              </div>
+            </div>
+            <!-- ------------------------------------------------item end ------------------------------------------ -->
           </div>
           <!-- --------------------------------------------question section ends ------------------------------------ -->
 
 
 
           <!-- --------------------------------------------question section starts ------------------------------------ -->
-          <div class="accordion" id="faqcat2">
-            <h2 class="accordion__heading">CATEGORY2</h2>
-            <!-- ------------------------------------------------item start ------------------------------------------ -->
-            <div class="accordion__item">
-              <button class="accordion__btn">
           
-                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Should I learn skills in several areas?</span>
-                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
-              </button>
-          
-              <div class="accordion__content">
-                <p>Personally, I’d say choose a path and stick to it! Learning too many things at once will slow you down. Here are a few ideas of things you can choose to focus on, and a little bit about each one.</p>
-              </div>
-            </div>
-            <!-- ------------------------------------------------item end ------------------------------------------ -->
-
-            <!-- ------------------------------------------------item start ------------------------------------------ -->        
-            <div class="accordion__item">
-              <button class="accordion__btn">
-          
-                <span class="accordion__caption"><i class="far fa-lightbulb"></i>Should I learn skills in several areas?</span>
-                <span class="accordion__icon"><i class="fa fa-plus"></i></span>
-              </button>
-          
-              <div class="accordion__content">
-                <p>Personally, I’d say choose a path and stick to it! Learning too many things at once will slow you down. Here are a few ideas of things you can choose to focus on, and a little bit about each one.</p>
-              </div>
-            </div>
-            <!-- ------------------------------------------------item end ------------------------------------------ -->
-
-          </div>
           <!-- --------------------------------------------question section ends ------------------------------------ -->
 
 

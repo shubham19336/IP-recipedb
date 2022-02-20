@@ -54,11 +54,14 @@ body
 
 
 .faq-questions{
-    margin-left: 3vw;
+    /* margin-left: 3vw; */
+    margin-left: 5%;
+    margin-right: 5%;
     margin-top: 10vh;
-    width: calc(95% - 320px); 
+    text-align: center;
+    /* width: calc(95% - 320px);  */
     /* width calculated by categories div */
-    border: 3px solid rgb(0, 128, 128);
+    /* border: 3px solid rgb(0, 128, 128); */
 
     display: grid;
     /* place-items: center; */
