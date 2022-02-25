@@ -75,6 +75,7 @@ $(function(){
                 "r": 100, 
                 "t": 50
             }, 
+            "height":650,
             "title": {
                 "text": "Ingredient Composition of recipes across regions (%)"
             }

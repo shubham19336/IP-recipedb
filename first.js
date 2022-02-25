@@ -42,10 +42,10 @@ function stats_display(stats)
   var x=(document.getElementById(stats));
   if(x.style.display=='none'){
       x.style.display='flex';
-      if(stats == 'heat_map'){
-        x.style.display = 'inline-block';
-      }
-      else if(stats=='test')x.style.display='inline';  //for testing
+      // if(stats == 'heat_map'){
+      //   x.style.display = 'inline-block';
+      // }
+      if(stats=='test')x.style.display='inline';  //for testing
   }
   else{
       x.style.display='none';
