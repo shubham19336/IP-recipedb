@@ -12,8 +12,30 @@ function plotConceptMap()
 
 var ConceptMap = function(chartElementId, infoElementId, dataJson){
 
+    var width = document.body.clientWidth; 
+    //window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    // var height = 700; 
+    // window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    var height=document.body.clientHeight;
     // for map height and width->a,h,c;
-    var a=1000,c=900,h=c,U=200,K=22,S=20,s=8,R=110,J=30,o=15,t=10,w=1000,F="elastic",N="#0da4d3";var T,q,x,j,H,A,P;var L={},k={};var i,y;var r=d3.layout.tree().size([360,h/2-R]).separation(function(Y,X){return(Y.parent==X.parent?1:2)/Y.depth});var W=d3.svg.diagonal.radial().projection(function(X){return[X.y,X.x/180*Math.PI]});var v=d3.svg.line().x(function(X){return X[0]}).y(function(X){return X[1]}).interpolate("bundle").tension(0.5);var d=d3.select("#"+chartElementId).append("svg").attr("width",a).attr("height",c).append("g").attr("transform","translate("+a/2+","+c/2+")");var I=d.append("rect").attr("class","bg").attr({x:a/-2,y:c/-2,width:a,height:c,fill:"transparent"}).on("click",O);var B=d.append("g").attr("class","links"),f=d.append("g").attr("class","ditems"),E=d.append("g").attr("class","nodes");var Q=d3.select("#"+infoElementId);
+    // var a=800,c=800;
+
+    // U-> width of middle buttons
+    // K->height of middle buttons
+    // S->space between side balls and middle buttons
+    // s->curvature of connecions
+    // R->(inverse)radius on which outside balls lie
+    // J->(inverse)completeness of circle 
+    // o->padding of text from top in the middle buttons
+    // t->gap between text and small balls around circle
+    // w->less value for lesser animation time
+    //old
+    var col="#0da4d3"; 
+    var col="#d3240d";
+    // var a=2*width,c=1.5*height;
+    // var h=c,U=200,K=22,S=20,s=8,R=30,J=29,o=15,t=10,w=100,F="elastic",N=col;
+    var a=1200,c=900,h=c,U=200,K=22,S=22,s=8,R=38,J=28,o=15,t=10,w=100,F="elastic",N=col;
+    var T,q,x,j,H,A,P;var L={},k={};var i,y;var r=d3.layout.tree().size([360,h/2-R]).separation(function(Y,X){return(Y.parent==X.parent?1:2)/Y.depth});var W=d3.svg.diagonal.radial().projection(function(X){return[X.y,X.x/180*Math.PI]});var v=d3.svg.line().x(function(X){return X[0]}).y(function(X){return X[1]}).interpolate("bundle").tension(0.5);var d=d3.select("#"+chartElementId).append("svg").attr("width",a).attr("height",c).append("g").attr("transform","translate("+a/2+","+c/2+")");var I=d.append("rect").attr("class","bg").attr({x:a/-2,y:c/-2,width:a,height:c,fill:"transparent"}).on("click",O);var B=d.append("g").attr("class","links"),f=d.append("g").attr("class","ditems"),E=d.append("g").attr("class","nodes");var Q=d3.select("#"+infoElementId);
     
     T=d3.map(dataJson);
     q=d3.merge(T.values());

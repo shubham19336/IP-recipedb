@@ -3,7 +3,8 @@
   text-align:center;
 }
 .conceptmap{
-  margin:auto;
+  /* margin:auto; */
+  margin-bottom: 5%;
 }
 
 /* ----------------------------------------------- */
