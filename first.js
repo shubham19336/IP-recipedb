@@ -1,8 +1,8 @@
 $(function(){
     $("#header").load("/header/header.html"); 
     $("#footer").load("/footer/footer.html"); 
+    $('#content').load("/recipe_map/recipe_map.html");
   });
-
 function search_display(form)
 {     
     document.getElementById("sbtouch").checked=false;

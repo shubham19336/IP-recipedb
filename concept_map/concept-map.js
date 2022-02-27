@@ -31,7 +31,7 @@ var ConceptMap = function(chartElementId, infoElementId, dataJson){
     // w->less value for lesser animation time
     //old
     var col="#0da4d3"; 
-    var col="#d3240d";
+    var col="#db0000";
     // var a=2*width,c=1.5*height;
     // var h=c,U=200,K=22,S=20,s=8,R=30,J=29,o=15,t=10,w=100,F="elastic",N=col;
     var a=1200,c=900,h=c,U=200,K=22,S=22,s=8,R=38,J=28,o=15,t=10,w=100,F="elastic",N=col;
