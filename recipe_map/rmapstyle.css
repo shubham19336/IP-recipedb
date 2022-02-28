@@ -4,3 +4,6 @@
     width: 50%;
     height: 50%
 }
+#rec_geoplot{
+    display: none;
+}

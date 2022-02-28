@@ -1,8 +1,11 @@
 #heat_parent
-{
+{   
     text-align: center;
     margin-top: 5%;
     margin-bottom: 10%;
     /* justify-content: center; */
+}
+#heat_map{
+    display: none;
 }
 

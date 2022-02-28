@@ -53,6 +53,16 @@
 	<script src="/heat_map/heatmap.js"></script>
 	<link rel="stylesheet" href="/heat_map/heatmap.css">
 
+	<!-- for Plotly (heatmap, geoplots) -->
+	<script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+	<script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
+	<!-- d3 was added with conccept map(check which one to keep) -->
+	<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script> -->
+
+	<!-- recipe geoplot -->
+	<script src="/recipe_map/rmap.js"></script>
+	<link rel="stylesheet" href="recipe_map/rmapstyle.css">
+
 
 	
 	<!-- template files -->
@@ -101,7 +111,7 @@
 				<label for="sttouch" class="drop"><b>STATISTICS</b></label>               
 				<input type="checkbox" id="sttouch" onchange="navuncheck('sbtouch')"> 
 				<ul class="slide">
-					<li><button value="recipes" onclick="stats_display('test')">RECIPES</button></li> 
+					<li><button value="recipes" onclick="stats_display('rec_geoplot')">RECIPES</button></li> 
 					<li><button value="categories" onclick="stats_display('heat_map')">CATEGORIES</button></li>
 					<li><button value="ingredients" onclick="stats_display('chartdiv1')">INGREDIENTS</button></li>
 					<li><button value="nutrition" onclick="stats_display('')">NUTRITION</button></li>
@@ -228,6 +238,10 @@
 	</div>
 
 	<!-- ------------------------------statistics------------------------------------------- -->
+	<div class="rmap statistics" id="rec_geoplot">
+        <div id="c08cd1b9-5840-4e0c-a4f6-6fae3418d5a5" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+    </div>
+
 	<div class="statistics chartdiv" id="chartdiv1"></div>
 	<div class="statistics chartdiv" id="chartdiv2"></div>
 	<div class="statistics chartdiv" id="chartdiv3"></div>		
@@ -236,9 +250,10 @@
 		<div class="statistics mapdiv" id="heat_map"></div>
 	</div>
 
-	<div class="statistics" id="test" style="display: none;">
-		<!--  -------------------------------------testing embedding of plots ----------------- -->
 
+<!--  -------------------------------------testing embedding of plots ----------------- -->
+	<div class="statistics" id="test" style="display: none;">
+		
 		<!-- -----------------------------------------using Iframe ---------------------------- -->
 		<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plotly.com/~ShubhamGarg/1.embed"></iframe>
 
@@ -301,8 +316,8 @@
 			});
 			
 		</script>
-		<!-- -------------------------------------------------end testing ----------------------------------------- -->
 	</div>
+<!-- -------------------------------------------------end testing ----------------------------------------- -->
 
 	<div id="concept_parent">
 		<div id="graph" class="conceptmap" ></div>
