@@ -83,6 +83,7 @@ $(function(){
         {
             "plotlyServerURL": "https://plotly.geoplot.com", 
             "responsive": true, 
+            "autosize": true,
             "linkText": "Export to plotly.geoplot.com", 
             "showLink": false
         }

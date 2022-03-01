@@ -1,9 +1,13 @@
 .chartdiv {
   display: none;
-  margin: 0 auto;
+  width: 1050px;
+  margin-left: auto;
+  justify-content: center;
+  padding-right: 50px;
+  margin-right: auto;
   height: 400px;
 }
-@media (min-width: 1200px)
+/* @media (min-width: 1200px)
 {
   .chartdiv
   {   
@@ -23,4 +27,4 @@
   {
     width: 100%;
   }
-}
+} */

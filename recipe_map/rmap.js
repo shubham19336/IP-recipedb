@@ -44,7 +44,7 @@ $(function(){
             {
                 "showLink": false, 
                 "linkText": "Export to plotly.geoplot.com", 
-                "responsive": true, 
+                "responsive": false, 
                 "plotlyServerURL": "https://plotly.geoplot.com"
             }
         )
