@@ -63,7 +63,9 @@
 	<script src="/recipe_map/rmap.js"></script>
 	<link rel="stylesheet" href="recipe_map/rmapstyle.css">
 
-
+	<!-- nutrition geoplot -->
+	<script src="/nutrition_map/nmap.js"></script>
+	<link rel="stylesheet" href="nutrition_map/nmapstyle.css">
 	
 	<!-- template files -->
 	<script src="first.js"></script>
@@ -114,7 +116,7 @@
 					<li><button value="recipes" onclick="stats_display('rec_geoplot')">RECIPES</button></li> 
 					<li><button value="categories" onclick="stats_display('heat_map')">CATEGORIES</button></li>
 					<li><button value="ingredients" onclick="stats_display('chartdiv1')">INGREDIENTS</button></li>
-					<li><button value="nutrition" onclick="stats_display('')">NUTRITION</button></li>
+					<li><button value="nutrition" onclick="stats_display('nut_geoplot')">NUTRITION</button></li>
 					<li><button value="processes" onclick="stats_display('chartdiv2')">PROCESSES</button></li>
 					<li><button value="utensils" onclick="stats_display('chartdiv3')">UTENSILS</button></li>
 				</ul>
@@ -240,6 +242,11 @@
 	<!-- ------------------------------statistics------------------------------------------- -->
 	<div class="rmap statistics" id="rec_geoplot">
         <div id="c08cd1b9-5840-4e0c-a4f6-6fae3418d5a5" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+    </div>
+
+
+	<div class="nmap statistics" id="nut_geoplot">
+        <div id="nut_plot" class="plotly-graph-div" style="height:100%; width:100%;"></div>
     </div>
 
 	<div class="statistics chartdiv" id="chartdiv1"></div>

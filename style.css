@@ -187,8 +187,10 @@ ul.main_info>li
 
 .slide {
 	clear:both;
+	float: bottom;
 	width:100%;
 	height:0px;
+	z-index: 100;
 	overflow: hidden;
 	text-align: center;
 	transition: height .4s ease;

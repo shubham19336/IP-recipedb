@@ -8,7 +8,7 @@ $(function(){
             [
                 {
                     "autocolorscale": false,
-                    "colorscale": "Black",
+                    "colorscale": "Hot",
                     "locationmode": "country names", 
                     "locations": ["Algeria", "Angola", "Antigua and Barbuda", "Argentina", "Australia", "Austria", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Benin", "Botswana", "Brazil", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Costa Rica", "Cuba", "Cunha", "Czech Republic", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Ecuador", "Egypt", "England", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Finland", "France", "Gabon", "Gambia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kenya", "Korea", "Kuwait", "Laos", "Lebanon", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Malaysia", "Mali", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Moldova", "Mongolia", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "New Zealand", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Peru", "Philippenes", "Poland", "Portugal", "Puerto Rico", "Qatar", "Republic of the Congo", "Romania", "Runion", "Russia", "Rwanda", "Saint Helena, Ascension and Tristan da", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Saudi Arabia", "Scotland", "Senegal", "Seychelles", "Sierra Leone", "Slovakia", "So Tom and Prncipe", "Somalia", "South Africa", "South Sudan", "Spain", "Sudan", "Sweden", "Switzerland", "Syria", "Tanzania", "Thailand", "The Bahamas", "Togo", "Trinidad and Tobago", "Tunisia", "Turkey", "Uganda", "UK", "Ukraine", "United Arab Emirates", "USA", "Venezuela", "Vietnam", "Welsh", "Western Sahara", "Yemen", "Zambia", "Zimbabwe", "Suriname", "Guyana", "Bolivia", "Paraguay", "Uruguay"],
                     "marker": {
@@ -29,7 +29,7 @@ $(function(){
             {
                 "geo": {
                     "lakecolor": "rgb(0, 191, 200)", 
-                    "oceancolor": "rgb(143 243 194)", 
+                    "oceancolor": "#c5ebeb", 
                     "projection": {"type": "natural earth"}, 
                     "scope": "world", 
                     "showlakes": true, 
@@ -37,7 +37,7 @@ $(function(){
                 },
 
                 "title": {
-                    "text": "Number of recipes across cuisines"
+                    "text": "<b>Number of recipes across cuisines<b>"
                 }
             },
 

@@ -77,7 +77,7 @@ $(function(){
             }, 
             "height":650,
             "title": {
-                "text": "Ingredient Composition of recipes across regions (%)"
+                "text": "<b>Ingredient Composition of recipes across regions (%)<b>"
             }
         },
         {
