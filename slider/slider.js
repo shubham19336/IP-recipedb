@@ -15,7 +15,7 @@ numberFormat = {
 
 $(function(){
     var st='slider-round';
-    for(var i=1;i<=4;i++){
+    for(var i=1;i<=8;i++){
         var slider1 = document.getElementById(st+i);
         noUiSlider.create(slider1, {
             start: i==1?[20,600]:[0, 80],

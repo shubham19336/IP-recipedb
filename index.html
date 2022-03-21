@@ -231,6 +231,26 @@
 						<input type="text" id="advutensil" placeholder="Enter Utensil" name="canotused">
 					</div>
 				</li>
+				<label class="switch">
+					<input type="checkbox" id="adv_checkbox_slider" onclick="getSlider()">
+					<span class="slider round"></span>
+					
+				  </label>
+				  <li>
+					<div id="adv_Nutrition">
+						<div class="advnutrition">
+							<label for="slider-round5">Energy (calories) :</label>
+							<div class="slider-styled" id="slider-round5"></div>
+							<label for="slider-round6">Carbohydrates (g) :</label>
+							<div class="slider-styled" id="slider-round6"></div>
+							<label for="slider-round7">Protein (g) :</label>
+							<div class="slider-styled" id="slider-round7"></div>
+							<label for="slider-round8">Fat (g) :</label>
+							<div class="slider-styled" id="slider-round8"></div>
+						</div>
+					</div>
+				  </li>
+				  
 				<li>
 					<button type="submit">FETCH</button>
 				</li>
@@ -238,7 +258,7 @@
 			
 		</form>
 	</div>
-
+	
 	<!-- ------------------------------statistics------------------------------------------- -->
 	<div class="rmap statistics" id="rec_geoplot">
         <div id="c08cd1b9-5840-4e0c-a4f6-6fae3418d5a5" class="plotly-graph-div" style="height:100%; width:100%;"></div>

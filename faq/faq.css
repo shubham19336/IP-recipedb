@@ -2,12 +2,13 @@ body
 {
 	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
 }
-.outerfaq ul
+/* .outerfaq ul
 {
 	list-style-type: none;
 	padding: 0;
   margin: 0;
-}
+  border: 1px solid red;
+} */
 .outer-faq button
 {
 	background-color: transparent;
