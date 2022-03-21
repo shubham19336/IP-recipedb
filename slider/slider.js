@@ -20,6 +20,7 @@ $(function(){
         noUiSlider.create(slider1, {
             start: i==1?[20,600]:[0, 80],
             connect: true,
+            // plag
             // tooltips:[true,true],
             tooltips:true,
             step:1,
