@@ -57,4 +57,16 @@ function navuncheck(navb)
 {
   document.getElementById(navb).checked = false;
 }
-
+function getSlider() {
+    // Get the checkbox
+    var checkBox = document.getElementById("adv_checkbox_slider");
+    // Get the output text
+    var text = document.getElementById("adv_Nutrition");
+  
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+      text.style.display = "flex";
+    } else {
+      text.style.display = "none";
+    }
+  }
