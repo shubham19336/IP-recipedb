@@ -19,7 +19,7 @@
   
   .prodNav {
     font-size: 12px;
-    background: #7e7e7e85;
+    /* background: #7e7e7e85; */
     border-radius: 20px;
     overflow: hidden;
     display: inline-block;
@@ -31,6 +31,7 @@
     padding: 9px 35px;
     line-height: 20px;
     border-radius: 20px;
+    background-color: rgb(243, 237, 237);
     border: 1px solid transparent;
     font-weight: 500;
     cursor: pointer;
@@ -41,9 +42,11 @@
   
   .prodNav .ptItem.active,
   .prodNav .ptItem:hover {
-    background: #000000;
-    border-color: #000000;
-    color: rgb(119, 235, 167);
+    background: #ff5656;
+    /* border-color: #000000; */
+    color: rgb(253, 253, 253);
+    /* font-weight: 700; */
+
   }
   
   .prodBody {
