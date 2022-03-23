@@ -39,10 +39,35 @@ body{
     display: inline;
     float: left;
 }
+#iiitpimg
+{
+    display: none;
+    height: 60px;
+}
 .foot ul h3
 {
     margin-left: -52px;
     margin-top: 21px;
     color: #c2c2c2;
     font-size: medium;
+}
+@media (max-width: 500px) {
+    .foot h3
+    {
+        display: none;
+    }
+    #iiitimg
+    {
+        display: none;
+        
+    }
+    .foot ul li
+    {
+        padding: 0;
+    }
+    #iiitpimg
+    {
+        display: inline-block;
+        margin-right: 50px;
+    }
 }

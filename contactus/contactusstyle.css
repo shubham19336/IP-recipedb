@@ -8,20 +8,21 @@ body
 {
     margin-top: auto;
     min-height: 100%;
-    position: relative;
+    /* border: 1px solid red; */
+    display: flex;
+    /* position: relative; */
     /* margin-bottom: 20px; */
 }
 .cuscontent
 {
     margin-top: 50px;
     width:50%;
-    min-height: 100%;
-    /* margin-bottom: 80px; */
+    /* height: 100%; */
     margin-left: auto;
     text-align: center;
     margin-right: auto;
     background-color: #070707;
-    display: flex;
+    display: block;
     justify-content: center;
     color: rgb(255, 255, 255);
 }
@@ -34,4 +35,10 @@ body
     {
         width: 100%;
     }
+}
+.gmap
+{
+    /* border: 1px solid red; */
+    width: 100%;
+
 }
