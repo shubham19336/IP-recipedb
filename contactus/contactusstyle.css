@@ -1,16 +1,22 @@
 body
 {
+    
 	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
     background-color: #ffffff;
 }
 .container
 {
-    height: 100%;
+    margin-top: auto;
+    min-height: 100%;
+    position: relative;
+    /* margin-bottom: 20px; */
 }
 .cuscontent
 {
+    margin-top: 50px;
     width:50%;
-    height: 100%;
+    min-height: 100%;
+    /* margin-bottom: 80px; */
     margin-left: auto;
     text-align: center;
     margin-right: auto;
