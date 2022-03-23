@@ -43,6 +43,7 @@
                     <h3>Visual Search</h3>
                     <p>Visual search represents a graph of the relationship between ingredients and ingredient categories. The categories are represented by a column of rectangles in the middle of the graph while the ingredients are listed along the circumference of semi-circles on either side of the categories. To observe the pattern of relation for any entity in the graph, the user can hover over it. As our database of ingredients is incredibly dense, this network would not be meaningfully usable if it were to include all the ingredients. To address this issue, only the 6 most frequently used ingredients from each category were chosen to be included in the network.</p>
                     <p>Clicking on any ingredient from the main network (or from any category’s network) reveals the ingredient’s own network. This network shows the ingredient at the center in a bubble with its category as well as the other ingredients from that category surrounding the bubble’s periphery. Clicking on the bubble redirects the user to the ingredient’s page. Clicking on any of the entities surrounding the periphery of the bubble reveals their network.</p>
+                    <p>Clicking on any category from the main network reveals the category’s own network with the top 6 most frequently used ingredients from that category occurring along its periphery. Clicking on the category’s bubble redirects the user to its ‘Category’ page while clicking on any of the ingredients reveals the ingredient’s network.</p>
                 </div>
               </div>
           
@@ -50,20 +51,75 @@
                 <div class="recsearch">
                     <h3>RecipeDB Search</h3>
                     <p>RecipeDB facilitates an elastic search to query recipes based on cuisine (geographical location of origin), ingredients used/not used, dietary classifications (vegan, vegetarian, vegetarian but not vegan, etc.) and nutritional profile (amount of energy, carbohydrates, etc.). Each search option allows the user to use any combination of the search parameters in their queries. All search boxes come with an autocomplete option to assist the user with any query containing a string with two or more characters typed, greatly enabling the user’s ability to explore the database. In case the user is not looking for anything specific, they can hit the ‘Submit’ button without providing any specific query. This will yield a result showing a list of all the recipes in RecipeDB. In case the user would like to filter the database using a more nuanced list of constraints, clicking on the ‘Advanced’ button will reveal a host of more parameters to query from.</p>
+                    
                     <h3>Cuisine Search</h3>
                     <p>RecipeDB is a resource with extensive coverage of over 100,000 recipes and approximately 2000 ingredients across over 22 world regions. It offers a user-friendly interface for querying and browsing through recipes. Data visualizations and interlinked search options are provided to retrieve relevant information. It intends to enable data-driven explorations of recipes. It facilitates multi-level analysis of traditional recipes (recipes, categorical classifications, ingredient composition).</p>
+                    
                     <h3>Ingredient Search</h3>
                     <p>‘Ingredient’ search facilitates querying and browsing RecipeDB based on the following features: ingredient used, and ingredient not used.</p>
+                    
                     <h3>Category Search</h3>
                     <p>‘Category’ search facilitates querying and browsing RecipeDB based on the following features: dietary style included, and dietary style not included.</p>
+                    
                     <h3>Nutrition Search</h3>
                     <p>‘Nutrition’ search facilitates querying and browsing RecipeDB based on the following features: calories of energy, grams of carbohydrates, grams of protein, and grams of fat.</p>
+                    
                     <h3>RecipeDB Search: Results</h3>
                     <p>In response to the query provided, a list of all the recipes that satisfy that query will be shown. The ‘Results’ page displays the query used at the top of the page. In case multiple fileds are used for creating a query, the results will show recipes that satisfy all the conditions. The list displays the following information for each recipe: ‘Recipe Title’, ‘Region’, ‘Country’, ‘Servings’, ‘Calories’, ‘Protein’, ‘Fat’, and a ‘More Info’ button. Clicking on this button will open the recipe information panel for the corresponding recipe. Additionally, clicking on the ‘Recipe Title’ will lead you to the ‘Recipe Page’ and clicking on the ‘Region’ or ‘Country’ will show a search result of all recipes belonging to that area. Additionally, the ‘Results’ page provides a search box at the top right corner to easily sort through the results.</p>
+                    
                     <h3>RecipeDB Search: Recipe Informational Panel</h3>
                     <p>This panel provides the ‘Estimated Nutritional Profile’ and ‘Recipe Elements’ of the recipe. This includes attributes of the recipe such as calories, carbohydrates, protein, and fat content as well as information on the constituent ingredients of the recipe such as ingredient name, quantity, etc. Further, this panel also provides the ‘Recipe Title’ and a 'Complete Profile’ button. When the user clicks on either of these, they are redirected to the ‘Recipe Page’ and when the user clicks on an ingredient name, they are redirected to the Ingredient Page’.</p>
+                    
+                    <h3>RecipeDB Search: Recipe Page</h3>
+                    <p>This page contains the following sections: ‘Estimated Nutritional Profile’, ‘Recipe Overview’, ‘Ingredients’, ‘Cooking Processes and Utensils’, and ‘Instructions’. Additionally, the page also provides a ‘Show More’ button, an image of the recipe, and the recipe’s name. ‘Estimated Nutritional Profile’ contains our calculated estimates of nutrition information such as the number of calories, carbohydrates and protein. When the user clicks on the ‘show more’ button, this section expands to reveal more nutrition information. ‘Recipe Overview’ contains information about the recipe’s cuisine, dietary style, and preparation time as well as a link to RecipeDB’s source for the recipe.</p>
+                    <p>‘Ingredients’ contains a list of all the ingredients in the recipe with information about them such as their name, quantity, unit, and state as well as their estimated nutritional profile. When a user clicks on any ingredient name, they are redirected to the ‘Ingredient Page’.</p>
+                    <p>‘Cooking Processes and Utensils’ contains a temporal sequence of cooking processes implemented in the recipe as well as the utensils used to carry out those processes.</p>
+                    <p>‘Instructions’ contains the instructions to make that recipe.</p>
+
+                    <h3>RecipeDB Search: Ingredient Page</h3>
+                    <p>This page contains the following sections: ‘Ingredient Overview’, ‘All Forms’, and ‘Recipes’. Additionally, the page also provides an image of the ingredient, and the ingredient’s name. ‘Ingredient Overview’ contains information about the ingredient category and its aliases. It also contains links to the ingredient’s Wikipedia page, 'Flavor Profile’ page from FlavorDB, and ‘Health Impacts’ page from DietRx. If the user clicks on the ingredient’s category, they will be redirected to the corresponding ‘Category Page’.</p>
+                    <p>‘All Forms’ contains a list of all the different forms in which this ingredient exists (broiled, peeled, roasted, etc.), their corresponding nutritional information, number of occurrences across all recipes, and a link to their USDA Nutrient Database page which contains their full nutritional profile.</p>
+                    <p>‘Recipes’ contains a list of recipes that use this ingredient along with information such as the recipe’s name, state of the ingredient in the recipe, region and Country of origin of the recipe, dietary style of the recipe, and the source of the recipe. If the user clicks on any recipe name, they will be redirected to the ‘Recipe Page’ of that recipe.</p>
+                  
+                    <h3>RecipeDB Search: Category Page</h3>
+                    <p>This page contains the following sections: A carrousel with the 5 most frequently used ingredients belonging to the category, a list of all the ingredients within the category, and a list of all recipes that contain one or more of the 5 most frequently used ingredients from the category. Additionally, the page also provides an image of the category, and the category’s name. The carrousel is a scrollable list that shows the name of image of the 5 most frequently used ingredients belonging to the category. When the user clicks on an ingredient they are redirected to the corresponding ‘Ingredient Page’. The list of ingredients contains the names of all ingredients belonging to this category. When the user clicks on an ingredient name they are redirected to the corresponding ‘Ingredient Page’.</p>
+                    <p>The list of recipes contains the recipe name, region and Country of origin, and the source of the recipe.</p>
+                  
                 </div>
               </div>
+
+              <div class="prodMain" id="pTab4C">
+                <div class="advsearch">
+                  <h3>Advanced Search</h3>
+                  <p>Advanced Search is provided to enable users who would like to probe RecipeDB by viewing the data through refined parameters. The modality of Advanced Search is like that of Recipe Search which allows filtering RecipeDB data by conjunction of parameters. Advanced search combines parameters from all the searches under Recipe Search (i.e. cuisine, ingredient, and nutrition search) to facilitate extremely tailored queries.</p>
+                </div>
+              </div>
+
+              <div class="prodMain" id="pTab5C">
+                <div class="recstats">
+                  <h3>RecipeDB Statistics</h3>
+                  <p>‘RecipeDB Statistics’ are provided on the landing page of RecipeDB.</p>
+
+                  <h3>RecipeDB Statistics: Recipes</h3>
+                  <p>The ‘Recipes’ tab provides a geographical plot of the number of recipes that belong to each of the cuisines in the database. Each area on the map is color-coded in accordance to the cuisine that influences it. On hovering over a Country, an information box will appear next to it containing its name, the cuisine that influences it, and the number of recipes in that cuisine.</p>
+
+                  <h3>RecipeDB Statistics: Ingredient</h3>
+                  <p>The ‘Ingredient’ tab provides a pie chart which shows the percentage of ingredients from the database that exist in each ingredient category. Hovering over the chart pops up the name of the ingredient category as well as the percentage of ingredients in it.</p>
+
+                  <h3>RecipeDB Statistics: Nutrition</h3>
+                  <p>The ‘Nutrition’ tab provides a geographical plot of the average number of calories of each of the cuisines in the database. Each area on the map is color-coded in accordance to the cuisine that influences it. On hovering over a Country, an information box will appear next to it containing its name, the cuisine that influences it, and the average number of calories of that cuisine.</p>
+
+                  <h3>RecipeDB Statistics: Categories</h3>
+                  <p>The ‘Categories’ tab provides a heat map of the cuisine’s ingredients broken down into different categories by percentage. On hovering over a block, an information box will appear next to it containing the category name, the cuisine and the percentage of ingredients of the cuisine belonging to that category.</p>
+
+                  <h3>RecipeDB Statistics: Processes</h3>
+                  <p>The ‘Process’ tab provides a pie chat which shows the percentage of recipes from the database across which a process uniquely exists. Hovering over the chart pops up the name of the process as well as the percentage of times it uniquely occurs across all the recipes.</p>
+
+                  <h3>RecipeDB Statistics: Utensils</h3>
+                  <p>The ‘Utensils’ tab provides a pie chat which shows the number of times a utensil is used across all recipes in the database as well as the percentage of times this utensil is used out of all the utensils. Hovering over the chart pops up these statistics as well as the name of the utensil.</p>
+                </div>
+              </div>
+
             </div>
           </div>
 
