@@ -1,0 +1,73 @@
+body
+{
+	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+}
+/* #container1
+{
+    min-height: 100%;
+    margin-bottom: -80px;
+    border: 1px solid red;
+    text-align: center;
+    margin-top: 20vh;
+} */
+table
+{
+    margin: auto;
+    text-align: center;
+    color: rgb(68, 0, 255);
+    page-break-inside: auto;
+}
+tr
+{
+    page-break-inside: auto;
+    page-break-after:5;
+}
+/* .hidden
+{
+    display: none;
+} */
+
+/* 
+.prodNav {
+    font-size: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 50px 0 20px;
+    line-height: 1.1;
+  }
+  .prodNav .ptItem {
+    padding: 9px 35px;
+    line-height: 20px;
+    border-radius: 20px;
+    background-color: rgb(243, 237, 237);
+    border: 1px solid transparent;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .prodNav .ptItem.active,
+  .prodNav .ptItem:hover {
+    background: #ff5656;
+    color: rgb(253, 253, 253);
+
+  }
+  
+  .prodBody {
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .prodMain {
+    display: none;
+    padding: 20px;
+  }
+  
+  .prodMain.active {
+    display: block;
+  }
+   */
