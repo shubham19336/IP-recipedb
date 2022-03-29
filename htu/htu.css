@@ -1,3 +1,7 @@
+body
+{
+	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+}
 .htu_out_div{
     /* margin-top: 0vh; */
     /* height: 100%; */
@@ -9,7 +13,10 @@
     /* margin: 0; */
     padding: 0;
 }
-
+.prodBody img
+{
+  width: 100%;
+}
 .container {
     /* max-width: 850px; */
     text-align: center;

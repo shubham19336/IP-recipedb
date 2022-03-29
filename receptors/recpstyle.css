@@ -2,13 +2,19 @@ body
 {
 	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
 } 
+#container1
+{
+  min-height: 100%;
+  text-align: center;
+}
  #container
 {
-    min-height: 100%;
-    margin-bottom: -80px;
-    border: 1px solid red;
+    /* margin-top: 10%; */
+    /* margin-bottom: 100px; */
+    /* border: 1px solid red; */
     text-align: center;
-    margin-top: 20vh;
+    margin-top: 15vh;
+    justify-content: center;
 }
 table
 {
