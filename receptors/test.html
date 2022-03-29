@@ -4,28 +4,39 @@
 <meta charset="utf-8">   
 <title>Final Output</title>   
 <meta name="description" content="Bootstrap.">  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/> -->
+
+<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+<link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 <script src="recp.js"></script>
   <link rel="stylesheet" href="recpstyle.css">
 </head>  
 <body style="margin:20px auto">  
-<div class="container">
-<div class="row header" style="text-align:center;color:green">
+<!-- <div class="container" style="width: 100%;"> -->
+<!-- <div class="row header" style="text-align:center;color:green; width: 100%;"> -->
 <h3>Bootstrap</h3>
 </div>
 
-    <!-- <div id="container1">
+    <div id="container">
       <ul class="prodNav">
         <li id="pTab1" class="ptItem active">TASTE RECEPTORS</li>
         <li id="pTab2" class="ptItem">ODOR RECEPTORS</li>
-      </ul> -->
-  
-      <!-- <div class="prodBody">
-        <div class="prodMain active" id="pTab1C"> -->
-          <table id="taste_output" class="table table-striped" >
+      </ul>
+    </div>
+    
+      <div class="prodBody">
+        <div class="prodMain " id="pTab1C">
+          <table id="taste_output" class=" tbles table table-dark table-striped table-hover dataTable display"  cellspacing="0" width="100%" >
             <thead>
               <tr>
                 <th scope="col">Uniprot Id</th>
@@ -35,795 +46,57 @@
                 <th scope="col">URL</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <!-- <tbody></tbody> -->
           </table>
-          <!-- </div>
-        </div> -->
+        </div>
     
-        <!-- <div class="prodMain" id="pTab2C">
-          <table id="odor_output" class="table table-striped" >
+        <div class="prodMain " id="pTab2C">
+          <table id="odor_output" class="tbles table table-dark table-striped table-hover dataTable display "  cellspacing="0" width="100%">
             <thead>
               <tr>
-                <th>Uniprot Id</th>
-                <th>Entry name</th>
-                <th>Organism</th>
-                <th>Receptor Type</th>
-                <th>URL</th>
+                <th scope="col">Uniprot Id</th>
+                <th scope="col">Entry name</th>
+                <th scope="col">Organism</th>
+                <th scope="col">Receptor Type</th>
+                <th scope="col">URL</th>
               </tr>
             </thead>
           </table>
-          </div> -->
-    <!-- </div> -->
-    </div>
-    <script>
-      function loadItemDetails(jsonData) {
-      $('#taste_output').DataTable( {
-          data: jsonData,
-          columns: [
-              { data: "Uniprot Id" },
-              { data: "Entry name" },
-              { data: "Organism" },
-              { data: "Receptor Type" },
-              { data: "URL" }
+        </div>
+      </div>
 
-
-          ]
-      })
-  }
-  
-  loadItemDetails([
-  {
-    "Uniprot Id": "Q8TE23",
-    "Entry name": "TAS1R2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sweet",
-    "URL": "https://www.uniprot.org/uniprot/Q8TE23"
-  },
-  {
-    "Uniprot Id": "Q7RTX0",
-    "Entry name": "TAS1R3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sweet",
-    "URL": "https://www.uniprot.org/uniprot/Q7RTX0"
-  },
-  {
-    "Uniprot Id": "Q7RTX0",
-    "Entry name": "TAS1R3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "umami",
-    "URL": "https://www.uniprot.org/uniprot/Q7RTX0"
-  },
-  {
-    "Uniprot Id": "Q14573",
-    "Entry name": "ITPR3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q14573"
-  },
-  {
-    "Uniprot Id": "Q14573",
-    "Entry name": "ITPR3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sweet",
-    "URL": "https://www.uniprot.org/uniprot/Q14573"
-  },
-  {
-    "Uniprot Id": "Q14573",
-    "Entry name": "ITPR3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "umami",
-    "URL": "https://www.uniprot.org/uniprot/Q14573"
-  },
-  {
-    "Uniprot Id": "Q7RTX1",
-    "Entry name": "TAS1R1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sweet",
-    "URL": "https://www.uniprot.org/uniprot/Q7RTX1"
-  },
-  {
-    "Uniprot Id": "Q9NYV7",
-    "Entry name": "TAS2R16",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYV7"
-  },
-  {
-    "Uniprot Id": "Q9NZQ8",
-    "Entry name": "TRPM5",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NZQ8"
-  },
-  {
-    "Uniprot Id": "Q9NZQ8",
-    "Entry name": "TRPM5",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sweet",
-    "URL": "https://www.uniprot.org/uniprot/Q9NZQ8"
-  },
-  {
-    "Uniprot Id": "Q9NZQ8",
-    "Entry name": "TRPM5",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "umami",
-    "URL": "https://www.uniprot.org/uniprot/Q9NZQ8"
-  },
-  {
-    "Uniprot Id": "Q9NYW5",
-    "Entry name": "TAS2R4",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYW5"
-  },
-  {
-    "Uniprot Id": "Q9BRK0",
-    "Entry name": "REEP2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9BRK0"
-  },
-  {
-    "Uniprot Id": "Q9BRK0",
-    "Entry name": "REEP2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sweet",
-    "URL": "https://www.uniprot.org/uniprot/Q9BRK0"
-  },
-  {
-    "Uniprot Id": "P59538",
-    "Entry name": "TAS2R31",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59538"
-  },
-  {
-    "Uniprot Id": "P59533",
-    "Entry name": "TAS2R38",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59533"
-  },
-  {
-    "Uniprot Id": "Q9NYW4",
-    "Entry name": "TAS2R5",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYW4"
-  },
-  {
-    "Uniprot Id": "Q9NYV9",
-    "Entry name": "TAS2R13",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYV9"
-  },
-  {
-    "Uniprot Id": "P59537",
-    "Entry name": "TAS2R43",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59537"
-  },
-  {
-    "Uniprot Id": "Q9NYW3",
-    "Entry name": "TAS2R7",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYW3"
-  },
-  {
-    "Uniprot Id": "Q9NYW7",
-    "Entry name": "TAS2R1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYW7"
-  },
-  {
-    "Uniprot Id": "P59535",
-    "Entry name": "TAS2R40",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59535"
-  },
-  {
-    "Uniprot Id": "Q9NYV8",
-    "Entry name": "TAS2R14",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYV8"
-  },
-  {
-    "Uniprot Id": "Q9NYW0",
-    "Entry name": "TAS2R10",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYW0"
-  },
-  {
-    "Uniprot Id": "Q9NYW2",
-    "Entry name": "TAS2R8",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYW2"
-  },
-  {
-    "Uniprot Id": "P59543",
-    "Entry name": "TAS2R20",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59543"
-  },
-  {
-    "Uniprot Id": "P59542",
-    "Entry name": "TAS2R19",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59542"
-  },
-  {
-    "Uniprot Id": "P59534",
-    "Entry name": "TAS2R39",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59534"
-  },
-  {
-    "Uniprot Id": "P59540",
-    "Entry name": "TAS2R46",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59540"
-  },
-  {
-    "Uniprot Id": "Q9NYW6",
-    "Entry name": "TAS2R3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYW6"
-  },
-  {
-    "Uniprot Id": "Q9NYW1",
-    "Entry name": "TAS2R9",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9NYW1"
-  },
-  {
-    "Uniprot Id": "A8MTJ3",
-    "Entry name": "GNAT3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sweet",
-    "URL": "https://www.uniprot.org/uniprot/A8MTJ3"
-  },
-  {
-    "Uniprot Id": "A8MTJ3",
-    "Entry name": "GNAT3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/A8MTJ3"
-  },
-  {
-    "Uniprot Id": "A8MTJ3",
-    "Entry name": "GNAT3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "umami",
-    "URL": "https://www.uniprot.org/uniprot/A8MTJ3"
-  },
-  {
-    "Uniprot Id": "P59541",
-    "Entry name": "TAS2R30",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59541"
-  },
-  {
-    "Uniprot Id": "P59544",
-    "Entry name": "TAS2R50",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59544"
-  },
-  {
-    "Uniprot Id": "Q9P0L9",
-    "Entry name": "PKD2L1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sour",
-    "URL": "https://www.uniprot.org/uniprot/Q9P0L9"
-  },
-  {
-    "Uniprot Id": "P59551",
-    "Entry name": "TAS2R60",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59551"
-  },
-  {
-    "Uniprot Id": "Q7Z443",
-    "Entry name": "PKD1L3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sour",
-    "URL": "https://www.uniprot.org/uniprot/Q7Z443"
-  },
-  {
-    "Uniprot Id": "P59536",
-    "Entry name": "TAS2R41",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59536"
-  },
-  {
-    "Uniprot Id": "P59539",
-    "Entry name": "TAS2R45",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59539"
-  },
-  {
-    "Uniprot Id": "A8K3D2",
-    "Entry name": "REEP2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/A8K3D2"
-  },
-  {
-    "Uniprot Id": "A8K3D2",
-    "Entry name": "REEP2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sweet",
-    "URL": "https://www.uniprot.org/uniprot/A8K3D2"
-  },
-  {
-    "Uniprot Id": "Q9UHC3",
-    "Entry name": "ASIC3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "sour",
-    "URL": "https://www.uniprot.org/uniprot/Q9UHC3"
-  },
-  {
-    "Uniprot Id": "P11488",
-    "Entry name": "GNAT1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "umami",
-    "URL": "https://www.uniprot.org/uniprot/P11488"
-  },
-  {
-    "Uniprot Id": "P01833",
-    "Entry name": "PIGR",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P01833"
-  },
-  {
-    "Uniprot Id": "Q14D33",
-    "Entry name": "RTP5",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q14D33"
-  },
-  {
-    "Uniprot Id": "Q96DX8",
-    "Entry name": "RTP4",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q96DX8"
-  },
-  {
-    "Uniprot Id": "Q9BQQ7",
-    "Entry name": "RTP3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q9BQQ7"
-  },
-  {
-    "Uniprot Id": "Q7RTR8",
-    "Entry name": "TAS2R42",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q7RTR8"
-  },
-  {
-    "Uniprot Id": "P59025",
-    "Entry name": "RTP1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P59025"
-  },
-  {
-    "Uniprot Id": "Q5QGT7",
-    "Entry name": "RTP2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q5QGT7"
-  },
-  {
-    "Uniprot Id": "P19087",
-    "Entry name": "GNAT2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/P19087"
-  },
-  {
-    "Uniprot Id": "Q00722",
-    "Entry name": "PLCB2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q00722"
-  },
-  {
-    "Uniprot Id": "Q9P2W3",
-    "Entry name": "GNG13",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "Taste",
-    "URL": "https://www.uniprot.org/uniprot/Q9P2W3"
-  },
-  {
-    "Uniprot Id": "A0A024R2Z1",
-    "Entry name": "GNAT1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "umami",
-    "URL": "https://www.uniprot.org/uniprot/A0A024R2Z1"
-  },
-  {
-    "Uniprot Id": "A0A024R2Z1",
-    "Entry name": "GNAT1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/A0A024R2Z1"
-  },
-  {
-    "Uniprot Id": "Q50L07",
-    "Entry name": "Hosa(Biaka)-T2R1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50L07"
-  },
-  {
-    "Uniprot Id": "Q496D7",
-    "Entry name": "TAS2R49",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q496D7"
-  },
-  {
-    "Uniprot Id": "Q50KZ9",
-    "Entry name": "Hosa(Biaka)-T2R2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KZ9"
-  },
-  {
-    "Uniprot Id": "Q50L08",
-    "Entry name": "Hosa(Japanese)-T2R1",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q50L08"
-  },
-  {
-    "Uniprot Id": "Q50KD5",
-    "Entry name": "Hosa(Japanese)-T2R55",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q50KD5"
-  },
-  {
-    "Uniprot Id": "Q50KL2",
-    "Entry name": "Hosa(Japanese)-T2R39",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KL2"
-  },
-  {
-    "Uniprot Id": "Q50KC8",
-    "Entry name": "Hosa(Japanese)-T2R56",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KC8"
-  },
-  {
-    "Uniprot Id": "Q50KP5",
-    "Entry name": "Hosa(Japanese)-T2R14",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KP5"
-  },
-  {
-    "Uniprot Id": "Q50KV5",
-    "Entry name": "Hosa(Biaka)-T2R7",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KV5"
-  },
-  {
-    "Uniprot Id": "Q50KX5",
-    "Entry name": "Hosa(Biaka)-T2R4",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q50KX5"
-  },
-  {
-    "Uniprot Id": "Q50KF9",
-    "Entry name": "Hosa(Japanese)-T2R48",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KF9"
-  },
-  {
-    "Uniprot Id": "Q50KQ6",
-    "Entry name": "Hosa(Japanese)-T2R13",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KQ6"
-  },
-  {
-    "Uniprot Id": "Q50KW4",
-    "Entry name": "Hosa(Japanese)-T2R5",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KW4"
-  },
-  {
-    "Uniprot Id": "Q50KK6",
-    "Entry name": "Hosa(Japanese)-T2R40",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KK6"
-  },
-  {
-    "Uniprot Id": "Q50KY9",
-    "Entry name": "Hosa(Biaka)-T2R3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KY9"
-  },
-  {
-    "Uniprot Id": "Q50KN5",
-    "Entry name": "Hosa(Biaka)-T2R16",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KN5"
-  },
-  {
-    "Uniprot Id": "Q50KU1",
-    "Entry name": "Hosa(Biaka)-T2R8",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KU1"
-  },
-  {
-    "Uniprot Id": "Q50KI2",
-    "Entry name": "Hosa(Japanese)-T2R45",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KI2"
-  },
-  {
-    "Uniprot Id": "Q5T697",
-    "Entry name": "GNAT2",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q5T697"
-  },
-  {
-    "Uniprot Id": "Q50KM1",
-    "Entry name": "Hosa(Biaka)-T2R38",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q50KM1"
-  },
-  {
-    "Uniprot Id": "Q50KM2",
-    "Entry name": "Hosa(Japanese)-T2R38",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q50KM2"
-  },
-  {
-    "Uniprot Id": "Q50KM3",
-    "Entry name": "Hosa(Adygei)-T2R38",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q50KM3"
-  },
-  {
-    "Uniprot Id": "I0CKB5",
-    "Entry name": "TAS2R38",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/I0CKB5"
-  },
-  {
-    "Uniprot Id": "Q50KV7",
-    "Entry name": "Hosa(Adygei)-T2R7",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q50KV7"
-  },
-  {
-    "Uniprot Id": "Q50KX7",
-    "Entry name": "Hosa(Adygei)-T2R4",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q50KX7"
-  },
-  {
-    "Uniprot Id": "A1L485",
-    "Entry name": "TAS2R4",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/A1L485"
-  },
-  {
-    "Uniprot Id": "Q50KD6",
-    "Entry name": "Hosa(Adygei)-T2R55",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KD6"
-  },
-  {
-    "Uniprot Id": "Q86UK4",
-    "Entry name": "PTC",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/Q86UK4"
-  },
-  {
-    "Uniprot Id": "Q50KK5",
-    "Entry name": "Hosa(Biaka)-T2R40",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KK5"
-  },
-  {
-    "Uniprot Id": "Q50KJ2",
-    "Entry name": "Hosa(Biaka)-T2R43",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KJ2"
-  },
-  {
-    "Uniprot Id": "Q50KF8",
-    "Entry name": "Hosa(Biaka)-T2R48",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KF8"
-  },
-  {
-    "Uniprot Id": "Q50KS4",
-    "Entry name": "Hosa(Adygei)-T2R10",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KS4"
-  },
-  {
-    "Uniprot Id": "A4D1U1",
-    "Entry name": "TAS2R4",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "bitter",
-    "URL": "https://www.uniprot.org/uniprot/A4D1U1"
-  },
-  {
-    "Uniprot Id": "Q50KD4",
-    "Entry name": "Hosa(Biaka)-T2R55",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KD4"
-  },
-  {
-    "Uniprot Id": "Q50KZ1",
-    "Entry name": "Hosa(Adygei)-T2R3",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KZ1"
-  },
-  {
-    "Uniprot Id": "Q50KG7",
-    "Entry name": "Hosa(Biaka)-T2R47",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KG7"
-  },
-  {
-    "Uniprot Id": "Q50KS2",
-    "Entry name": "Hosa(Biaka)-T2R10",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KS2"
-  },
-  {
-    "Uniprot Id": "Q50KN6",
-    "Entry name": "Hosa(Japanese)-T2R16",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KN6"
-  },
-  {
-    "Uniprot Id": "Q50KF2",
-    "Entry name": "Hosa(Biaka)-T2R49",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KF2"
-  },
-  {
-    "Uniprot Id": "Q50KF4",
-    "Entry name": "Hosa(Adygei)-T2R49",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KF4"
-  },
-  {
-    "Uniprot Id": "Q50KW3",
-    "Entry name": "Hosa(Biaka)-T2R5",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KW3"
-  },
-  {
-    "Uniprot Id": "Q50KU2",
-    "Entry name": "Hosa(Japanese)-T2R8",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KU2"
-  },
-  {
-    "Uniprot Id": "Q50KH0",
-    "Entry name": "Hosa(Biaka)-T2R46",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KH0"
-  },
-  {
-    "Uniprot Id": "Q50KQ5",
-    "Entry name": "Hosa(Biaka)-T2R13",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KQ5"
-  },
-  {
-    "Uniprot Id": "Q50KH1",
-    "Entry name": "Hosa(Adygei)-T2R46",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KH1"
-  },
-  {
-    "Uniprot Id": "Q50KS3",
-    "Entry name": "Hosa(Japanese)-T2R10",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KS3"
-  },
-  {
-    "Uniprot Id": "Q50KE3",
-    "Entry name": "Hosa(Japanese)-T2R50",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KE3"
-  },
-  {
-    "Uniprot Id": "Q50KE2",
-    "Entry name": "Hosa(Biaka)-T2R50",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KE2"
-  },
-  {
-    "Uniprot Id": "Q50KE4",
-    "Entry name": "Hosa(Adygei)-T2R50",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KE4"
-  },
-  {
-    "Uniprot Id": "Q50KF3",
-    "Entry name": "Hosa(Japanese)-T2R49",
-    "Organism": "Homo sapiens",
-    "Receptor Type": "taste",
-    "URL": "https://www.uniprot.org/uniprot/Q50KF3"
-  }
-]);
-  </script>
+    
     
 </body> 
+<script>
+  function loadItemDetails(jsonData,tableid) {
+  $(tableid).DataTable( {
+      data: jsonData,
+      responsive: true,
+      columns: [
+          { data: "Uniprot Id" },
+          { data: "Entry name" },
+          { data: "Organism" },
+          { data: "Receptor Type" },
+          { data: "URL",
+            "render": function(data, type, row, meta){
+            if(type === 'display'){
+                data = '<a href="' + row.myid + '">' + data + '</a>';
+            }
+            return data;
+            } 
+          }
+
+
+      ]
+  })
+}
+
+var json1 = $.getJSON({'url': './taster.json', 'async': false});
+var json2 = $.getJSON({'url': './odorr.json', 'async': false});  
+loadItemDetails(JSON.parse(json1.responseText),'#taste_output'); 
+loadItemDetails(JSON.parse(json2.responseText),'#odor_output'); 
+
+</script>
 </html>  
 
