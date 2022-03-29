@@ -24,7 +24,7 @@
 <body style="margin:20px auto">  
 <!-- <div class="container" style="width: 100%;"> -->
 <!-- <div class="row header" style="text-align:center;color:green; width: 100%;"> -->
-<h3>Bootstrap</h3>
+<!-- <h3>Bootstrap</h3> -->
 </div>
 
     <div id="container">
@@ -35,7 +35,7 @@
     </div>
     
       <div class="prodBody">
-        <div class="prodMain " id="pTab1C">
+        <div class="prodMain active" id="pTab1C">
           <table id="taste_output" class=" tbles table table-dark table-striped table-hover dataTable display"  cellspacing="0" width="100%" >
             <thead>
               <tr>
@@ -51,7 +51,7 @@
         </div>
     
         <div class="prodMain " id="pTab2C">
-          <table id="odor_output" class="tbles table table-dark table-striped table-hover dataTable display "  cellspacing="0" width="100%">
+          <table id="odor_output" class="tbles table table-dark table-striped table-hover dataTable display nowrap"  cellspacing="0" width="100%" >
             <thead>
               <tr>
                 <th scope="col">Uniprot Id</th>
@@ -68,35 +68,5 @@
     
     
 </body> 
-<script>
-  function loadItemDetails(jsonData,tableid) {
-  $(tableid).DataTable( {
-      data: jsonData,
-      responsive: true,
-      columns: [
-          { data: "Uniprot Id" },
-          { data: "Entry name" },
-          { data: "Organism" },
-          { data: "Receptor Type" },
-          { data: "URL",
-            "render": function(data, type, row, meta){
-            if(type === 'display'){
-                data = '<a href="' + row.myid + '">' + data + '</a>';
-            }
-            return data;
-            } 
-          }
-
-
-      ]
-  })
-}
-
-var json1 = $.getJSON({'url': './taster.json', 'async': false});
-var json2 = $.getJSON({'url': './odorr.json', 'async': false});  
-loadItemDetails(JSON.parse(json1.responseText),'#taste_output'); 
-loadItemDetails(JSON.parse(json2.responseText),'#odor_output'); 
-
-</script>
 </html>  
 
