@@ -40,13 +40,6 @@ function stats_display(stats)
   var x=(document.getElementById(stats));
   if(x.style.display=='none'){
       x.style.display='flex';
-      // if(stats == 'heat_map'){
-      //   x.style.display = 'inline';
-      // }
-      // else if(stats=='rec_geoplot'){
-      //   x.style.display='inline'
-      // }
-      // if(stats=='heat_map' || stats=='')x.style.display='inline';  
   }
   else{
       x.style.display='none';
