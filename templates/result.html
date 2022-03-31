@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+   <meta id="recdata" data-rec="{{ data }}">
+   <body>
+      <div class="data_container">
+         <table class="tbles table table-dark table-striped table-hover dataTable display nowrap" id="tableID">
+            <thead>
+               <tr>
+                  <th>Recipe Title</th>
+                  <th>Region</th>
+                  <th>Country</th>
+                  <th>Servings</th>
+                  <th>Calories (KCal)</th>
+                  <th>Protein (g)</th>
+                  <th>Fat (g)</th>
+                  <th>More Info</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for each in data %}
+               <tr>
+                  {% for cell in each %}
+                  <th>{{cell}}</th>
+                  {% endfor %}
+                  <th><a href='/result/rec_info' id='wtf'><button class="minfo" onclick="myfunction('hello')">MORE INFO</button></a></th>
+               </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
+      
+   </body>
+   <style>
+      body{
+         font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+      }
+      .data_container
+      {
+         width: 70%;
+         margin: auto;
+      }
+      #tableID
+      {
+         width:100%;
+      }
+   </style>
+   <script>
+       $(document).ready(function() {
+            $('#tableID').DataTable({ responsive: true });
+            $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+        });
+
+      //   $(document).ready(function(){
+      //    function myfunction(rec_name)
+      //    {
+      //       $.ajax({
+      //       url: "/rec_info",
+      //       type: "post",
+      //       data: {name: rec_name},
+      //       success: function(response) {
+      //          window.open("http://localhost:5000/result/rec_info")
+      //       }
+      //       });
+      //    }
+         
+      // });
+   </script>
+</html>
