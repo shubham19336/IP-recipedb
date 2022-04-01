@@ -11,6 +11,7 @@
          <table class="tbles table table-dark table-striped table-hover dataTable display nowrap" id="tableID">
             <thead>
                <tr>
+                  <th>Recipe ID</th>
                   <th>Recipe Title</th>
                   <th>Region</th>
                   <th>Country</th>
@@ -27,7 +28,7 @@
                   {% for cell in each %}
                   <th>{{cell}}</th>
                   {% endfor %}
-                  <th><a href='/result/rec_info' id='wtf'><button class="minfo" onclick="myfunction('hello')">MORE INFO</button></a></th>
+                  <th><button class="minfo" onclick="window.open('/result/rec_info?id={{each[0]}}')">MORE INFO</button></th>
                </tr>
                {% endfor %}
             </tbody>
@@ -50,24 +51,23 @@
       }
    </style>
    <script>
-       $(document).ready(function() {
-            $('#tableID').DataTable({ responsive: true });
-            $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
-        });
+      $(document).ready(function() {
+         var restable=$('#tableID').DataTable({ responsive: true });
+         $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+      });
 
-      //   $(document).ready(function(){
-      //    function myfunction(rec_name)
-      //    {
-      //       $.ajax({
-      //       url: "/rec_info",
-      //       type: "post",
-      //       data: {name: rec_name},
-      //       success: function(response) {
-      //          window.open("http://localhost:5000/result/rec_info")
-      //       }
-      //       });
-      //    }
-         
+      // $(function(){
+      // $('button.minfo').on('click',function(){
+      //       console.log($(this).closest('tr').index())
+      //    })
       // });
+
+      // ('#tableID tbody').on('click','button',function(){
+      //    var dt = restable.row($(this).parents('tr')).data();
+      //    console.log(dt);
+      // });
+      
+      
+
    </script>
 </html>
