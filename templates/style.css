@@ -212,6 +212,7 @@ ul.main_info>li
 	justify-content: center;
 	/* flex-flow: row wrap;  */
 	align-items: center;
+	/* border: 1px solid red; */
 }
   
 .form-inline label {
@@ -228,7 +229,7 @@ ul.main_info>li
 	margin: 5px 10px 5px 0;
 	padding: 10px;
 	background-color: #fff;
-	/* border: 1px solid #ddd; */
+	/* border: 1px solid rgb(196, 51, 51); */
 }
   
 .form-inline input:focus
@@ -256,7 +257,7 @@ ul.main_info>li
 
 /* ------------------------------------Nutrition sliders form ------------------------------- */
 #Nutrition{
-    display: none;
+    /* display: none; */
     /* border: 1px solid red; */
     padding-left: 50px;
     padding-right: 50px;
@@ -265,6 +266,7 @@ ul.main_info>li
     font-size: 15px;
     font-weight: bold;
 }
+
 
 #adv_Nutrition{
     display: none;
@@ -287,6 +289,11 @@ ul.main_info>li
 #advlist li
 {
 	display: flex;
+	width: 100%;
+}
+#nutlist 
+{
+	/* display: flex; */
 	width: 100%;
 }
 

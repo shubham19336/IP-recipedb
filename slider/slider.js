@@ -33,6 +33,22 @@ $(function(){
 });
 
 $(function(){
+    document.getElementById('slider-round1').noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) document.getElementById('maxslider1').value = values[handle];
+        else document.getElementById('minslider1').value = values[handle];
+    });
+    document.getElementById('slider-round2').noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) document.getElementById('maxslider2').value = values[handle];
+        else document.getElementById('minslider2').value = values[handle];
+    });
+    document.getElementById('slider-round3').noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) document.getElementById('maxslider3').value = values[handle];
+        else document.getElementById('minslider3').value = values[handle];
+    });
+    document.getElementById('slider-round4').noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) document.getElementById('maxslider4').value = values[handle];
+        else document.getElementById('minslider4').value = values[handle];
+    });
     document.getElementById('slider-round5').noUiSlider.on('update', function( values, handle ) {
         if ( handle ) document.getElementById('maxslider5').value = values[handle];
         else document.getElementById('minslider5').value = values[handle];

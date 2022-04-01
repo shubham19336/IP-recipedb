@@ -103,7 +103,7 @@
 					<li><button value="cuisine" onclick="search_display('cform-inline')">CUISINE</button></li> 
 					<li><button value="ingredient" onclick="search_display('iform-inline')">INGREDIENT</button></li>
 					<li><button value="category" onclick="search_display('caform-inline')">CATEGORY</button></li>
-					<li><button value="nutrition" onclick="search_display('Nutrition')">NUTRITION</button></li>
+					<li><button value="nutrition" onclick="search_display('nutform-inline')">NUTRITION</button></li>
 					<li><button value="advanced" onclick="search_display('advform-inline')">ADVANCED</button></li>
 				</ul>
 			</nav> 
@@ -177,23 +177,43 @@
 		</form>
 	</div>
 
-	<div class="search-by" id="Nutrition">
-		<div class="advnutrition">
-			<label for="slider-round1">Energy (calories) :</label>
-			<div class="slider-styled" id="slider-round1"></div>
-			<label for="slider-round2">Carbohydrates (g) :</label>
-			<div class="slider-styled" id="slider-round2"></div>
-			<label for="slider-round3">Protein (g) :</label>
-			<div class="slider-styled" id="slider-round3"></div>
-			<label for="slider-round4">Fat (g) :</label>
-			<div class="slider-styled" id="slider-round4"></div>
-		</div>
+	<div id="Nutrition" class="formc">
+		<form  class="search-by form-inline" id="nutform-inline" target="_blank" action="http://localhost:5000/nutresult" method='POST'>
+			<ul id="nutlist">
+				<li>
+					<div class="advnutrition">
+						<label for="slider-round1">Energy (calories) :</label>
+						<input type="text" id="minslider1" class="inv" name="enemin">
+						<div class="slider-styled" id="slider-round1"></div>
+						<input type="text" id="maxslider1" class="inv" name="enemax" >
+	
+						<label for="slider-round2">Carbohydrates (g) :</label>
+						<input type="text" id="minslider2" class="inv" name="carmin" >
+						<div class="slider-styled" id="slider-round2"></div>
+						<input type="text" id="maxslider2" class="inv" name="carmax" >
+	
+						<label for="slider-round3">Protein (g) :</label>
+						<input type="text" id="minslider3" class="inv" name="promin" >
+						<div class="slider-styled" id="slider-round3"></div>
+						<input type="text" id="maxslider3" class="inv" name="promax" >
+	
+						<label for="slider-round4">Fat (g) :</label>
+						<input type="text" id="minslider4" class="inv" name="fatmin" >
+						<div class="slider-styled" id="slider-round4"></div>
+						<input type="text" id="maxslider4" class="inv" name="fatmax" >
+					</div>
+				</li>
+				<li>
+					<button type="submit">FETCH</button>
+				</li>
+			</ul>
+		</form>
 	</div>
 <!-- ------------------------------advanced search------------------------------- -->
 	<div class="formc">
 		<form class="search-by form-inline" id="advform-inline"  target="_blank" action="http://localhost:5000/advresult" method='POST'> 
 			<ul id="advlist">
-				<li ID="">
+				<li>
 					<div class="advcontent">
 						<label for="advcontinent">CONTINENT</label>
 						<input type="text" id="advcontinent" placeholder="Enter Continent" name="ccontinent">	

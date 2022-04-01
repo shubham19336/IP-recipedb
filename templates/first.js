@@ -17,9 +17,9 @@ function search_display(form)
     var x=(document.getElementById(form));
     if(x.style.display=='none'){
         x.style.display='flex';
-        if(form=='Nutrition'){
-          x.style.display='block'
-        }
+        // if(form=='Nutrition'){
+        //   x.style.display='flex'
+        // }
     }
     else{
         x.style.display='none';
