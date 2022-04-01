@@ -32,6 +32,16 @@ def result():
       cursor = conn.execute(str)
       return render_template("result.html",data = cursor)
 
+@app.route('/advresult',methods = ['POST', 'GET'])
+def advresult():
+   
+   if request.method == 'POST':
+      conn = sqlite3.connect('my_data.db')
+      result = request.form
+      
+      print(result)
+      return render_template("temp.html",data = "hello")
+
 @app.route('/result/rec_info',methods = ['POST', 'GET'])
 def result2():
    if request.method == 'GET':

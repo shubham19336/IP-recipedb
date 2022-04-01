@@ -15,7 +15,9 @@ button
 	border: none;
 	font-size: large;
 }
-
+.inv{
+	display: none;
+}
 /* ------------------------------------------home page vid------------------------------------ */
 .mvid
 {

@@ -191,7 +191,7 @@
 	</div>
 <!-- ------------------------------advanced search------------------------------- -->
 	<div class="formc">
-		<form class="search-by form-inline" id="advform-inline"  action="/action_page.php"> 
+		<form class="search-by form-inline" id="advform-inline"  target="_blank" action="http://localhost:5000/advresult" method='POST'> 
 			<ul id="advlist">
 				<li ID="">
 					<div class="advcontent">
@@ -241,13 +241,25 @@
 					<div id="adv_Nutrition">
 						<div class="advnutrition">
 							<label for="slider-round5">Energy (calories) :</label>
+							<input type="text" id="minslider5" class="inv" name="enemin">
 							<div class="slider-styled" id="slider-round5"></div>
+							<input type="text" id="maxslider5" class="inv" name="enemax" >
+
 							<label for="slider-round6">Carbohydrates (g) :</label>
+							<input type="text" id="minslider6" class="inv" value="0" name="carmin">
 							<div class="slider-styled" id="slider-round6"></div>
+							<input type="text" id="maxslider6"  class="inv" value="0" name="carmax">
+
 							<label for="slider-round7">Protein (g) :</label>
+							<input type="text" id="minslider7" class="inv" value="0" name="promin">
 							<div class="slider-styled" id="slider-round7"></div>
+							<input type="text" id="maxslider7" class="inv" value="0" name="promax">
+
 							<label for="slider-round8">Fat (g) :</label>
+							<input type="text" id="minslider8" class="inv" value="0" name="fatmin">
 							<div class="slider-styled" id="slider-round8"></div>
+							<input type="text" id="maxslider8" class="inv" value="0" name="fatmax">
+
 						</div>
 					</div>
 				  </li>

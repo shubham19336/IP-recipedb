@@ -16,11 +16,9 @@ numberFormat = {
 $(function(){
     var st='slider-round';
     for(var i=1;i<=8;i++){
-        var slider1 = document.getElementById(st+i);
-        noUiSlider.create(slider1, {
+        noUiSlider.create(document.getElementById(st+i), {
             start: i==1?[20,600]:[0, 80],
             connect: true,
-            // plag
             // tooltips:[true,true],
             tooltips:true,
             step:1,
@@ -31,8 +29,35 @@ $(function(){
             },
             format: numberFormat
         });
-    }   
-    
+    }    
+});
+
+$(function(){
+    document.getElementById('slider-round5').noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) document.getElementById('maxslider5').value = values[handle];
+        else document.getElementById('minslider5').value = values[handle];
+    });
+    /* USE THIS TO LINK INPUT WITH SLIDER */
+    // document.getElementById('minslider'+5).addEventListener('change', function(){
+    //     document.getElementById('slider-round'+5).noUiSlider.set([null, this.value]);
+    // });
+    // document.getElementById('maxslider'+5).addEventListener('change', function(){
+    //     document.getElementById('slider-round'+5).noUiSlider.set([null, this.value]);
+    // });
+
+    document.getElementById('slider-round6').noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) document.getElementById('maxslider6').value = values[handle];
+        else document.getElementById('minslider6').value = values[handle];
+    });
+    document.getElementById('slider-round7').noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) document.getElementById('maxslider7').value = values[handle];
+        else document.getElementById('minslider7').value = values[handle];
+    });
+    document.getElementById('slider-round8').noUiSlider.on('update', function( values, handle ) {
+        if ( handle ) document.getElementById('maxslider8').value = values[handle];
+        else document.getElementById('minslider8').value = values[handle];
+    });
+
 });
 
 function z(){
