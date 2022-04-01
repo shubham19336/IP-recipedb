@@ -11,13 +11,24 @@ def home():
 
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
+   
    if request.method == 'POST':
       conn = sqlite3.connect('my_data.db')
       result = request.form
       print(result)
-      str = "SELECT Recipe_id,Recipe_title,Region,Sub_region,servings,Calories,[Protein (g)],[Total lipid (fat) (g)] FROM recp WHERE Continent = '"
-      str += result['ccontinent']
-      str += "'"
+
+      # populating required operands and values for queries
+      keys=['ccontinent','cregion','ccountry','crecipe']
+      operands=['=']*4
+      vals=['']*4
+      for i in range(4):
+         k=keys[i]
+         vals[i]=result[k]
+         if vals[i]=='':
+            operands[i]='!='
+      
+      str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,servings,Calories,[Protein (g)],[Total lipid (fat) (g)] FROM recp WHERE Continent {operands[0]} '{vals[0]}' and Region {operands[1]} '{vals[1]}' and Sub_region {operands[2]} '{vals[2]}' and Recipe_title {operands[3]} '{vals[3]}'"
+      print(str)
       cursor = conn.execute(str)
       return render_template("result.html",data = cursor)
 
