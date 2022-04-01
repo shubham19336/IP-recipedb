@@ -1,11 +1,11 @@
-from tkinter import ANCHOR
+# from tkinter import ANCHOR
 from flask import Flask, jsonify, render_template, request
 import sqlite3
 
 app = Flask(__name__)
 
 @app.route('/')
-def student():
+def home():
    return render_template('index.html')
 
 
@@ -21,12 +21,19 @@ def result():
       cursor = conn.execute(str)
       return render_template("result.html",data = cursor)
 
-@app.route('/result/rec_info', methods = ['GET'])
+@app.route('/result/rec_info',methods = ['POST', 'GET'])
 def result2():
-   id=request.args.get('id')
-   print("ye ri id",id)
-   print(result)
-   return render_template("base.html",result = id)
+   if request.method == 'GET':
+      id=request.args.get('id')
+      conn = sqlite3.connect('my_data.db')
+      cursor = conn.execute(f"SELECT Recipe_title,img_url FROM recp WHERE Recipe_id = {id}")
+      arr = []
+      for row in cursor:
+         arr.append(row[0])
+         arr.append(row[1])
+
+      print(arr)
+      return render_template("base.html",data = arr)
 
 
 if __name__ == '__main__':
