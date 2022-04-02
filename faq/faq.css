@@ -2,13 +2,7 @@ body
 {
 	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
 }
-/* .outerfaq ul
-{
-	list-style-type: none;
-	padding: 0;
-  margin: 0;
-  border: 1px solid red;
-} */
+
 .outer-faq button
 {
 	background-color: transparent;
@@ -22,38 +16,6 @@ body
   display: flex;
   justify-content: center;
 }
-
-.faq-categories{
-  margin-top: 10vh;
-  height: 50vh;
-  width: 320px;
-  border: 1px solid rgb(68, 65, 65);
-}
-
-#faq-cat-list{
-  text-align: center;
-}
-#faq-cat-list label{
-  font-size: bold;
-}
-
-#faq-cat-list button 
-{
-	background-color: #04AA6D; /* Green background */
-  border: 1px solid green; /* Green border */
-  border-radius: 10px;
-  border-bottom: none;
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  width: 100%; /* Set a width if needed */
-  display: block; /* Make the buttons appear below each other */
-}
-#faq-cat-list button:hover{
-  background-color: #3e8e41;
-}
-
-
 
 .faq-questions{
     /* margin-left: 3vw; */
@@ -71,11 +33,10 @@ body
     color: var(--color-text);
     font-family: "Hind", sans-serif;
 }
-
 /* for 1st category to display initially */
-#faqcat1{
+/* #faqcat1{
   display: inline;
-}
+} */
 
 
 /* cpy pas */
