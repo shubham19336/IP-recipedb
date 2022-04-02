@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- qjuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+	<!-- google fonts api -->
+	<script src="https://kit.fontawesome.com/9d7803f1fd.js" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
+
+	<!-- for concept map (visual search)-->
+	<script src="../concept_map/d3.min.js" type="text/javascript"></script>
+	<script src="../concept_map/packages.js" type="text/javascript"></script>
+	<script src="../concept_map/concept-map.js" type="text/javascript"></script>
+	<link href="../concept_map/concept-map.css" rel="stylesheet"></link>
+
+	<!-- for noUislider -->
+	<script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
+	<link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
+	<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.0.4/wNumb.min.js'></script> -->
+	<!-- usage of above: https://stackoverflow.com/questions/31631816/nouislider-tooltip-only-show-integers -->
+
+	<!-- materialize nouislider -->
+	<script src="../slider/nouislider.min.js"></script>
+	<link rel="stylesheet" href="../slider/nouislider.css">
+	<link rel="stylesheet" href="../slider/nouislider2.css">
+
+	<!-- nouislider templatefiles -->
+	<script src="../slider/slider.js"></script>
+
+	<!-- for pie chart  -->
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+	<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
+	<script src="/pie_chart/pie_chart.js"></script>
+	<link rel="stylesheet" href="/pie_chart/pie_chart_style.css">
+
+	<!-- for heat map  -->	
+	<!-- d3 was added with conccept map(check which one to keep) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+	<script src="../heat_map/heatmap.js"></script>
+	<link rel="stylesheet" href="../heat_map/heatmap.css">
+
+	<!-- for Plotly (heatmap, geoplots) -->
+	<script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+	<script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
+
+	<!-- recipe geoplot -->
+	<script src="../recipe_map/rmap.js"></script>
+	<link rel="stylesheet" href="../recipe_map/rmapstyle.css">
+
+	<!-- nutrition geoplot -->
+	<script src="../nutrition_map/nmap.js"></script>
+	<link rel="stylesheet" href="../nutrition_map/nmapstyle.css">
+	
+	<!-- template files -->
+	<script src="./first.js"></script>
+	<link rel="stylesheet" href="./style.css">
+
+	<title>Recipe DB 2.0</title>
+	<link rel = "icon" href = "../assets/rdb.png" type = "image/x-icon">
+</head>
+<header>
+	<div id="header"></div>
+</header>
+<body>
+	<div class="mvid">
+		<div class="content">
+			<h1>RECIPE DB 2.0</h1>
+			<p>Simple solution to all your recipe queries...</p>
+		</div>
+		<!-- <link rel="icon" type="image/png" href="/assets/rdb.png"/> -->
+		<div class="ricon">
+			<img src="../assets/rdb.png" alt="Italian Trulli">
+		</div>
+		<video autoplay muted loop id="myVideo">
+			<source src="../assets/videor.mp4" type="video/mp4">
+		</video>
+	</div>
+	
+	<!-- ----------------------------drop navs-------------------------------------- -->
+	<ul class="main_info"> 
+		<li>
+			<nav class="dropnav" >
+				<label for="sbtouch" class="drop"><b>SEARCH BY</b></label>  
+				<input type="checkbox" id="sbtouch" onchange="navuncheck('sttouch')"> 
+				<ul class="slide">
+					<li><button value="cuisine" onclick="search_display('cform-inline')">CUISINE</button></li> 
+					<li><button value="ingredient" onclick="search_display('iform-inline')">INGREDIENT</button></li>
+					<li><button value="category" onclick="search_display('caform-inline')">CATEGORY</button></li>
+					<li><button value="nutrition" onclick="search_display('nutform-inline')">NUTRITION</button></li>
+					<li><button value="advanced" onclick="search_display('advform-inline')">ADVANCED</button></li>
+				</ul>
+			</nav> 
+		</li>
+		<li>
+			<nav class="dropnav">
+				<label for="sttouch" class="drop"><b>STATISTICS</b></label>               
+				<input type="checkbox" id="sttouch" onchange="navuncheck('sbtouch')"> 
+				<ul class="slide">
+					<li><button value="recipes" onclick="stats_display('rec_geoplot')">RECIPES</button></li> 
+					<li><button value="categories" onclick="stats_display('heat_map')">CATEGORIES</button></li>
+					<li><button value="ingredients" onclick="stats_display('chartdiv1')">INGREDIENTS</button></li>
+					<li><button value="nutrition" onclick="stats_display('nut_geoplot')">NUTRITION</button></li>
+					<li><button value="processes" onclick="stats_display('chartdiv2')">PROCESSES</button></li>
+					<li><button value="utensils" onclick="stats_display('chartdiv3')">UTENSILS</button></li>
+				</ul>
+			</nav>	
+		</li>
+	</ul>
+
+<!-- -----------------------------------------SEARCH BY --------------------------------------------------------------- -->
+	<!-- -------------------------------------cuisine--------------------------------------------- -->
+	<div class="formc">
+		<form class="search-by form-inline" id="cform-inline"  target="_blank" action="http://localhost:5000/result" method='POST'>
+				<div class="advcontent">
+					<label for="ccontinent">CONTINENT</label>
+					<input type="text" id="ccontinent" placeholder="Enter Continent" name="ccontinent">	
+				</div>
+				<div class="advcontent">
+					<label for="cregion">REGION</label>
+					<input type="text" id="cregion" placeholder="Enter Region" name="cregion">	
+				</div>
+				<div class="advcontent">
+					<label for="ccountry">COUNTRY</label>
+					<input type="text" id="ccountry" placeholder="Enter Country" name="ccountry">
+				</div>
+				<div class="advcontent"> 
+					<label for="crecipe">RECIPE TITLE</label>
+					<input type="text" id="crecipe" placeholder="Enter Recipe Title" name="crecipe">
+				</div>
+			<button type="submit">FETCH</button>
+		</form>
+	</div>
+
+	<!-- -------------------------------------ingredient--------------------------------------------- -->
+	<div class="formc">
+		<form class="search-by form-inline" id="iform-inline"  action="/action_page.php">
+			<div class="advcontent">
+				<label for="iused">USED</label>
+				<input type="text" id="iused" placeholder="Enter Ingredient" name="iused">	
+			</div>
+			<div class="advcontent">
+				<label for="inotused">NOT USED</label>
+				<input type="text" id="inotused" placeholder="Enter Ingredient" name="inotused">
+			</div>
+			<button type="submit">FETCH</button>
+		</form>
+	</div>
+
+	<!-- -------------------------------------category--------------------------------------------- -->
+	<div class="formc">
+		<form class="search-by form-inline" id="caform-inline"  action="/action_page.php">
+			<div class="advcontent">
+				<label for="caused">USED</label>
+				<input type="text" id="caused" placeholder="Enter Category" name="caused">	
+			</div>
+			<div class="advcontent">
+				<label for="canotused">NOT USED</label>
+				<input type="text" id="canotused" placeholder="Enter Category" name="canotused">
+			</div>
+			<button type="submit">FETCH</button>
+		</form>
+	</div>
+
+	<!-- -------------------------------------nutrition--------------------------------------------- -->
+	<div id="Nutrition" class="formc">
+		<form  class="search-by form-inline" id="nutform-inline" target="_blank" action="http://localhost:5000/nutresult" method='POST'>
+			<ul id="nutlist">
+				<li>
+					<div class="advnutrition">
+						<label for="slider-round1">Energy (calories) :</label>
+						<input type="text" id="minslider1" class="inv" name="enemin">
+						<div class="slider-styled" id="slider-round1"></div>
+						<input type="text" id="maxslider1" class="inv" name="enemax" >
+	
+						<label for="slider-round2">Carbohydrates (g) :</label>
+						<input type="text" id="minslider2" class="inv" name="carmin" >
+						<div class="slider-styled" id="slider-round2"></div>
+						<input type="text" id="maxslider2" class="inv" name="carmax" >
+	
+						<label for="slider-round3">Protein (g) :</label>
+						<input type="text" id="minslider3" class="inv" name="promin" >
+						<div class="slider-styled" id="slider-round3"></div>
+						<input type="text" id="maxslider3" class="inv" name="promax" >
+	
+						<label for="slider-round4">Fat (g) :</label>
+						<input type="text" id="minslider4" class="inv" name="fatmin" >
+						<div class="slider-styled" id="slider-round4"></div>
+						<input type="text" id="maxslider4" class="inv" name="fatmax" >
+					</div>
+				</li>
+				<li>
+					<button type="submit">FETCH</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<!-- ------------------------------advanced search------------------------------- -->
+	<div class="formc">
+		<form class="search-by form-inline" id="advform-inline"  target="_blank" action="http://localhost:5000/advresult" method='POST'> 
+			<ul id="advlist">
+				<li>
+					<div class="advcontent">
+						<label for="advcontinent">CONTINENT</label>
+						<input type="text" id="advcontinent" placeholder="Enter Continent" name="ccontinent">	
+					</div>
+					<div class="advcontent">
+						<label for="advregion">REGION</label>
+						<input type="text" id="advregion" placeholder="Enter Region" name="cregion">	
+					</div>
+					<div class="advcontent">
+						<label for="advcountry">COUNTRY</label>
+						<input type="text" id="advcountry" placeholder="Enter Country" name="ccountry">
+					</div>
+					<div class="advcontent"> 
+						<label for="advrecipe">RECIPE TITLE</label>
+					<input type="text" id="advrecipe" placeholder="Enter Recipe Title" name="crecipe">
+					</div>
+				</li>
+				
+				<li>
+					<div class="advcontent">
+						<label for="advused">INGREDIENTS USED</label>
+						<input type="text" id="advused" placeholder="Enter Ingredient" name="iused">	
+					</div>
+					<div class="advcontent">
+						<label for="advnotused">INGREDIENTS NOT USED</label>
+						<input type="text" id="advnotused" placeholder="Enter Ingredient" name="inotused">
+					</div>
+				</li>
+				<li>
+					<div class="advcontent">
+						<label for="advcp">COOKING PROCESS</label>
+						<input type="text" id="advcp" placeholder="Enter Cooking Process" name="caused">	
+					</div>
+					<div class="advcontent">
+						<label for="advutensil">UTENSIL</label>
+						<input type="text" id="advutensil" placeholder="Enter Utensil" name="canotused">
+					</div>
+				</li>
+				<label class="switch">
+					<input type="checkbox" id="adv_checkbox_slider" onclick="getSlider()">
+					<span class="slider round"></span>
+					
+				  </label>
+				  <li>
+					<div id="adv_Nutrition">
+						<div class="advnutrition">
+							<label for="slider-round5">Energy (calories) :</label>
+							<input type="text" id="minslider5" class="inv" name="enemin">
+							<div class="slider-styled" id="slider-round5"></div>
+							<input type="text" id="maxslider5" class="inv" name="enemax" >
+
+							<label for="slider-round6">Carbohydrates (g) :</label>
+							<input type="text" id="minslider6" class="inv" value="0" name="carmin">
+							<div class="slider-styled" id="slider-round6"></div>
+							<input type="text" id="maxslider6"  class="inv" value="0" name="carmax">
+
+							<label for="slider-round7">Protein (g) :</label>
+							<input type="text" id="minslider7" class="inv" value="0" name="promin">
+							<div class="slider-styled" id="slider-round7"></div>
+							<input type="text" id="maxslider7" class="inv" value="0" name="promax">
+
+							<label for="slider-round8">Fat (g) :</label>
+							<input type="text" id="minslider8" class="inv" value="0" name="fatmin">
+							<div class="slider-styled" id="slider-round8"></div>
+							<input type="text" id="maxslider8" class="inv" value="0" name="fatmax">
+
+						</div>
+					</div>
+				  </li>
+				<li>
+					<button type="submit">FETCH</button>
+				</li>
+			</ul>
+			
+		</form>
+	</div>
+	
+<!-- ------------------------------------------STATISTICS------------------------------------------- -->
+
+	<!-- -------------------------------------recipe geoplot--------------------------------------------- -->
+	<div class="rmap statistics" id="rec_geoplot">
+        <div id="c08cd1b9-5840-4e0c-a4f6-6fae3418d5a5" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+    </div>
+
+	<!-- -------------------------------------nutrition geoplot--------------------------------------------- -->
+	<div class="nmap statistics" id="nut_geoplot">
+        <div id="nut_plot" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+    </div>
+
+	<!-- -------------------------------------piecharts--------------------------------------------- -->
+	<div class="statistics chartdiv" id="chartdiv1"></div>
+	<div class="statistics chartdiv" id="chartdiv2"></div>
+	<div class="statistics chartdiv" id="chartdiv3"></div>		
+	
+	<!-- -------------------------------------categories heatmap--------------------------------------------- -->
+	<div id="heat_parent">
+		<div class="statistics mapdiv" id="heat_map"></div>
+	</div>
+
+
+<!-- ----------------------------------------------VISUAL SEARCH--------------------------------------------- -->
+	<div id="concept_parent">
+		<div id="graph" class="conceptmap" ></div>
+		<!-- <div id="graph-info"></div> --> 
+		<!-- the above line was for rendering an href for graph info -->
+	</div>
+
+	<footer>
+		<div id="footer"></div>
+	</footer>
+	
+</body>
+</html>
