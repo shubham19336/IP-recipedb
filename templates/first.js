@@ -1,6 +1,6 @@
 $(function(){
-    $("#header").load("/header/header.html"); 
-    $("#footer").load("/footer/footer.html"); 
+    $("#header").load("../header/header.html"); 
+    $("#footer").load("../footer/footer.html"); 
   });
 function search_display(form)
 {     

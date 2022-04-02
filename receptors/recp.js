@@ -20,8 +20,8 @@ function loadItemDetails(jsonData,tableid) {
 }
 
 $(function(){
-  $("#header").load("/header/header.html"); 
-  $("#footer").load("/footer/footer.html"); 
+  $("#header").load("../header/header.html"); 
+  $("#footer").load("../footer/footer.html"); 
   var json1 = $.getJSON({'url': './taster.json', 'async': false});
   var json2 = $.getJSON({'url': './odorr.json', 'async': false});  
   loadItemDetails(JSON.parse(json1.responseText),'#taste_output'); 
