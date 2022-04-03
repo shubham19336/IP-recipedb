@@ -196,10 +196,12 @@ var ConceptMap = function(chartElementId, infoElementId, dataJson){
     function G(Y, X) {
         if (L.node === Y && X !== true) {
             if (Y.type === "ditem") {
-                window.open("/recipedb/category/" + Y.name, '_blank');
+                // /recipedb/category/
+                window.open("http://localhost:5000/recipedb/category/" + Y.name, '_blank');
                 return
             } else {
-                window.open("/recipedb/ingredient/" + Y.name, '_blank');
+                // /recipedb/ingredient/
+                window.open("http://localhost:5000/recipedb/ingredient/" + Y.name, '_blank');
             }
             // L.node.children.forEach(function(aa) {
             //     aa.children = aa._group
