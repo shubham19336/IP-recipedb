@@ -28,7 +28,7 @@
                   {% for cell in each %}
                   <th>{{cell}}</th>
                   {% endfor %}
-                  <th><button class="minfo" onclick="window.open('/result/rec_info?id={{each[0]}}')">MORE INFO</button></th>
+                  <th><button class="minfo" onclick="window.open('/result/rec_info/{{each[0]}}')">MORE INFO</button></th>
                </tr>
                {% endfor %}
             </tbody>

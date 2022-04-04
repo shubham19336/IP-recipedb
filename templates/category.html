@@ -7,12 +7,8 @@
    <title>Document</title>
 </head>
 <body>
-   <p>{{row}}</p>
-   <h1>cbh</h1>
-   <p>{{heading}}</p>
-   <h1>bchsb</h1>
-   <p>{{row2}}</p>
-
-
+   {% for row in data %}
+   <h2>{{row}}</h2>
+   {% endfor %} 
 </body>
 </html>

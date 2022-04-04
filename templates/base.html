@@ -4,10 +4,146 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
    <title>Document</title>
 </head>
 <body>
-   <h1>{{data[0]}}</h1>
-   <img src="{{data[1]}}"/>
+   <!-- <h1 style="text-align:center">{{data[0]}}</h1>
+   <img src="{{data[1]}}"/> -->
+   <h1 style="text-align:center">TITLE</h1>
+   <div class="recipe_info">
+      <table>
+         <tbody>
+            <th class ="img_th">
+               <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg" id="reimg">
+            </th>
+         </tbody>
+      </table>
+      <div id="container">
+         <ul class="prodNav">
+           <li id="pTab1" class="ptItem active">RECIPE OVERVIEW</li>
+           <li id="pTab2" class="ptItem">INGREDIENTS</li>
+           <li id="pTab3" class="ptItem">PROCESSES-UTENSILS</li>
+            <li id="pTab4" class="ptItem">INSTRUCTIONS</li>
+            <li id="pTab5" class="ptItem">NUTRITIONAL PROFILE</li>
+         </ul>
+       </div>
+       <div class="prodBody">
+
+         <div class="prodMain active" id="pTab1C">
+           <h2>RECIPE OVERVIEW</h2>
+         </div>
+         <div class="prodMain " id="pTab2C">
+           <h2>INGREDIENTS</h2>
+         </div>
+         <div class="prodMain " id="pTab3C">
+            <h2>PROCESSES-UTENSILS</h2>
+          </div>
+          <div class="prodMain " id="pTab4C">
+            <h2>INSTRUCTIONS</h2>
+          </div>
+          <div class="prodMain " id="pTab5C">
+            <h2>NUTRITIONAL PROFILE</h2>
+            <table>
+                  {% for i in range(9,(data[0]|length)-7)%}
+                     <tr>
+                        <th>{{data[0][i]}}</th>
+                        <th>{{data[1][i]}}</th>
+                     </tr>
+                  {% endfor %}
+            </table>
+          </div>
+       </div>
+   </div>
 </body>
+<style>
+   .recipe_info
+   {
+      border: 1px solid red;
+      text-align: center;
+   }
+   .recipe_info table
+   {
+      border: 1px solid green;
+      width: 100%;
+   }
+   .img_th
+   {
+      text-align: center;
+   }
+   .recipe_info th
+   {
+      width: 50%;
+      border: 1px solid green;
+   }
+   #reimg
+   {
+      width: 500px;
+      height: 500px;
+   }
+   .prodNav {
+    font-size: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 50px 0 20px;
+    line-height: 1.1;
+  }
+  .prodNav .ptItem {
+    padding: 9px 35px;
+    line-height: 20px;
+    border-radius: 20px;
+    background-color: rgb(243, 237, 237);
+    border: 1px solid transparent;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .prodNav .ptItem.active,
+  .prodNav .ptItem:hover {
+    background: #ff5656;
+    color: rgb(253, 253, 253);
+
+  }
+  
+  .prodBody {
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .prodMain {
+    display: none;
+    padding: 20px;
+  }
+  
+  .prodMain.active {
+    display: block; 
+    /* width: 100%; */
+  }
+</style>
+<script>
+   $(document).ready(function () {
+  var pTabItem = $(".prodNav .ptItem");
+  $(pTabItem).click(function () {
+    // Tab nav active functionality
+    $(pTabItem).removeClass("active");
+    $(this).addClass("active");
+    // Tab container active functionality
+    var tabid = $(this).attr("id");
+    $(".prodMain").removeClass("active");
+    $("#" + tabid + "C").addClass("active");
+
+    // resize the tables
+    fix();
+
+    return false;
+  });
+});
+  
+</script>
 </html>
