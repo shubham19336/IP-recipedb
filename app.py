@@ -57,18 +57,23 @@ def nutresult():
 
 @app.route('/result/rec_info/<string:id>',methods = ['POST', 'GET'])
 def result2(id):
-   if request.method == 'GET':
-      # id=request.args.get('id')
-      conn = sqlite3.connect('my_data.db')
-      cursor = conn.execute(f"SELECT * FROM recp WHERE Recipe_id = {id}")
-      arr = []
-      # print(cursor)
-      for row in cursor:
-         arr.append(row)
-      table_arr = []
-      table_arr.append(recp_column)
-      table_arr.append(list(arr[0]))
-      return render_template("base.html",data = table_arr)
+	if request.method == 'GET':
+		# id=request.args.get('id')
+		conn = sqlite3.connect('my_data.db')
+		cursor = conn.execute(f"SELECT * FROM recp WHERE Recipe_id = {id}")
+		arr = []
+		# print(cursor)
+		for row in cursor:
+			arr.append(row)
+		table_arr = []
+		table_arr.append(recp_column)
+		table_arr.append(list(arr[0]))
+		table_dict=dict()
+		
+		for i in range(9,len(table_arr[0])-7):
+			table_dict[table_arr[0][i]]=table_arr[1][i]
+
+		return render_template("base.html",data = table_dict)
 
 @app.route('/recipedb/category/<string:id>',  methods = ['GET', 'POST'])
 def category(id):
