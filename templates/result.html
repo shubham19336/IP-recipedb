@@ -8,9 +8,10 @@
    <meta id="recdata" data-rec="{{ data }}">
    <body>
       <div class="data_container">
+         <!-- <img src="more_info.png" width="30" height="30"/> -->
          <table class="table table-dark table-striped table-hover dataTable display nowrap" id="tableID">
             <thead>
-               <tr>
+               <tr>           
                   <th>Recipe ID</th>
                   <th>Recipe Title</th>
                   <th>Region</th>
@@ -26,9 +27,12 @@
                {% for each in data %}
                <tr>
                   {% for cell in each %}
-                  <th>{{cell}}</th>
+                  <td>{{cell}}</td>
                   {% endfor %}
-                  <th><button class="minfo" onclick="window.open('/result/rec_info/{{each[0]}}')">MORE INFO</button></th>
+                  <th>
+                     <button class="minfo" onclick="window.open('/result/rec_info/{{each[0]}}')">MORE INFO</button>
+                        <!-- <img src="/assets/more_info.png" width="30" height="30" onclick="window.open('/result/rec_info/{{each[0]}}')"/> -->
+                     </th>
                </tr>
                {% endfor %}
             </tbody>
@@ -47,7 +51,21 @@
       }
       #tableID
       {
+         color: #00ffad;
          width:100%;
+      }
+      #tableID thead
+      {
+         color: white;
+      }
+      .minfo
+      {
+         background-color: #000000;
+         color: #ffe000;
+         border-radius: 15px;
+         width: 150px;
+         height: 40px;
+         /* background:url(/assets/more_info.png) */
       }
    </style>
    <script>

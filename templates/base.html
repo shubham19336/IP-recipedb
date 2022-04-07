@@ -9,17 +9,18 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://kit.fontawesome.com/9d7803f1fd.js" crossorigin="anonymous"></script>
    <title>Document</title>
 </head>
 <body>
    <!-- <h1 style="text-align:center">{{data[0]}}</h1>
    <img src="{{data[1]}}"/> -->
-   <h1 style="text-align:center">TITLE</h1>
+   <h1 style="text-align:center">{{data[0]['Recipe_title']}}</h1>
    <div class="recipe_info">
       <table>
          <tbody>
             <th class ="img_th">
-               <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg" id="reimg">
+               <img src="{{data[0]['img_url']}}" id="reimg">
             </th>
          </tbody>
       </table>
@@ -36,12 +37,42 @@
 
          <div class="prodMain active" id="pTab1C">
            <h2>RECIPE OVERVIEW</h2>
+           <ul style="list-style-type: none; text-align: left;">
+              <li style="border: 1px solid grey;">
+               <i class="fa-solid fa-hill-avalanche"></i>
+                  <h4>Cuisine</h4> 
+                  <p>{{data[0]['Continent']}} >> {{data[0]['Region']}} >> {{data[0]['Sub_region']}}</p>
+              </li>
+              <li style="border: 1px solid grey;">
+                 <h4>Preparation Time</h4>
+                 <p>Cooking Time: {{data[0]['cook_time']}}, Preparation Time: {{data[0]['prep_time']}}</p>
+              </li>
+              <li style="border: 1px solid grey;">
+                 <h4>Source</h4>
+                 <a href="{{data[0]['url']}}">{{data[0]['Source']}}</a>
+              </li>
+           </ul>
          </div>
          <div class="prodMain " id="pTab2C">
            <h2>INGREDIENTS</h2>
          </div>
          <div class="prodMain " id="pTab3C">
             <h2>PROCESSES-UTENSILS</h2>
+            <ul>
+               <ul>
+                  <li>PROCESSES</li>
+                  {% for i in data[0]['Processes'] %}
+                     <li>{{i}}</li>
+                  {% endfor %}
+               </ul>
+               <ul>
+                  <li>UTENSILS</li>
+                  {% for i in data[0]['Utensils'] %}
+                     <li>{{i}}</li>
+                  {% endfor %}
+               </ul>
+            </ul>
+            
           </div>
           <div class="prodMain " id="pTab4C">
             <h2>INSTRUCTIONS</h2>
@@ -56,10 +87,10 @@
                   </tr>
                </thead>
                <tbody>
-                  {% for i in data %}
+                  {% for i in data[1] %}
                      <tr>
                         <th>{{i}}</th>
-                        <th>{{data[i]}}</th>
+                        <th>{{data[1][i]}}</th>
                      </tr>
                   {% endfor %}
                </tbody>
