@@ -119,7 +119,7 @@ def redirect_to_ingredient(name):
    conn.close()
    return value
 
-@app.route('/recipedb/search_ingre/<string:id>',  methods = ['GET', 'POST'])
+@app.route('/recipedb/search_ingre/<string:id>',  methods = ['GET', 'POST']) 
 def search_ing(id):
    con = sqlite3.connect("my_data.db")
    conn = sqlite3.connect("my_data.db")
