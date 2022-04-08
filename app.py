@@ -1,5 +1,5 @@
 # from tkinter import ANCHOR
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request, url_for, redirect
 import sqlite3
 import pandas as pd
 
@@ -113,9 +113,48 @@ def redirect_to_ingredient(name):
    cur.execute("select Ing_id from ing where Ing_name like \"{}\"".format(name))
    row = cur.fetchone()
    t = "a_b_" + str(row[0])
-   value = render_template("ing.html",dt=t)
+   print(name)
+   # t="a_b_"
+   value = redirect((url_for('search_ing', id=t)))
    conn.close()
    return value
+
+@app.route('/recipedb/search_ingre/<string:id>',  methods = ['GET', 'POST'])
+def search_ing(id):
+   con = sqlite3.connect("my_data.db")
+   conn = sqlite3.connect("my_data.db")
+   connn = sqlite3.connect("my_data.db")
+   con.row_factory = sqlite3.Row
+   conn.row_factory = sqlite3.Row
+   connn.row_factory = sqlite3.Row
+   list_args=id.split('_')
+   ndb_id=list_args[0]
+   # Recipe_id=list_args[2]
+   ingredient_id=list_args[2]
+   name_Ingre=list_args[1]
+
+   def dict_factory(cursor, row):
+      d = {}
+      for idx, col in enumerate(cursor.description):
+         d[col[0]] = row[idx]
+      return d
+   con.row_factory = dict_factory
+   connn.row_factory = dict_factory
+   cur = con.cursor()
+   curr = conn.cursor()
+   currr = connn.cursor()
+   query = "select * from unique_ingredients where Ing_ID = '{}'".format(ingredient_id)
+   cur.execute(query)
+   curr.execute("select * from USDA_100_grams natural join (select ndb_id, state, ingredient_name, count(*) as value_occurence from ingredients where Ing_ID = '{}' group by ndb_id,state, ingredient_name having count(ingredient_name)=1 order by value_occurence DESC limit 20)".format(ingredient_id))
+   generic_ingredient_info = cur.fetchone()
+   forms_info = [dict(k) for k in curr.fetchall()]
+   currr.execute("select * from recipes2 natural join ingredients where ingredients.Ing_ID = '{}' group by Recipe_id limit 20".format(ingredient_id))
+   recipes_info = [dict(k) for k in currr.fetchall()]
+   print(generic_ingredient_info)
+   print(forms_info)
+   print(recipes_info)
+   return render_template("search_ing.html",generic_ingredient_info=generic_ingredient_info, forms_info=forms_info, recipes_info=recipes_info)
+
 
 if __name__ == '__main__':
    app.run(debug = False)

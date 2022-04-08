@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9d7803f1fd.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align:center">{{generic_ingredient_info['Ing_name']}}</h1> 
+    <div class="ing_info">
+        <table>
+            <tbody>
+               <th class ="img_th">
+                  <img src="{{generic_ingredient_info['WikiImage']}}" id="reimg">
+               </th>
+            </tbody>
+         </table>
+        <h3>Ingredient Category</h3>
+        <p href="http://127.0.0.1:5501/templates/index.html">{{generic_ingredient_info['Category-D_RX']}}</p>
+        <a href="{{generic_ingredient_info['Wikilink']}}">Wikipedia Link</a>
+    </div>
+    <h2>Nutritional Information per 100 g for common forms of {{generic_ingredient_info['Ing_name']}}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>Occurences</th>
+                <th>Energy (kcal)</th>
+                <th>Carbohydrates (g)</th>
+                <th>Protein (g)</th>
+                <th>Total Lipid (Fat) (g)</th>
+                <th>Full Profile</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in forms_info %}
+            <tr>
+                <th>{{i['state']}}</th>
+                <th>{{i['value_occurence']}}</th>
+                <th>{{i['Energy (kcal)']}}</th>
+                <th>{{i['Carbohydrate, by difference (g)']}}</th>
+                <th>{{i['Protein (g)']}}</th>
+                <th>{{i['Total lipid (fat) (g)']}}</th>
+                <th><a data-ndbID="{{i['ndb_id']}}" href="https://ndb.nal.usda.gov/ndb/foods/show/{{i['ndb_id']}}" target="_blank"><i class="fa fa-external-link"></i></a></th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <!-- <p></p>
+    <p>----------------------------------------</p>
+    <p>{{forms_info}}</p>
+    <p>----------------------------------------</p>
+    <p>{{recipes_info}}</p> -->
+    
+</body>
+<style>
+    .img_th
+   {
+      text-align: center;
+   }
+   .ing_info
+   {
+      border: 1px solid red;
+      text-align: center;
+   }
+   .ing_info table
+   {
+       width: 100%;
+   }
+   #reimg
+   {
+      width: 500px;
+      height: 500px;
+   }
+</style>
+</html>
