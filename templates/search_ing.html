@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/9d7803f1fd.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -21,33 +25,36 @@
         <p href="http://127.0.0.1:5501/templates/index.html">{{generic_ingredient_info['Category-D_RX']}}</p>
         <a href="{{generic_ingredient_info['Wikilink']}}">Wikipedia Link</a>
     </div>
-    <h2>Nutritional Information per 100 g for common forms of {{generic_ingredient_info['Ing_name']}}</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>State</th>
-                <th>Occurences</th>
-                <th>Energy (kcal)</th>
-                <th>Carbohydrates (g)</th>
-                <th>Protein (g)</th>
-                <th>Total Lipid (Fat) (g)</th>
-                <th>Full Profile</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in forms_info %}
-            <tr>
-                <th>{{i['state']}}</th>
-                <th>{{i['value_occurence']}}</th>
-                <th>{{i['Energy (kcal)']}}</th>
-                <th>{{i['Carbohydrate, by difference (g)']}}</th>
-                <th>{{i['Protein (g)']}}</th>
-                <th>{{i['Total lipid (fat) (g)']}}</th>
-                <th><a data-ndbID="{{i['ndb_id']}}" href="https://ndb.nal.usda.gov/ndb/foods/show/{{i['ndb_id']}}" target="_blank"><i class="fa fa-external-link"></i></a></th>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="data_container">
+        <h2>Nutritional Information per 100 g for common forms of {{generic_ingredient_info['Ing_name']}}</h2>
+
+        <table id="tableID" class="table table-dark table-striped table-hover dataTable display nowrap">
+            <thead>
+                <tr>
+                    <th>State</th>
+                    <th>Occurences</th>
+                    <th>Energy (kcal)</th>
+                    <th>Carbohydrates (g)</th>
+                    <th>Protein (g)</th>
+                    <th>Total Lipid (Fat) (g)</th>
+                    <th>Full Profile</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in forms_info %}
+                <tr>
+                    <th>{{i['state']}}</th>
+                    <th>{{i['value_occurence']}}</th>
+                    <th>{{i['Energy (kcal)']}}</th>
+                    <th>{{i['Carbohydrate, by difference (g)']}}</th>
+                    <th>{{i['Protein (g)']}}</th>
+                    <th>{{i['Total lipid (fat) (g)']}}</th>
+                    <th><a data-ndbID="{{i['ndb_id']}}" href="https://ndb.nal.usda.gov/ndb/foods/show/{{i['ndb_id']}}" target="_blank"><i class="fa fa-external-link"></i></a></th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     
     <!-- <p></p>
     <p>----------------------------------------</p>
@@ -75,5 +82,17 @@
       width: 500px;
       height: 500px;
    }
+   .data_container
+      {
+         width: 70%;
+         margin: auto;
+         text-align: center;
+      }
 </style>
+<script>
+    $(document).ready(function() {
+         var restable=$('#tableID').DataTable({ responsive: true });
+         $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+      });
+</script>
 </html>
