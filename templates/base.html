@@ -37,17 +37,17 @@
 
          <div class="prodMain active" id="pTab1C">
            <h2>RECIPE OVERVIEW</h2>
-           <ul style="list-style-type: none; text-align: left;">
-              <li style="border: 1px solid grey;">
+           <ul style="list-style-type: none; text-align: left;" class="liststyle">
+              <li >
                <i class="fa-solid fa-hill-avalanche"></i>
                   <h4>Cuisine</h4> 
                   <p>{{data[0]['Continent']}} >> {{data[0]['Region']}} >> {{data[0]['Sub_region']}}</p>
               </li>
-              <li style="border: 1px solid grey;">
+              <li >
                  <h4>Preparation Time</h4>
                  <p>Cooking Time: {{data[0]['cook_time']}}, Preparation Time: {{data[0]['prep_time']}}</p>
               </li>
-              <li style="border: 1px solid grey;">
+              <li>
                  <h4>Source</h4>
                  <a href="{{data[0]['url']}}">{{data[0]['Source']}}</a>
               </li>
@@ -101,6 +101,20 @@
    </div>
 </body>
 <style>
+   .liststyle li{
+      min-height: 10vh;
+      transform: scale(1);
+      position: relative;
+      border-bottom: 1px solid grey;
+   }
+   .liststyle li:hover{
+      margin-top: 2px;
+      margin-bottom: 2px;
+      margin-left: 4%;
+      transform: scale(1.1);
+      background-color: rgb(233, 226, 226);
+      color: #ff5656;
+   }
    .recipe_info
    {
       border: 1px solid red;
