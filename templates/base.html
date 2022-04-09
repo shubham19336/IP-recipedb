@@ -10,6 +10,8 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <script src="https://kit.fontawesome.com/9d7803f1fd.js" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
    <title>Document</title>
 </head>
 <body>
@@ -57,23 +59,33 @@
            <h2>INGREDIENTS</h2>
          </div>
          <div class="prodMain " id="pTab3C">
-            <h2>PROCESSES-UTENSILS</h2>
-            <ul>
-               <ul>
-                  <li>PROCESSES</li>
-                  {% for i in data[0]['Processes'] %}
-                     <li>{{i}}</li>
-                  {% endfor %}
-               </ul>
-               <ul>
-                  <li>UTENSILS</li>
-                  {% for i in data[0]['Utensils'] %}
-                     <li>{{i}}</li>
-                  {% endfor %}
-               </ul>
-            </ul>
             
-          </div>
+            <h2 style="text-align: center;">PROCESSES-UTENSILS</h2>
+            <br>
+            <div class="data_container">
+               <div id="process_div">
+                  <ul style="font-family: 'Grape Nuts', cursive; list-style: none;">
+                     <li><h2  style="font-weight: 900;">PROCESSES</h2></li>
+                     {% for i in data[0]['Processes'] %}
+                        <li><h3  style="font-weight: 500;">{{i}}</h3></li>
+                     {% endfor %}
+                  </ul>
+               </div>
+               
+               <br>
+               <div id="utensil_div">
+                  <ul style="font-family: 'Grape Nuts', cursive; list-style: none;">
+                     <li><h2 style="font-weight: 900;">UTENSILS</h2></li>
+                     {% for i in data[0]['Utensils'] %}
+                        <li><h3  style="font-weight: 500;">{{i}}</h3></li>
+                     {% endfor %}
+                  </ul>
+               </div>
+               
+            </div>
+            
+            
+         </div>
           <div class="prodMain " id="pTab4C">
             <h2>INSTRUCTIONS</h2>
           </div>
@@ -101,6 +113,18 @@
    </div>
 </body>
 <style>
+   .data_container{
+      /* text-align: left; */
+      display: flex;
+   }
+   #process_div{
+      width: 50%;
+      /* border: 1px solid rebeccapurple; */
+   }
+   #utensil_div{
+      width: 50%;
+      /* border: 1px solid green; */
+   }
    .liststyle li{
       min-height: 10vh;
       transform: scale(1);
@@ -176,6 +200,7 @@
   .prodMain {
     display: none;
     padding: 20px;
+    /* border: 2px solid red; */
   }
   
   .prodMain.active {
