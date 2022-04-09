@@ -25,36 +25,80 @@
         <p href="http://127.0.0.1:5501/templates/index.html">{{generic_ingredient_info['Category-D_RX']}}</p>
         <a href="{{generic_ingredient_info['Wikilink']}}">Wikipedia Link</a>
     </div>
-    <div class="data_container">
-        <h2>Nutritional Information per 100 g for common forms of {{generic_ingredient_info['Ing_name']}}</h2>
-
-        <table id="tableID" class="table table-dark table-striped table-hover dataTable display nowrap">
-            <thead>
-                <tr>
-                    <th>State</th>
-                    <th>Occurences</th>
-                    <th>Energy (kcal)</th>
-                    <th>Carbohydrates (g)</th>
-                    <th>Protein (g)</th>
-                    <th>Total Lipid (Fat) (g)</th>
-                    <th>Full Profile</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in forms_info %}
-                <tr>
-                    <th>{{i['state']}}</th>
-                    <th>{{i['value_occurence']}}</th>
-                    <th>{{i['Energy (kcal)']}}</th>
-                    <th>{{i['Carbohydrate, by difference (g)']}}</th>
-                    <th>{{i['Protein (g)']}}</th>
-                    <th>{{i['Total lipid (fat) (g)']}}</th>
-                    <th><a data-ndbID="{{i['ndb_id']}}" href="https://ndb.nal.usda.gov/ndb/foods/show/{{i['ndb_id']}}" target="_blank"><i class="fa fa-external-link"></i></a></th>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div id="container">
+        <ul class="prodNav">
+            <li id="pTab1" class="ptItem active">ALL FORMS</li>
+            <li id="pTab2" class="ptItem">RECIPIES</li>
+        </ul>
     </div>
+    <div class="prodBody">
+        <div class="prodMain active" id="pTab1C">
+            <div class="data_container">
+                <h2>Nutritional Information per 100 g for common forms of {{generic_ingredient_info['Ing_name']}}</h2>
+        
+                <table id="tableID1" class="table table-dark table-striped table-hover dataTable display nowrap">
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th>Occurences</th>
+                            <th>Energy (kcal)</th>
+                            <th>Carbohydrates (g)</th>
+                            <th>Protein (g)</th>
+                            <th>Total Lipid (Fat) (g)</th>
+                            <th>Full Profile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in forms_info %}
+                        <tr>
+                            <th>{{i['state']}}</th>
+                            <th>{{i['value_occurence']}}</th>
+                            <th>{{i['Energy (kcal)']}}</th>
+                            <th>{{i['Carbohydrate, by difference (g)']}}</th>
+                            <th>{{i['Protein (g)']}}</th>
+                            <th>{{i['Total lipid (fat) (g)']}}</th>
+                            <th><a data-ndbID="{{i['ndb_id']}}" href="https://ndb.nal.usda.gov/ndb/foods/show/{{i['ndb_id']}}" target="_blank"><i class="fa fa-external-link"></i></a></th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="prodMain " id="pTab2C">
+            <div class="data_container">
+                <h2>Recipes which include {{generic_ingredient_info['Ing_name']}} as an ingredient</h2>
+                <table id="tableID2" class="table table-dark table-striped table-hover dataTable display nowrap">
+                    <thead>
+                        <tr>
+                            <th>Recipe Title</th>
+                            <th>Ingredient form</th>
+                            <th>Region</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for recipe in recipes_info %}
+                            <tr>
+                                <td><a href="/recipedb/search_recipeInfo/{{recipe['Recipe_id']}}" target="_blank">{{ recipe["Recipe_title"] }}</a></td>
+                                <td style="text-transform: capitalize">{{ (recipe['state'].strip() + " " + recipe['ingredient_name'].strip()).strip() }}</td>
+                                <td><a href="/recipedb/search_region/{{ recipe['Region'] }}" target="_blank">{{ recipe["Region"] }}</a></td>
+                                <td><a href="/recipedb/search_subregion/{{ recipe['Sub_region'] }}" target="_blank">{{ recipe["Sub_region"] }}</a></td>
+                                <!--<td>Unavailable</td>-->
+                                <!-- <td>{{ recipe["Source"] }}</td> -->
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+    
+    
     
     <!-- <p></p>
     <p>----------------------------------------</p>
@@ -83,16 +127,84 @@
       height: 500px;
    }
    .data_container
-      {
-         width: 70%;
-         margin: auto;
-         text-align: center;
-      }
+    {
+        width: 70%;
+        margin: auto;
+        text-align: center;
+    }
+    #container{
+        text-align: center;
+    }
+    .prodNav {
+        font-size: 12px;
+        border-radius: 20px;
+        overflow: hidden;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 50px 0 20px;
+        line-height: 1.1;
+    }
+    .prodNav .ptItem {
+        padding: 9px 35px;
+        line-height: 20px;
+        border-radius: 20px;
+        background-color: rgb(243, 237, 237);
+        border: 1px solid transparent;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: middle;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .prodNav .ptItem.active,
+    .prodNav .ptItem:hover {
+        background: #ff5656;
+        color: rgb(253, 253, 253);
+
+    }
+
+    .prodBody {
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .prodMain {
+        display: none;
+        padding: 20px;
+    }
+
+    .prodMain.active {
+        display: block; 
+        /* width: 100%; */
+    }
 </style>
 <script>
+    function fix(){
+        $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+    }
     $(document).ready(function() {
-         var restable=$('#tableID').DataTable({ responsive: true });
-         $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
-      });
+        var restable=$('#tableID1').DataTable({ responsive: true });
+        var restable=$('#tableID2').DataTable({ responsive: true });
+        fix();
+    });
+    
+
+    $(document).ready(function () {
+        var pTabItem = $(".prodNav .ptItem");
+        $(pTabItem).click(function () {
+        // Tab nav active functionality
+        $(pTabItem).removeClass("active");
+        $(this).addClass("active");
+        // Tab container active functionality
+        var tabid = $(this).attr("id");
+        $(".prodMain").removeClass("active");
+        $("#" + tabid + "C").addClass("active");   
+
+        fix();
+
+        return false;
+        });
+    });
 </script>
 </html>

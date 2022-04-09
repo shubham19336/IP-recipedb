@@ -150,9 +150,9 @@ def search_ing(id):
    forms_info = [dict(k) for k in curr.fetchall()]
    currr.execute("select * from recipes2 natural join ingredients where ingredients.Ing_ID = '{}' group by Recipe_id limit 20".format(ingredient_id))
    recipes_info = [dict(k) for k in currr.fetchall()]
-   print(generic_ingredient_info)
-   print(forms_info)
-   print(recipes_info)
+   # print(generic_ingredient_info)
+   # print(forms_info)
+   # print(recipes_info)
    return render_template("search_ing.html",generic_ingredient_info=generic_ingredient_info, forms_info=forms_info, recipes_info=recipes_info)
 
 
