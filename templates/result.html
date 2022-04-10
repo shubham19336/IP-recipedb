@@ -1,15 +1,16 @@
 <!doctype html>
 <html>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+   <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
    <meta id="recdata" data-rec="{{ data }}">
    <body>
       <div class="data_container">
          <!-- <img src="more_info.png" width="30" height="30"/> -->
-         <table class="table table-dark table-striped table-hover dataTable display nowrap" id="tableID">
+         <table class="table table-dark table-striped table-hover dataTable display nowrap" id="tableID" cellspacing="0" width="90%">
             <thead>
                <tr>           
                   <th>Recipe ID</th>
@@ -46,7 +47,7 @@
       }
       .data_container
       {
-         width: 70%;
+         width: 90%;
          margin: auto;
       }
       #tableID
