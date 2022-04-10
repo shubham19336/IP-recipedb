@@ -42,8 +42,8 @@ button
 .menu {
   display: flex;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  /* padding: 0; */
   transition: display .4s ease;
 
 }
@@ -117,8 +117,10 @@ button
 {
     .menu 
     {
+        
+        width: 0%;
         display: none;
-        /* transition: height .4s ease; */
+        transition: width .4s ease;
     }
     .menu-button-container
     {
@@ -129,18 +131,19 @@ button
     {
         position: absolute;
         padding: 0;
-        /* margin: 0; */
-        /* height: 100%;; */
-        display: flex;
-        width: 100%;
+        
         background-color: black;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         margin-left: -16px;
-        /* flex-wrap: wrap; */
-        margin-top:195px;
+        margin-top:230px;
         
         color: white;
+        
+        width: 100%;
+        display: flex;
+        /* border: 1px solid red; */
+        
     }
 }

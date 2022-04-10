@@ -2,6 +2,7 @@
 body
 {
 	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+	overflow-x: hidden;
 }
 ul
 {
@@ -159,6 +160,7 @@ ul.main_info>li
 .dropnav ul li:hover {
 	background-color: rgb(119, 235, 167);
 	font-weight: 900;
+	border-radius: 20px;
 	letter-spacing: 1px;
 	transition: background-color .8s ease;
 }
@@ -167,13 +169,14 @@ ul.main_info>li
 	width : 500px; 
 	border-radius: 40px;
 	max-width: 500px;
-	background: #d9d9d9;
-	margin : 40px auto; 
+	/* height: 0px; */
+	background: white;
+	margin : 30px auto; 
 	text-align: center;
   }
 .drop {
 	padding : 40px;
-	background: transparent url("../assets/vege.jpg") no-repeat top;
+	background: url("../assets/vege.jpg");
 	background-size: 100%;
 	border-radius: 10px;
 	color : white;
@@ -191,18 +194,19 @@ ul.main_info>li
 	clear:both;
 	float: bottom;
 	width:100%;
-	height:0px;
+	height:0;
 	z-index: 100;
 	overflow: hidden;
 	text-align: center;
+	border-radius: 40px;
 	transition: height .4s ease;
 }
 
 #sbtouch {position: absolute; opacity: 0; height: 0px;}    
-#sbtouch:checked + .slide {height: 450px;} 
-
+#sbtouch:checked + .slide {height: 450px; background:#d9d9d9;} 
+.dropnav ul li:checked + .slide li button{border: 1px solid red;}
 #sttouch {position: absolute; opacity: 0; height: 0px;}    
-#sttouch:checked + .slide {height: 540px;}
+#sttouch:checked + .slide {height: 540px; background:#d9d9d9}
 
 
 /* -----------------------------------------------------forms------------------------------------------- */
@@ -241,7 +245,7 @@ ul.main_info>li
 .form-inline button {
 	padding: 10px 20px;
 	width: 20%;
-	background-color: rgb(43, 126, 22);
+	background-color: rgb(255, 0, 0);
 	border: 1px solid #ddd;
 	border-radius: 10px;
 	color: white;
@@ -308,7 +312,7 @@ ul.main_info>li
 	}
 	.drop
 	{
-		height:18px;
+		height:10px;
 		font-size: medium;
 		border-radius: 40px;
 		padding-top: 20px;
@@ -414,3 +418,21 @@ ul.main_info>li
 	border-radius: 50%;
   }
   /* --------------------------------------------------------------------------- */
+#concept_parent
+ {
+	 overflow-x: scroll;
+ }
+
+ ::-webkit-scrollbar{
+	height: 4px;
+	width: 4px;
+	background: gray;
+}
+::-webkit-scrollbar-thumb:horizontal{
+	background: #000;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:vertical{
+	background: #000;
+	border-radius: 10px;
+}

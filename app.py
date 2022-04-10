@@ -110,7 +110,7 @@ def redirect_to_ingredient(name):
    conn = sqlite3.connect("my_data.db")
    conn.row_factory = sqlite3.Row
    cur = conn.cursor()
-   cur.execute("select Ing_id from ing where Ing_name like \"{}\"".format(name))
+   cur.execute("select Ing_id from ingredients where ingredient_name like \"{}\"".format(name))
    row = cur.fetchone()
    t = "a_b_" + str(row[0])
    print(name)

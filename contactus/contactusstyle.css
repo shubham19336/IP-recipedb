@@ -3,14 +3,11 @@ body
 	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
     background-color: #ffffff;
 }
-.container
+.contact_container
 {
     margin-top: auto;
     min-height: 100%;
-    /* border: 1px solid red; */
     display: flex;
-    /* position: relative; */
-    /* margin-bottom: 20px; */
 }
 .cuscontent
 {
