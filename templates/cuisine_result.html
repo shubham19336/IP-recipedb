@@ -10,7 +10,7 @@
    <body>
       <div class="data_container">
          <!-- <img src="more_info.png" width="30" height="30"/> -->
-         <table class="table table-dark table-striped table-hover dataTable display nowrap" id="tableID" cellspacing="0" width="90%">
+         <table class="table table-dark table-striped table-hover dataTable display nowrap" id="tableID" cellspacing="0" width="auto">
             <thead>
                <tr>           
                   <th>Recipe ID</th>
@@ -50,7 +50,7 @@
          width: 90%;
          margin: auto;
       }
-      #tableID
+      /* #tableID
       {
          color: #ff6c6c;
          width:100%;
@@ -58,7 +58,7 @@
       #tableID thead
       {
          color: white;
-      }
+      } */
       .minfo
       {
          background-color: #000000;
@@ -66,16 +66,18 @@
          border-radius: 15px;
          width: 150px;
          height: 40px;
+         cursor: pointer;
          /* background:url(/assets/more_info.png) */
       }
       .page-item.active .page-link {
          z-index: 3;
-         color: #f00;
+         color: rgb(247, 106, 106);
          background-color: #000000;
          border-color: #000000;
       }
       .table-dark {
-         color: #fff;
+         width: auto;
+         color: rgb(247, 106, 106);
          background-color: #000000;
       }
       .page-link {

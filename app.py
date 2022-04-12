@@ -1,7 +1,15 @@
 # from tkinter import ANCHOR
+import profile
 from flask import Flask, jsonify, redirect, render_template, request, url_for, redirect
 import sqlite3
 import pandas as pd
+
+def dict_factory(cursor, row):
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
+
 
 df = pd.read_csv("Recipes.csv")
 recp_column = (df.iloc[0]).tolist()
@@ -12,8 +20,8 @@ def home():
    return render_template('index.html')
 
 
-@app.route('/result',methods = ['POST', 'GET'])
-def result():
+@app.route('/cuisine_result',methods = ['POST', 'GET'])
+def cuisine_result():
    
    # if request.method == 'POST':
    conn = sqlite3.connect('my_data.db')
@@ -30,10 +38,10 @@ def result():
       if vals[i]=='':
          operands[i]='!='
       
-   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,servings,Calories,[Protein (g)],[Total lipid (fat) (g)] FROM recp WHERE Continent {operands[0]} '{vals[0]}' and Region {operands[1]} '{vals[1]}' and Sub_region {operands[2]} '{vals[2]}' and Recipe_title {operands[3]} '{vals[3]}'"
+   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Continent {operands[0]} '{vals[0]}' and Region {operands[1]} '{vals[1]}' and Sub_region {operands[2]} '{vals[2]}' and Recipe_title {operands[3]} '{vals[3]}';"
    print(str)
    cursor = conn.execute(str)
-   value = render_template("result.html",data = cursor)
+   value = render_template("cuisine_result.html",data = cursor)
    conn.close()
    return value
 
@@ -65,36 +73,32 @@ def nutresult():
 def result2(id):
    if request.method == 'GET':
 		# id=request.args.get('id')
-      conn = sqlite3.connect('my_data.db')
-      cursor = conn.execute(f"SELECT * FROM recp WHERE Recipe_id = {id}")
-      arr = []
-		# print(cursor)
-      for row in cursor:
-         arr.append(row)
-      table_arr = []
-      table_arr.append(recp_column) 
-      table_arr.append(list(arr[0]))
-      table_dict1=dict()
-      table_dict2=dict()
-      table = []
-      for i in range(9):
-         table_dict2[table_arr[0][i]]=table_arr[1][i]
-      for i in range(len(table_arr[0])-7,len(table_arr[0])):
-         table_dict2[table_arr[0][i]]=table_arr[1][i]
-      print(table_dict2['Processes'])
-      print(table_dict2['Utensils'])
-      if table_dict2['Processes'] == None:
-         table_dict2['Processes'] = "Processes not available"
-      if table_dict2['Utensils'] == None:
-         table_dict2['Utensils'] = "Utensils not available"
-      table_dict2['Processes'] = table_dict2['Processes'].split("||")
-      table_dict2['Utensils'] = table_dict2['Utensils'].split("||")
-      table.append(table_dict2)
-      for i in range(9,len(table_arr[0])-7):
-         table_dict1[table_arr[0][i]]=table_arr[1][i]
-      table.append(table_dict1)
-      value = render_template("base.html",data = table)
-      conn.close()
+      con1=sqlite3.connect('my_data.db')
+      con1.row_factory=dict_factory
+      cur1=con1.cursor()
+      cur1.execute("")
+      cur1.execute("select * from 'Recipe_nutrition_full' where Recipe_id = '" + id + "'")
+      full_profile=dict(cur1.fetchone())
+      # print(full_profile)
+
+      con2 = sqlite3.connect('my_data.db')
+      con2.row_factory=dict_factory
+      cur2=con2.cursor()
+      cur2.execute(f"SELECT Recipe_title,img_url,Continent,Region,Sub_region,cook_time,prep_time,Source,url,Processes,Utensils FROM recipes2 WHERE Recipe_id = '{id}';")
+      out=cur2.fetchall()
+      data = {k: v for d in out for k, v in d.items()}
+
+      if data['Processes'] == '':
+         data['Processes'] = "Processes not available"
+      if data['Utensils'] == '':
+         data['Utensils'] = "Utensils not available"
+      data['Processes'] = data['Processes'].split("||")
+      data['Utensils'] = data['Utensils'].split("||")
+      # print(data)
+  
+      con1.close()
+      con2.close()
+      value = render_template("base.html",data=data,profile=full_profile)
       return value
 
 @app.route('/recipedb/category/<string:id>',  methods = ['GET', 'POST'])

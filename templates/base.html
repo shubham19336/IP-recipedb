@@ -18,12 +18,12 @@
 <body>
    <!-- <h1 style="text-align:center">{{data[0]}}</h1>
    <img src="{{data[1]}}"/> -->
-   <h1 style="text-align:center">{{data[0]['Recipe_title']}}</h1> 
+   <h1 style="text-align:center">{{data['Recipe_title']}}</h1> 
    <div class="recipe_info">
       <table>
          <tbody>
             <th class ="img_th">
-               <img src="{{data[0]['img_url']}}" id="reimg">
+               <img src="{{data['img_url']}}" id="reimg">
             </th>
          </tbody>
       </table>
@@ -44,15 +44,15 @@
               <li >
                <i class="fa-solid fa-hill-avalanche"></i>
                   <h4>Cuisine</h4> 
-                  <p>{{data[0]['Continent']}} >> {{data[0]['Region']}} >> {{data[0]['Sub_region']}}</p>
+                  <p>{{data['Continent']}} >> {{data['Region']}} >> {{data['Sub_region']}}</p>
               </li>
               <li >
                  <h4>Preparation Time</h4>
-                 <p>Cooking Time: {{data[0]['cook_time']}}, Preparation Time: {{data[0]['prep_time']}}</p>
+                 <p>Cooking Time: {{data['cook_time']}}, Preparation Time: {{data['prep_time']}}</p>
               </li>
               <li>
                  <h4>Source</h4>
-                 <a href="{{data[0]['url']}}">{{data[0]['Source']}}</a>
+                 <a href="{{data['url']}}">{{data['Source']}}</a>
               </li>
            </ul>
          </div>
@@ -67,7 +67,7 @@
                <div id="process_div">
                   <ul style="font-family: 'Grape Nuts', cursive; list-style: none;">
                      <li><h2  style="font-weight: 900;">PROCESSES</h2></li>
-                     {% for i in data[0]['Processes'] %}
+                     {% for i in data['Processes'] %}
                         <li><h3  style="font-weight: 500;">{{i}}</h3></li>
                      {% endfor %}
                   </ul>
@@ -77,7 +77,7 @@
                <div id="utensil_div">
                   <ul style="font-family: 'Grape Nuts', cursive; list-style: none;">
                      <li><h2 style="font-weight: 900;">UTENSILS</h2></li>
-                     {% for i in data[0]['Utensils'] %}
+                     {% for i in data['Utensils'] %}
                         <li><h3  style="font-weight: 500;">{{i}}</h3></li>
                      {% endfor %}
                   </ul>
@@ -100,10 +100,10 @@
                   </tr>
                </thead>
                <tbody>
-                  {% for i in data[1] %}
+                  {% for key in profile %}
                      <tr>
-                        <th>{{i}}</th>
-                        <th>{{data[1][i]}}</th>
+                        <th>{{key}}</th>
+                        <th>{{profile[key]}}</th>
                      </tr>
                   {% endfor %}
                </tbody>
@@ -131,7 +131,6 @@
       transform: scale(1);
       position: relative;
       border-bottom: 1px solid grey;
-      transition: transform .4s ease;
    }
    .liststyle li:hover{
       margin-top: 2px;
@@ -139,6 +138,7 @@
       margin-left: 4%;
       transform: scale(1.1);
       background-color: rgb(233, 226, 226);
+      transition: transform .4s ease;
       color: #ff5656;
    }
    .recipe_info
@@ -209,10 +209,20 @@
     display: block; 
     /* width: 100%; */
   }
-  .table-dark {
-    color: #4affb4;
-    background-color: #000000;
-}
+  .page-item.active .page-link {
+      z-index: 3;
+      color: rgb(247, 106, 106);
+      background-color: #000000;
+      border-color: #000000;
+   }
+   .table-dark {
+      /* width: auto; */
+      color: rgb(247, 106, 106);
+      background-color: #000000;
+   }
+   .page-link {
+      color: #000000;
+   }
 </style>
 <script>
    $(document).ready(function() {
