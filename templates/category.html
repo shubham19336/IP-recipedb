@@ -4,11 +4,182 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+   <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
    <title>Document</title>
 </head>
 <body>
-   {% for row in data %}
-   <h2>{{row}}</h2>
-   {% endfor %} 
+   <h1 style="text-align:center">{{cat}}</h1> 
+   <div class="ing_info">
+      <table>
+          <tbody>
+             <th class ="img_th">
+                <img src="{{img['cat_Image']}}" id="reimg">
+             </th>
+          </tbody>
+       </table>
+   </div>
+   <div id="container">
+      <ul class="prodNav">
+         <li id="pTab1" class="ptItem active">INGREDIENTS</li>
+         <li id="pTab2" class="ptItem">RECIPIES</li>
+      </ul>
+   </div>
+   <div class="prodBody">
+      <div class="prodMain active" id="pTab1C">
+         <div class="data_container">
+            <!-- <h2>Nutritional Information per 100 g for common forms of generic_ingredient_info['Ing_name']</h2> -->
+            <table id="tableID1" class="table table-dark table-striped table-hover dataTable display nowrap" >
+               <thead>
+                  <tr>
+                     <th>Ingredient Name</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for row in ing %}
+                  <tr>
+                     <th><a href="/recipedb/search_ingre/a_b_{{row['Ing_ID']}}" target="_blank">{{row['Ing_name']}}</a></th>
+                  </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <div class="prodMain " id="pTab2C">
+         <div class="data_container">
+             <!-- <h2>Recipes which include generic_ingredient_info['Ing_name'] as an ingredient</h2> -->
+             <table id="tableID2" class="table table-dark table-striped table-hover dataTable display nowrap">
+                 <thead>
+                     <tr>
+                         <th>Recipe Title</th>
+                         <th>Region</th>
+                         <th>Country</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     {% for recipe in recps %}
+                         <tr>
+                             <td><a href="/recipedb/search_recipeInfo/{{recipe['Recipe_id']}}" target="_blank">{{ recipe["Recipe_title"] }}</a></td>
+                             <td><a href="/recipedb/search_region/{{ recipe['Region'] }}" target="_blank">{{ recipe["Region"] }}</a></td>
+                             <td><a href="/recipedb/search_subregion/{{ recipe['Sub_region'] }}" target="_blank">{{ recipe["Sub_region"] }}</a></td>
+                         </tr>
+                     {% endfor %}
+                 </tbody>
+             </table>
+         </div>
+     </div>
+
+   </div>
 </body>
 </html>
+<style>
+   .img_th
+  {
+     text-align: center;
+  }
+  .ing_info
+  {
+     border: 1px solid red;
+     text-align: center;
+  }
+  .ing_info table
+  {
+      width: 100%;
+  }
+  #reimg
+  {
+     width: 500px;
+     height: 500px;
+  }
+  .data_container
+   {
+       width: 70%;
+       margin: auto;
+       text-align: center;
+   }
+   #container{
+       text-align: center;
+   }
+   .prodNav {
+       font-size: 12px;
+       border-radius: 20px;
+       overflow: hidden;
+       display: inline-block;
+       vertical-align: middle;
+       margin: 50px 0 20px;
+       line-height: 1.1;
+   }
+   .prodNav .ptItem {
+       padding: 9px 35px;
+       line-height: 20px;
+       border-radius: 20px;
+       background-color: rgb(243, 237, 237);
+       border: 1px solid transparent;
+       font-weight: 500;
+       cursor: pointer;
+       display: inline-block;
+       vertical-align: middle;
+       transition: all 0.3s ease-in-out;
+   }
+
+   .prodNav .ptItem.active,
+   .prodNav .ptItem:hover {
+       background: #ff5656;
+       color: rgb(253, 253, 253);
+
+   }
+
+   .prodBody {
+       padding: 20px;
+       border-radius: 5px;
+   }
+
+   .prodMain {
+       display: none;
+       padding: 20px;
+   }
+
+   .prodMain.active {
+       display: block; 
+       /* width: 100%; */
+   }
+   
+/* .table-dark {
+   color: #fff;
+   background-color: #000000;
+} */
+.table-dark a{
+   color: cyan;
+}
+</style>
+<script>
+   function fix(){
+       $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+   }
+   $(document).ready(function() {
+       var restable=$('#tableID1').DataTable({ responsive: true });
+       var restable=$('#tableID2').DataTable({ responsive: true });
+       fix();
+   });
+   
+
+   $(document).ready(function () {
+       var pTabItem = $(".prodNav .ptItem");
+       $(pTabItem).click(function () {
+       // Tab nav active functionality
+       $(pTabItem).removeClass("active");
+       $(this).addClass("active");
+       // Tab container active functionality
+       var tabid = $(this).attr("id");
+       $(".prodMain").removeClass("active");
+       $("#" + tabid + "C").addClass("active");   
+
+       fix();
+
+       return false;
+       });
+   });
+</script>

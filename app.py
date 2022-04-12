@@ -170,10 +170,39 @@ def result2(id):
 
 @app.route('/recipedb/category/<string:id>',  methods = ['GET', 'POST'])
 def category(id):
-   conn = sqlite3.connect("my_data.db")
-   cursor = conn.execute(f"SELECT Ing_name FROM ing WHERE CategoryF_DB = '{id}' ORDER BY freq DESC LIMIT 10")
-   value = render_template("category.html", data = cursor)
-   conn.close()
+   con1 = sqlite3.connect("my_data.db")
+   con1.row_factory=dict_factory
+   cur1=con1.cursor()
+   cur1.execute(f"""SELECT * FROM unique_ingredients WHERE "Category-D_rX" = '{id}' ORDER BY freq DESC LIMIT 20;""")
+   ing=cur1.fetchall()
+   # print(ing[0])
+
+   con2 = sqlite3.connect("my_data.db")
+   con2.row_factory=dict_factory
+   cur2=con2.cursor()
+   cur2.execute(f"SELECT * FROM cat_top_recipe where Recipe_id = '{id}';")
+   recids=cur2.fetchall()
+   # print(recids)
+
+   recps=[]
+   con = sqlite3.connect("my_data.db")
+   con.row_factory=dict_factory
+   cur=con1.cursor()
+   for x in range(len(recids[0])-1):
+      queryX=f"SELECT * from recipes2 where Recipe_id='{str(recids[0][str(x)])}';"
+      cur.execute(queryX)
+      recps.append(cur.fetchone())
+   # print(recps)
+   
+   queryimg='SELECT cat_Image from cat_Img where "Category" like "' + id + '"'
+   cur.execute(queryimg)
+   img=cur.fetchone()
+   # print(img)
+
+   value = render_template("category.html", cat=id, img = img,ing=ing, recps=recps)
+   con1.close()
+   con2.close()
+   con.close()
    return value
 
 @app.route('/recipedb/ingredient/<string:name>',  methods = ['GET', 'POST'])
