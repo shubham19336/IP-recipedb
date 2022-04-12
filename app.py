@@ -3,12 +3,20 @@ import profile
 from flask import Flask, jsonify, redirect, render_template, request, url_for, redirect
 import sqlite3
 import pandas as pd
+import json
 
 def dict_factory(cursor, row):
     d = {}
     for idx, col in enumerate(cursor.description):
         d[col[0]] = row[idx]
     return d
+
+stepsJSON = {}
+try:
+	with open("clean_recipies.json") as jsonfile:
+		stepsJSON = json.load(jsonfile)
+except:
+	print("instruction json file issue ig")
 
 
 df = pd.read_csv("Recipes.csv")
@@ -132,12 +140,32 @@ def result2(id):
          dict_row["nutrient_info"] = nutr
          ing_names.append(dict_row)
       # print(ing_names)
-  
+
+      recipeSteps = "Recipe Steps are not available."
+      if stepsJSON != {}:
+         recipeSteps = next((x['steps'] for x in stepsJSON if x['recipe_id'] == id), "Recipe Steps are not available.")
+      
+      ins = []
+      ans = ""
+      for i in recipeSteps:
+         if i==';' or i=='.':
+            ins.append(ans+'.')
+            ans = ""
+         else:
+            if ans=="":
+               if i==' ':
+                  continue
+               ans+=i.upper()
+            else:
+               ans += i
+      if ans!="":
+         ins.append(ans+'.')
+
       con1.close()
       con2.close()
       con3.close()
       con4.close()
-      value = render_template("base.html",data=data,profile=full_profile, ing_names=ing_names)
+      value = render_template("base.html",data=data,profile=full_profile,instructions=ins, ing_names=ing_names)
       return value
 
 @app.route('/recipedb/category/<string:id>',  methods = ['GET', 'POST'])

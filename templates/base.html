@@ -40,7 +40,7 @@
 
          <div class="prodMain active" id="pTab1C">
            <h2>RECIPE OVERVIEW</h2>
-           <ul style="list-style-type: none; text-align: left;" class="liststyle">
+           <ul style="list-style-type: none; text-align: left;" class="liststyle" id="reclist">
               <li >
                <i class="fa-solid fa-hill-avalanche"></i>
                   <h4>Cuisine</h4> 
@@ -58,7 +58,7 @@
          </div>
          <div class="prodMain " id="pTab2C">
            <h2>INGREDIENTS</h2>
-           <table id="ingtable" class="table table-dark table-striped table-hover dataTable display nowrap">
+           <table id="ingtable" class="table table-dark table-striped table-hover dataTable display nowrap" cellspacing="0" width="auto">
             <thead>
                <tr>
                   <th>Ingredient Name</th>
@@ -110,17 +110,23 @@
                      {% endfor %}
                   </ul>
                </div>
-               
             </div>
             
             
          </div>
           <div class="prodMain " id="pTab4C">
             <h2>INSTRUCTIONS</h2>
+            <br>
+            {% for i in instructions %}
+            <!-- {{instructions}} -->
+               <ul style="list-style: none;  text-align: left; font-family: 'Grape Nuts', cursive;" class="liststyle" id="inslist">
+                  <li><h4  style="font-weight: 400;">{{i}}</h4></li>
+               </ul>
+            {% endfor %}
           </div>
           <div class="prodMain " id="pTab5C">
             <h2>NUTRITIONAL PROFILE</h2>
-            <table id="nuttable" class="table table-dark table-striped table-hover dataTable display nowrap">
+            <table id="nuttable" class="table table-dark table-striped table-hover dataTable display nowrap" >
                <thead>
                   <tr>
                      <th>Name</th>
@@ -130,8 +136,8 @@
                <tbody>
                   {% for key in profile %}
                      <tr>
-                        <th>{{key}}</th>
-                        <th>{{profile[key]}}</th>
+                        <td>{{key}}</td>
+                        <td>{{profile[key]}}</td>
                      </tr>
                   {% endfor %}
                </tbody>
@@ -154,15 +160,27 @@
       width: 50%;
       /* border: 1px solid green; */
    }
-   .liststyle li{
+   #reclist li{
       min-height: 10vh;
+   }
+   #reclist li:hover{
+      margin-top: 2px;
+      margin-bottom: 2px;
+   }
+   #inslist li:hover{
+      margin-top: 1px;
+      margin-bottom: 1px;
+   }
+   #inslist li{
+      padding-top: 3vh;
+      min-height: 9vh;
+   }
+   .liststyle li{
+      
       transform: scale(1);
-      position: relative;
       border-bottom: 1px solid grey;
    }
    .liststyle li:hover{
-      margin-top: 2px;
-      margin-bottom: 2px;
       margin-left: 4%;
       transform: scale(1.1);
       background-color: rgb(233, 226, 226);
@@ -237,20 +255,19 @@
     display: block; 
     /* width: 100%; */
   }
-  .page-item.active .page-link {
+  /* .page-item.active .page-link {
       z-index: 3;
       color: rgb(247, 106, 106);
       background-color: #000000;
       border-color: #000000;
    }
    .table-dark {
-      /* width: auto; */
       color: rgb(247, 106, 106);
       background-color: #000000;
    }
    .page-link {
       color: #000000;
-   }
+   } */
    .table-dark a{
       color: cyan;
    }
