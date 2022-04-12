@@ -76,7 +76,6 @@ def result2(id):
       con1=sqlite3.connect('my_data.db')
       con1.row_factory=dict_factory
       cur1=con1.cursor()
-      cur1.execute("")
       cur1.execute("select * from 'Recipe_nutrition_full' where Recipe_id = '" + id + "'")
       full_profile=dict(cur1.fetchone())
       # print(full_profile)
@@ -95,10 +94,50 @@ def result2(id):
       data['Processes'] = data['Processes'].split("||")
       data['Utensils'] = data['Utensils'].split("||")
       # print(data)
+
+
+      con3 = sqlite3.connect('my_data.db')
+      con3.row_factory=dict_factory
+      con4 = sqlite3.connect('my_data.db')
+      con4.row_factory=dict_factory
+      cur3=con3.cursor()
+      cur4=con4.cursor()
+      cur3.execute(f"select * from ingredients where Recipe_id = '{id}';")
+      cur4.execute(f"select [Recipe_id], [ndb_id], [Carbohydrate, by difference (g)], [Energy (kcal)], [Protein (g)], [Total lipid (fat) (g)] from 'nutrients-new' where Recipe_id = '{id}';")
+      all_ing = [dict(k) for k in cur3.fetchall()]
+      all_nutr = [dict(k) for k in cur4.fetchall()]
+
+      ing_names = []
+      try:
+         rows1 = [d for d in all_ing if str(d["Recipe_id"]).strip() == str(id).strip()]
+      except:
+         rows1 = []
+      try:
+         rows2 = [d for d in all_nutr if str(d["Recipe_id"]).strip() == str(id).strip()]
+      except:
+         rows2 = []
+      for rp in rows1:
+         dict_row = dict(rp)
+         ndb_id = rp["ndb_id"]
+         nutr = {
+            "Carbohydrate, by difference (g)": "-",
+            "Energy (kcal)": "-",
+            "Protein (g)": "-",
+            "Total lipid (fat) (g)": "-",
+         }
+         for rowl in rows2:
+            if str(dict(rowl)["ndb_id"]) == str(ndb_id):
+               nutr = dict(rowl)
+               break
+         dict_row["nutrient_info"] = nutr
+         ing_names.append(dict_row)
+      # print(ing_names)
   
       con1.close()
       con2.close()
-      value = render_template("base.html",data=data,profile=full_profile)
+      con3.close()
+      con4.close()
+      value = render_template("base.html",data=data,profile=full_profile, ing_names=ing_names)
       return value
 
 @app.route('/recipedb/category/<string:id>',  methods = ['GET', 'POST'])

@@ -58,6 +58,34 @@
          </div>
          <div class="prodMain " id="pTab2C">
            <h2>INGREDIENTS</h2>
+           <table id="ingtable" class="table table-dark table-striped table-hover dataTable display nowrap">
+            <thead>
+               <tr>
+                  <th>Ingredient Name</th>
+                  <th>Quantity</th>
+                  <th>Unit</th>
+                  <th>State</th>
+                  <th>Energy (kcal)</th>
+                  <th>Carbohydrates</th>
+                  <th>Protein (g)</th>
+                  <th>Total Lipid (Fat) (g)</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for v in ing_names %}
+                  <tr>
+                     <td><a href="/recipedb/search_ingre/13_{{v['ingredient_name']}}_{{v['Ing_id']}}" style="text-transform: capitalize">{{v['ingredient_name']}}</a></td>
+                    <td>{{v['quantity']}}</td>
+                    <td>{{v['unit']}}</td>
+                    <td>{{v['state']}}</td>
+                    <td class="roundOff">{{v['nutrient_info']['Energy (kcal)']}}</td>
+                    <td class="roundOff">{{v['nutrient_info']['Carbohydrate, by difference (g)']}}</td>
+                    <td class="roundOff">{{v['nutrient_info']['Protein (g)']}}</td>
+                    <td class="roundOff">{{v['nutrient_info']['Total lipid (fat) (g)']}}</td>
+                  </tr>
+               {% endfor %}
+            </tbody>
+           </table>
          </div>
          <div class="prodMain " id="pTab3C">
             
@@ -223,11 +251,19 @@
    .page-link {
       color: #000000;
    }
+   .table-dark a{
+      color: cyan;
+   }
 </style>
 <script>
+   function fix(){
+        $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+    }
    $(document).ready(function() {
          var restable=$('#nuttable').DataTable({ responsive: true });
-         $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+         var restable=$('#ingtable').DataTable({ responsive: true });
+
+         fix();
       });
 
    $(document).ready(function () {
@@ -239,7 +275,8 @@
     // Tab container active functionality
     var tabid = $(this).attr("id");
     $(".prodMain").removeClass("active");
-    $("#" + tabid + "C").addClass("active");   
+    $("#" + tabid + "C").addClass("active");
+    fix();   
 
     return false;
   });
