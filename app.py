@@ -1,5 +1,3 @@
-# from tkinter import ANCHOR
-import profile
 from flask import Flask, jsonify, redirect, render_template, request, url_for, redirect
 import sqlite3
 import pandas as pd
@@ -49,12 +47,25 @@ def cuisine_result():
    str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Continent {operands[0]} '{vals[0]}' and Region {operands[1]} '{vals[1]}' and Sub_region {operands[2]} '{vals[2]}' and Recipe_title {operands[3]} '{vals[3]}';"
    print(str)
    cursor = conn.execute(str)
-   value = render_template("cuisine_result.html",data = cursor)
+   value = render_template("result.html",data = cursor)
    conn.close()
    return value
 
-@app.route('/advresult',methods = ['POST', 'GET'])
-def advresult():
+@app.route('/ingresult',methods = ['POST', 'GET'])
+def ingresult():
+   # if request.method == 'POST':
+   con = sqlite3.connect('my_data.db')
+   result = request.form
+
+   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id in (SELECT Recipe_id from ingredients where ingredient_name = '{result['iused']}') AND Recipe_id NOT IN (SELECT Recipe_id from ingredients where ingredient_name = '{result['inotused']}') LIMIT 10;"
+   cursor=con.execute(str)
+   print(cursor)
+   value = render_template("result.html",data = cursor)
+   con.close()
+   return value
+
+@app.route('/nutresult',methods = ['POST', 'GET'])
+def nutresult():
    
    if request.method == 'POST':
       conn = sqlite3.connect('my_data.db')
@@ -65,8 +76,8 @@ def advresult():
       conn.close()
       return value
 
-@app.route('/nutresult',methods = ['POST', 'GET'])
-def nutresult():
+@app.route('/advresult',methods = ['POST', 'GET'])
+def advresult():
    
    if request.method == 'POST':
       conn = sqlite3.connect('my_data.db')
