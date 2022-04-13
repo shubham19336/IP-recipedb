@@ -32,7 +32,7 @@ def cuisine_result():
    # if request.method == 'POST':
    conn = sqlite3.connect('my_data.db')
    result = request.form
-   print(result)
+   # print(result)
 
       # populating required operands and values for queries
    keys=['ccontinent','cregion','ccountry','crecipe']
@@ -45,7 +45,7 @@ def cuisine_result():
          operands[i]='!='
       
    str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Continent {operands[0]} '{vals[0]}' and Region {operands[1]} '{vals[1]}' and Sub_region {operands[2]} '{vals[2]}' and Recipe_title {operands[3]} '{vals[3]}';"
-   print(str)
+   # print(str)
    cursor = conn.execute(str)
    value = render_template("result.html",data = cursor)
    conn.close()
@@ -73,8 +73,7 @@ def catresult():
    if notused=="":
       notused="zzzz"
 
-
-   print(result)
+   # print(result)
 
    str = f"""SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id IN
             (SELECT DISTINCT Recipe_id FROM ingredients 
@@ -83,9 +82,7 @@ def catresult():
                AND Ing_ID NOT IN 
             (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_RX" like '%{notused}%')) LIMIT 50;"""
 
-            
-
-   print(str)
+   # print(str)
 
    cursor=con.execute(str)
    # print(cursor)
@@ -106,7 +103,7 @@ def nutresult():
       conn = sqlite3.connect('my_data.db')
       result = request.form
       
-      print(result)
+      # print(result)
       value = render_template("temp.html",data = "hello")
       conn.close()
       return value
@@ -118,7 +115,7 @@ def advresult():
       conn = sqlite3.connect('my_data.db')
       result = request.form
       
-      print(result)
+      # print(result)
       value = render_template("temp.html",data = "hello")
       conn.close()
       return value
@@ -148,7 +145,6 @@ def result2(id):
       data['Processes'] = data['Processes'].split("||")
       data['Utensils'] = data['Utensils'].split("||")
       # print(data)
-
 
       con3 = sqlite3.connect('my_data.db')
       con3.row_factory=dict_factory
@@ -259,7 +255,7 @@ def redirect_to_ingredient(name):
    cur.execute("select Ing_id from ingredients where ingredient_name like \"{}\"".format(name))
    row = cur.fetchone()
    t = "a_b_" + str(row[0])
-   print(name)
+   # print(name)
    # t="a_b_"
    value = redirect((url_for('search_ing', id=t)))
    conn.close()
@@ -303,4 +299,4 @@ def search_ing(id):
 
 
 if __name__ == '__main__':
-   app.run(debug = False)
+   app.run(debug = False,host='127.0.0.1',port=5000)

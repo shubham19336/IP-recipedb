@@ -121,7 +121,7 @@
 <!-- -----------------------------------------SEARCH BY --------------------------------------------------------------- -->
 	<!-- -------------------------------------cuisine--------------------------------------------- -->
 	<div class="formc autocomplete">
-		<form autocomplete="off" class="search-by form-inline" id="cform-inline"  target="_blank" action="http://localhost:5000/cuisine_result" method='POST'>
+		<form autocomplete="off" class="search-by form-inline" id="cform-inline"  target="_blank" action="http://127.0.0.1:5000/cuisine_result" method='POST'>
 				<div class="advcontent">
 					<label for="ccontinent">CONTINENT</label>
 					<input type="text" id="ccontinent" placeholder="Enter Continent" name="ccontinent">	
@@ -144,7 +144,7 @@
 
 	<!-- -------------------------------------ingredient--------------------------------------------- -->
 	<div class="formc autocomplete">
-		<form autocomplete="off" class="search-by form-inline" id="iform-inline"  action="http://localhost:5000/ingresult" method='POST'>
+		<form autocomplete="off" class="search-by form-inline" id="iform-inline"  target="_blank" action="http://127.0.0.1:5000/ingresult" method='POST'>
 			<div class="advcontent">
 				<label for="iused">USED</label>
 				<input type="text" id="iused" placeholder="Enter Ingredient" name="iused">	
@@ -159,7 +159,7 @@
 
 	<!-- -------------------------------------category--------------------------------------------- -->
 	<div class="formc">
-		<form class="search-by form-inline" id="caform-inline"  action="http://localhost:5000/catresult" method='POST'>
+		<form class="search-by form-inline" id="caform-inline"  target="_blank" action="http://127.0.0.1:5000/catresult" method='POST'>
 			<div class="advcontent">
 				<label for="caused">USED</label>
 				<input type="text" id="caused" placeholder="Enter Category" name="caused">	
@@ -174,7 +174,7 @@
 
 	<!-- -------------------------------------nutrition--------------------------------------------- -->
 	<div id="Nutrition" class="formc">
-		<form  class="search-by form-inline" id="nutform-inline" target="_blank" action="http://localhost:5000/nutresult" method='POST'>
+		<form  class="search-by form-inline" id="nutform-inline" target="_blank" action="http://127.0.0.1:5000/nutresult" method='POST'>
 			<ul id="nutlist">
 				<li>
 					<div class="advnutrition">
@@ -207,7 +207,7 @@
 	</div>
 	<!-- ------------------------------advanced search------------------------------- -->
 	<div class="formc">
-		<form class="search-by form-inline" id="advform-inline"  target="_blank" action="http://localhost:5000/advresult" method='POST'> 
+		<form class="search-by form-inline" id="advform-inline"  target="_blank" action="http://127.0.0.1:5000/advresult" method='POST'> 
 			<ul id="advlist">
 				<li>
 					<div class="advcontent">
@@ -362,7 +362,7 @@
 </style>
 
 <script>
-	function autocomplete(inp, arr) {
+function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
@@ -459,21 +459,14 @@
   });
 }
 
-
-
-
 // *******************************************************************************************************************************************************************
 /*An array containing all the country names in the world:*/
 var continent=['African', 'Asian', 'Australasian', 'Latin American', 'European', 'North American'];
 var region=['Middle Eastern', 'Rest Africa', 'Northern Africa', 'Chinese and Mongolian', 'Thai', 'Southeast Asian', 'Indian Subcontinent', 'Korean', 'Japanese', 'Australian', 'Mexican', 'Caribbean', 'South American', 'Eastern European', 'Scandinavian', 'UK', 'Belgian', 'Deutschland', 'Greek', 'French', 'Spanish and Portuguese', 'Italian', 'Irish', 'US', 'Canadian', 'Central American'];
-var sub_region=['Egyptian', 'Nigerian', 'Moroccan', 'Rest Middle Eastern', 'Chinese', 'Thai', 'Indonesian', 'Bangladeshi', 'Vietnamese', 'Israeli', 'Lebanese', 'Filipino', 'Indian', 'Korean', 'Malaysian', 'Turkish', 'Japanese', 'Pakistani', 'Australian', 'Mexican', 'Rest Caribbean', 'Puerto Rican', 'Jamaican', 'Cuban', 'Argentine', 'Brazilian', 'Colombian', 'Chilean', 'Peruvian', 'Russian', 'Danish', 'Scottish', 'English', 'UK', 'Welsh', 'Hungarian', 'Swedish', 'Belgian', 'Norwegian', 'Austrian', 'Greek', 'French', 'Swiss', 'Portuguese', 'Italian', 'Polish', 'Dutch', 'Irish', 'German', 'Rest Eastern European', 'Spanish', 'Finnish', 'Czech', 'US', 'Canadian', 
-'Somalian', 'Namibian', 'Angolan', 'Libyan', 'Sudanese', 'Ethiopian', 'Laotian', 'Nepalese', 'Cambodian', 'Palestinian', 'Saudi Arabian', 'Mongolian', 'Iraqi', 'New Zealander', 'Honduran', 'Costa Rican', 'Guatemalan', 'Ecuadorean', 'Venezuelan', 'Icelandic'];
+var sub_region=['Egyptian', 'Nigerian', 'Moroccan', 'Rest Middle Eastern', 'Chinese', 'Thai', 'Indonesian', 'Bangladeshi', 'Vietnamese', 'Israeli', 'Lebanese', 'Filipino', 'Indian', 'Korean', 'Malaysian', 'Turkish', 'Japanese', 'Pakistani', 'Australian', 'Mexican', 'Rest Caribbean', 'Puerto Rican', 'Jamaican', 'Cuban', 'Argentine', 'Brazilian', 'Colombian', 'Chilean', 'Peruvian', 'Russian', 'Danish', 'Scottish', 'English', 'UK', 'Welsh', 'Hungarian', 'Swedish', 'Belgian', 'Norwegian', 'Austrian', 'Greek', 'French', 'Swiss', 'Portuguese', 'Italian', 'Polish', 'Dutch', 'Irish', 'German', 'Rest Eastern European', 'Spanish', 'Finnish', 'Czech', 'US', 'Canadian', 'Somalian', 'Namibian', 'Angolan', 'Libyan', 'Sudanese', 'Ethiopian', 'Laotian', 'Nepalese', 'Cambodian', 'Palestinian', 'Saudi Arabian', 'Mongolian', 'Iraqi', 'New Zealander', 'Honduran', 'Costa Rican', 'Guatemalan', 'Ecuadorean', 'Venezuelan', 'Icelandic'];
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 
 var category=['Additive', 'Vegetable', 'Herb', 'Dairy', 'Plant Derivative', 'Meat', 'Spice', 'Cereal', 'Beverage', 'Essential Oil', 'Maize', 'Legume', 'Beverage-Alcoholic', 'Condiment', 'Seafood', 'Dish', 'Fruit', 'Fish', 'Fungi', 'Nuts and seeds', 'Bakery', 'MISC-Utensil', 'MISC-Other', 'Flower'];
-
-
-
 // ***********************************************************************************************************************************************************************
 // just make lists and link them here
 
