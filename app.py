@@ -64,6 +64,41 @@ def ingresult():
    con.close()
    return value
 
+@app.route('/catresult',methods = ['POST', 'GET'])
+def catresult():
+   # if request.method == 'POST':
+   con = sqlite3.connect('my_data.db')
+   result = request.form
+   notused=result['canotused']
+   if notused=="":
+      notused="zzzz"
+
+
+   print(result)
+
+   str = f"""SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id IN
+            (SELECT DISTINCT Recipe_id FROM ingredients 
+               WHERE Ing_ID IN 
+            (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_rX" like '%{result['caused']}%') 
+               AND Ing_ID NOT IN 
+            (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_RX" like '%{notused}%')) LIMIT 50;"""
+
+            
+
+   print(str)
+
+   cursor=con.execute(str)
+   # print(cursor)
+   ans=[]
+   for row in cursor:
+      # print(row)
+      ans.append(row)
+   value = render_template("result.html",data = ans)
+   con.close()
+   return value
+
+
+
 @app.route('/nutresult',methods = ['POST', 'GET'])
 def nutresult():
    
