@@ -57,9 +57,9 @@ def ingresult():
    con = sqlite3.connect('my_data.db')
    result = request.form
 
-   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id in (SELECT Recipe_id from ingredients where ingredient_name = '{result['iused']}') AND Recipe_id NOT IN (SELECT Recipe_id from ingredients where ingredient_name = '{result['inotused']}') LIMIT 10;"
+   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id in (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['iused']}') AND Recipe_id NOT IN (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['inotused']}') LIMIT 10;"
    cursor=con.execute(str)
-   print(cursor)
+   # print(cursor)
    value = render_template("result.html",data = cursor)
    con.close()
    return value
