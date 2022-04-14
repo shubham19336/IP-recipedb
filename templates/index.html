@@ -336,16 +336,19 @@
   border-bottom: none;
   border-top: none;
   z-index: 99;
+  /* width: 19%; */
   /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
+  /* top: 100%; */
+  /* left: 0; */
+  /* right: 0; */
 }
 
 .autocomplete-items div {
+	/* position: absolute; */
   padding: 10px;
   cursor: pointer;
-  background-color: #fff; 
+  /* width: 20%; */
+  background-color: #d4d4d4; 
   border-bottom: 1px solid #d4d4d4; 
 }
 
@@ -362,9 +365,11 @@
 </style>
 
 <script>
+console.log(document.getElementById('ccontinent').clientWidth)
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
+  
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
@@ -469,7 +474,7 @@ var sub_region=['Egyptian', 'Nigerian', 'Moroccan', 'Rest Middle Eastern', 'Chin
 var category=['Additive', 'Vegetable', 'Herb', 'Dairy', 'Plant Derivative', 'Meat', 'Spice', 'Cereal', 'Beverage', 'Essential Oil', 'Maize', 'Legume', 'Beverage-Alcoholic', 'Condiment', 'Seafood', 'Dish', 'Fruit', 'Fish', 'Fungi', 'Nuts and seeds', 'Bakery', 'MISC-Utensil', 'MISC-Other', 'Flower'];
 // ***********************************************************************************************************************************************************************
 // just make lists and link them here
-
+// console.log(document.getElementById('ccontinent'));
 autocomplete(document.getElementById("ccontinent"), continent);
 autocomplete(document.getElementById("cregion"), region);
 autocomplete(document.getElementById("ccountry"), sub_region);

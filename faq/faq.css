@@ -12,8 +12,8 @@ body
 
 .outer-faq{
   min-height:100% ;
-  width: 100%;
-  display: flex;
+  /* width: 100%; */
+  display: inline-block;
   justify-content: center;
 }
 
@@ -23,21 +23,12 @@ body
     margin-right: 5%;
     margin-top: 10vh;
     text-align: center;
-    /* width: calc(95% - 320px);  */
-    /* width calculated by categories div */
-    /* border: 3px solid rgb(0, 128, 128); */
 
     display: grid;
-    /* place-items: center; */
     overflow: hidden;
     color: var(--color-text);
-    font-family: "Hind", sans-serif;
+    /* font-family: "Hind", sans-serif; */
 }
-/* for 1st category to display initially */
-/* #faqcat1{
-  display: inline;
-} */
-
 
 /* cpy pas */
 
@@ -120,4 +111,23 @@ body
   opacity: 1;
   transform: translateX(0px);
   max-height: 100vh;
+}
+#faq_parent
+ {
+   width: 100%;
+	 overflow-x: scroll;
+ }
+
+ ::-webkit-scrollbar{
+	height: 4px;
+	width: 4px;
+	background: gray;
+}
+::-webkit-scrollbar-thumb:horizontal{
+	background: #000;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:vertical{
+	background: #000;
+	border-radius: 10px;
 }
