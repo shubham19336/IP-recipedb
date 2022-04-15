@@ -101,17 +101,14 @@ def nutresult():
    # if request.method == 'POST':
    conn = sqlite3.connect('my_data.db')
    result = request.form
-   energy = f"Energy(kcal) >= {result['enemin']} AND Energy(kcal) <= {result['enemax']}"
+   energy = f"([Energy(kcal)] BETWEEN {result['enemin']} AND {result['enemax']})"
+   # energy = f"Region = 'Australian'"
    proteins = f"([Protein(g)] BETWEEN {result['promin']} AND {result['promax']})"
    fats = f"([Totallipid(fat)(g)] BETWEEN {result['fatmin']} AND {result['fatmax']})"
    carbo = f"([Carbohydratebydifference(g)] BETWEEN {result['carmin']} AND {result['carmax']})"
-   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE {energy}"
+   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE {energy} AND {proteins} AND {fats} AND {carbo} LIMIT 200"
    cursor= conn.execute(str)
-   print(str)
-   for row in cursor:
-      print(row)
    value = render_template("result.html",data = cursor)
-   
    conn.close()
    return value
 
