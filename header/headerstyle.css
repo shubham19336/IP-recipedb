@@ -1,149 +1,102 @@
-/* wouldn't these affect whole css of other pages? */
-html, body {
-  margin: 0;
-  height: 100%;
-}
 
 * {
-    box-sizing: border-box;
-}
-body
-{
-	font-family: 'IBM Plex Sans Thai Looped', sans-serif;
-}
-ul
-{
-	list-style-type: none;
-	padding: 0;
-  margin: 0;
-}
-button
-{
-	background-color: transparent;
-	border: none;
-	font-size: large;
+  box-sizing: border-box;
 }
 
-/* -------------------------------- */
-.top-nav {
-  top: 0;
-  position: fixed;
-  z-index: 100;
-  display: flex;
+body {
+  margin: 0px;
+}
+
+.nnav {
+  height: 50px;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  background: black;
-  color: rgb(255, 255, 255);
-  height: 60px;
-  padding: 1em;
+  background-color: #000000;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
 }
 
-.menu {
-  display: flex;
-  list-style-type: none;
-  /* margin: 0; */
-  /* padding: 0; */
-  transition: display .4s ease;
-
-}
-.menu label{
-  cursor: pointer;
+.nnav > .nav-header {
+  display: inline;
 }
 
-.menu > li {
-  margin: 0;
-  /* margin-right: 1em; */
+.nnav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nnav > .nav-btn {
+  display: none;
+}
+
+.nnav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nnav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #efefef;
   transition: font-size .4s ease;
 }
 
-.menu-button-container {
-  display: none;
-  height: 0%;
-  width: 30px;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: height .8s ease;
-}
-
-#menu-toggle {
-  display: none;
-}
-
-.menu-button,
-.menu-button::before,
-.menu-button::after {
-  display: block;
-  background-color: #fff;
-  position: absolute;
-  height: 4px;
-  width: 30px;
-  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
-  border-radius: 2px;
-}
-
-.menu-button::before {
-  content: '';
-  margin-top: -8px;
-}
-
-.menu-button::after {
-  content: '';
-  margin-top: 8px;
-}
-
-#menu-toggle:checked + .menu-button-container .menu-button::before {
-  margin-top: 0px;
-  transform: rotate(405deg);
-}
-
-#menu-toggle:checked + .menu-button-container .menu-button {
-  background: rgba(255, 255, 255, 0);
-}
-
-#menu-toggle:checked + .menu-button-container .menu-button::after {
-  margin-top: 0px;
-  transform: rotate(-405deg);
-}
-.menu li:hover
-{
+.nnav > .nav-links > a:hover {
   color: red;
-  font-size: large;
+  font-size: 20px;
   cursor: pointer;
 }
-@media (max-width: 700px) 
-{
-    .menu 
-    {
-        
-        width: 0%;
-        display: none;
-        transition: width .4s ease;
-    }
-    .menu-button-container
-    {
-        display: flex;
-        height: 100%;
-    }
-    #menu-toggle:checked ~ .menu
-    {
-        position: absolute;
-        padding: 0;
-        
-        background-color: black;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-left: -16px;
-        margin-top:215px;
-        
-        color: white;
-        
-        width: 100%;
-        display: flex;
-        /* border: 1px solid red; */
-        
-    }
+
+.nnav > #nav-check {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nnav > .nav-btn {
+    display: inline-block;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+  }
+  .nnav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nnav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .nnav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nnav > .nav-links {
+    position: fixed;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nnav > .nav-links > a {
+    display: block;
+    width: 100%;
+  }
+  .nnav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nnav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
 }
