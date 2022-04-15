@@ -9,10 +9,14 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+
   
   <script src="https://kit.fontawesome.com/9d7803f1fd.js" crossorigin="anonymous"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
    <title>Document</title>
 </head>
 <body>
@@ -93,20 +97,20 @@
             <br>
             <div class="data_container">
                <div id="process_div">
-                  <ul style="font-family: 'Grape Nuts', cursive; list-style: none;">
-                     <li><h2  style="font-weight: 900;">PROCESSES</h2></li>
+                  <ul style="list-style: none;">
+                     <li><h3 style="font-weight: 500;">PROCESSES</h3></li>
                      {% for i in data['Processes'] %}
-                        <li><h3  style="font-weight: 500;">{{i}}</h3></li>
+                        <li><h4 style="font-weight: 250;">{{i}}</h4></li>
                      {% endfor %}
                   </ul>
                </div>
                
                <br>
                <div id="utensil_div">
-                  <ul style="font-family: 'Grape Nuts', cursive; list-style: none;">
-                     <li><h2 style="font-weight: 900;">UTENSILS</h2></li>
+                  <ul style="list-style: none;">
+                     <li><h3 style="font-weight: 500;">UTENSILS</h3></li>
                      {% for i in data['Utensils'] %}
-                        <li><h3  style="font-weight: 500;">{{i}}</h3></li>
+                        <li><h4 style="font-weight: 250;">{{i}}</h4></li>
                      {% endfor %}
                   </ul>
                </div>
@@ -119,7 +123,7 @@
             <br>
             {% for i in instructions %}
             <!-- {{instructions}} -->
-               <ul style="list-style: none;  text-align: left; font-family: 'Grape Nuts', cursive;" class="liststyle" id="inslist">
+               <ul style="list-style: none;  text-align: left;" class="liststyle" id="inslist">
                   <li><h4  style="font-weight: 400;">{{i}}</h4></li>
                </ul>
             {% endfor %}
@@ -189,7 +193,6 @@
    }
    .recipe_info
    {
-      border: 1px solid red;
       text-align: center;
    }
    .recipe_info table
@@ -255,30 +258,30 @@
     display: block; 
     /* width: 100%; */
   }
-  /* .page-item.active .page-link {
-      z-index: 3;
-      color: rgb(247, 106, 106);
-      background-color: #000000;
-      border-color: #000000;
-   }
-   .table-dark {
-      color: rgb(247, 106, 106);
-      background-color: #000000;
-   }
-   .page-link {
-      color: #000000;
-   } */
    .table-dark a{
       color: cyan;
    }
+   ::-webkit-scrollbar{
+	height: 4px;
+	width: 4px;
+	background: gray;
+}
+::-webkit-scrollbar-thumb:horizontal{
+	background: #000;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:vertical{
+	background: #000;
+	border-radius: 10px;
+}
 </style>
 <script>
    function fix(){
         $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
     }
    $(document).ready(function() {
-         var restable=$('#nuttable').DataTable({ responsive: true });
-         var restable=$('#ingtable').DataTable({ responsive: true });
+         var restable=$('#nuttable').DataTable({ responsive: true, scrollX: true});
+         var restable=$('#ingtable').DataTable({ responsive: true, scrollX: true});
 
          fix();
       });

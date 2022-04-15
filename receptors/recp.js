@@ -2,6 +2,7 @@ function loadItemDetails(jsonData,tableid) {
   $(tableid).DataTable( {
       data: jsonData,
       responsive: true,
+      scrollX: true,
       columns: [
           { data: "Uniprot Id" },
           { data: "Entry name" },

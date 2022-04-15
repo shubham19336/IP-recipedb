@@ -34,8 +34,8 @@ body
 
 :root {
   --color-text: hsl(248, 10%, 40%);
-  --color-text-muted: hsl(248, 10%, 40%);
-  --color-purple: slateblue;
+  --color-text-muted: hsl(0, 10%, 40%);
+  --color-purple: rgb(235, 0, 0);
 }
 
 .accordion {

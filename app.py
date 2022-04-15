@@ -57,9 +57,8 @@ def ingresult():
    con = sqlite3.connect('my_data.db')
    result = request.form
 
-   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id in (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['iused']}') AND Recipe_id NOT IN (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['inotused']}') LIMIT 10;"
+   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id in (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['iused']}') AND Recipe_id NOT IN (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['inotused']}') LIMIT 66000;"
    cursor=con.execute(str)
-   # print(cursor)
    value = render_template("result.html",data = cursor)
    con.close()
    return value
@@ -99,14 +98,22 @@ def catresult():
 @app.route('/nutresult',methods = ['POST', 'GET'])
 def nutresult():
    
-   if request.method == 'POST':
-      conn = sqlite3.connect('my_data.db')
-      result = request.form
-      
-      # print(result)
-      value = render_template("temp.html",data = "hello")
-      conn.close()
-      return value
+   # if request.method == 'POST':
+   conn = sqlite3.connect('my_data.db')
+   result = request.form
+   energy = f"Energy(kcal) >= {result['enemin']} AND Energy(kcal) <= {result['enemax']}"
+   proteins = f"([Protein(g)] BETWEEN {result['promin']} AND {result['promax']})"
+   fats = f"([Totallipid(fat)(g)] BETWEEN {result['fatmin']} AND {result['fatmax']})"
+   carbo = f"([Carbohydratebydifference(g)] BETWEEN {result['carmin']} AND {result['carmax']})"
+   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE {energy}"
+   cursor= conn.execute(str)
+   print(str)
+   for row in cursor:
+      print(row)
+   value = render_template("result.html",data = cursor)
+   
+   conn.close()
+   return value
 
 @app.route('/advresult',methods = ['POST', 'GET'])
 def advresult():

@@ -9,6 +9,9 @@
    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
    <title>Document</title>
 </head>
 <body>
@@ -82,7 +85,6 @@
   }
   .ing_info
   {
-     border: 1px solid red;
      text-align: center;
   }
   .ing_info table
@@ -154,14 +156,27 @@
 .table-dark a{
    color: cyan;
 }
+::-webkit-scrollbar{
+	height: 4px;
+	width: 4px;
+	background: gray;
+}
+::-webkit-scrollbar-thumb:horizontal{
+	background: #000;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:vertical{
+	background: #000;
+	border-radius: 10px;
+}
 </style>
 <script>
    function fix(){
        $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
    }
    $(document).ready(function() {
-       var restable=$('#tableID1').DataTable({ responsive: true });
-       var restable=$('#tableID2').DataTable({ responsive: true });
+       var restable=$('#tableID1').DataTable({ responsive: true,scrollX: true});
+       var restable=$('#tableID2').DataTable({ responsive: true,scrollX: true});
        fix();
    });
    

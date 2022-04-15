@@ -5,6 +5,9 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
    <meta id="recdata" data-rec="{{ data }}">
    <body>
@@ -69,6 +72,19 @@
          cursor: pointer;
          /* background:url(/assets/more_info.png) */
       }
+         ::-webkit-scrollbar{
+      height: 4px;
+      width: 4px;
+      background: gray;
+   }
+   ::-webkit-scrollbar-thumb:horizontal{
+      background: #000;
+      border-radius: 10px;
+   }
+   ::-webkit-scrollbar-thumb:vertical{
+      background: #000;
+      border-radius: 10px;
+   }
       /* .page-item.active .page-link {
          z-index: 3;
          color: rgb(247, 106, 106);
@@ -86,7 +102,7 @@
    </style>
    <script>
       $(document).ready(function() {
-         var restable=$('#tableID').DataTable({ responsive: true });
+         var restable=$('#tableID').DataTable({ responsive: true,scrollX: true});
          $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
       });
 

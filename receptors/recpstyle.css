@@ -82,6 +82,19 @@ table.dataTable a {
     display: block; 
     /* width: 100%; */
   }
-  
+
  
+  ::-webkit-scrollbar{
+   height: 4px;
+   width: 4px;
+   background: gray;
+ }
+ ::-webkit-scrollbar-thumb:horizontal{
+   background: #000;
+   border-radius: 10px;
+ }
+ ::-webkit-scrollbar-thumb:vertical{
+   background: #000;
+   border-radius: 10px;
+ }
    
