@@ -276,8 +276,8 @@ ul.main_info>li
     display: none;
 	width: 100%;
     /* border: 1px solid red; */
-    padding-left: 50px;
-    padding-right: 50px;
+    /* padding-left: 50px; */
+    /* padding-right: 50px; */
 }
 #adv_Nutrition label{
     font-size: 15px;
@@ -288,7 +288,10 @@ ul.main_info>li
 	width: 100%;
 	/* border: 1px solid green; */
 }
-
+/* #advlist button
+{
+	width: 100%;
+} */
 /* -----------------------------------------advanced search form---------------------------------------- */
 #advlist li
 {
@@ -420,6 +423,7 @@ ul.main_info>li
   /* --------------------------------------------------------------------------- */
 #concept_parent
  {
+	margin-top: 100px;
 	 overflow-x: scroll;
  }
 
@@ -436,36 +440,3 @@ ul.main_info>li
 	background: #000;
 	border-radius: 10px;
 }
-.video-background {
-	background: #000;
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: -99;
-  }
-  
-  .video-foreground,
-  .video-background iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-  }
-  
-  @media (min-aspect-ratio: 16/9) {
-	.video-foreground {
-	  height: 300%;
-	  top: -100%;
-	}
-  }
-  
-  @media (max-aspect-ratio: 16/9) {
-	.video-foreground {
-	  width: 300%;
-	  left: -100%;
-	}
-  }

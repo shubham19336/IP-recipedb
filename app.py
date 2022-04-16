@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, redirect, render_template, request, url_for, redirect
+from flask_paginate import Pagination, get_page_args
 import sqlite3
 import pandas as pd
 import json
@@ -19,6 +20,7 @@ except:
 
 df = pd.read_csv("Recipes.csv")
 recp_column = (df.iloc[0]).tolist()
+result = []
 app = Flask(__name__)
 
 @app.route('/')
@@ -28,13 +30,13 @@ def home():
 
 @app.route('/cuisine_result',methods = ['POST', 'GET'])
 def cuisine_result():
-   
-   # if request.method == 'POST':
    conn = sqlite3.connect('my_data.db')
-   result = request.form
-   # print(result)
-
-      # populating required operands and values for queries
+   global result
+   temp = request.form
+   page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+   if len(list(temp)) != 0:
+      result = temp
+   print(result)
    keys=['ccontinent','cregion','ccountry','crecipe']
    operands=['=']*4
    vals=['']*4
@@ -45,21 +47,39 @@ def cuisine_result():
          operands[i]='!='
       
    str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Continent {operands[0]} '{vals[0]}' and Region {operands[1]} '{vals[1]}' and Sub_region {operands[2]} '{vals[2]}' and Recipe_title {operands[3]} '{vals[3]}';"
-   # print(str)
-   cursor = conn.execute(str)
-   value = render_template("result.html",data = cursor)
+   cursor=conn.execute(str)
+   lst = []
+   for row in cursor:
+      lst.append(row)
+   
+   total = len(lst)
+   pagination_recipes = lst[offset: offset + per_page]
+   pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    conn.close()
    return value
+
 
 @app.route('/ingresult',methods = ['POST', 'GET'])
 def ingresult():
    # if request.method == 'POST':
    con = sqlite3.connect('my_data.db')
-   result = request.form
-
-   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id in (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['iused']}') AND Recipe_id NOT IN (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['inotused']}') LIMIT 66000;"
+   global result
+   temp = request.form
+   page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+   if len(list(temp)) != 0:
+      result = temp
+   print(result)
+   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id in (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['iused']}') AND Recipe_id NOT IN (SELECT DISTINCT Recipe_id from ingredients where ingredient_name = '{result['inotused']}');"
    cursor=con.execute(str)
-   value = render_template("result.html",data = cursor)
+   lst = []
+   for row in cursor:
+      lst.append(row)
+   
+   total = len(lst)
+   pagination_recipes = lst[offset: offset + per_page]
+   pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    con.close()
    return value
 
@@ -67,29 +87,32 @@ def ingresult():
 def catresult():
    # if request.method == 'POST':
    con = sqlite3.connect('my_data.db')
-   result = request.form
+   global result
+   temp = request.form
+   page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+   if len(list(temp)) != 0:
+      result = temp
+   print(result)
+
    notused=result['canotused']
    if notused=="":
       notused="zzzz"
-
-   # print(result)
-
    str = f"""SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE Recipe_id IN
             (SELECT DISTINCT Recipe_id FROM ingredients 
                WHERE Ing_ID IN 
             (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_rX" like '%{result['caused']}%') 
                AND Ing_ID NOT IN 
-            (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_RX" like '%{notused}%')) LIMIT 50;"""
-
-   # print(str)
+            (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_RX" like '%{notused}%'));"""
 
    cursor=con.execute(str)
-   # print(cursor)
-   ans=[]
+   lst = []
    for row in cursor:
-      # print(row)
-      ans.append(row)
-   value = render_template("result.html",data = ans)
+      lst.append(row)
+   
+   total = len(lst)
+   pagination_recipes = lst[offset: offset + per_page]
+   pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    con.close()
    return value
 
@@ -99,17 +122,32 @@ def catresult():
 def nutresult():
    
    # if request.method == 'POST':
-   conn = sqlite3.connect('my_data.db')
-   result = request.form
+   con = sqlite3.connect('my_data.db')
+   global result
+   temp = request.form
+   page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+   if len(list(temp)) != 0:
+      result = temp
+   print(result)
+
+
    energy = f"([Energy(kcal)] BETWEEN {result['enemin']} AND {result['enemax']})"
-   # energy = f"Region = 'Australian'"
    proteins = f"([Protein(g)] BETWEEN {result['promin']} AND {result['promax']})"
    fats = f"([Totallipid(fat)(g)] BETWEEN {result['fatmin']} AND {result['fatmax']})"
    carbo = f"([Carbohydratebydifference(g)] BETWEEN {result['carmin']} AND {result['carmax']})"
-   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE {energy} AND {proteins} AND {fats} AND {carbo} LIMIT 200"
-   cursor= conn.execute(str)
-   value = render_template("result.html",data = cursor)
-   conn.close()
+   str = f"SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE {energy} AND {proteins} AND {fats} AND {carbo}"
+
+
+   cursor=con.execute(str)
+   lst = []
+   for row in cursor:
+      lst.append(row)
+   
+   total = len(lst)
+   pagination_recipes = lst[offset: offset + per_page]
+   pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   con.close()
    return value
 
 @app.route('/advresult',methods = ['POST', 'GET'])

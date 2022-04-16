@@ -5,32 +5,36 @@ body
 .htu_out_div{
     min-height: 100%;
     margin-bottom: -80px;
-    width: 70%;
+    width: 100%;
     margin: auto;
     margin-top: 80px;
     padding: 0;
 }
 .prodBody img
 {
-  width: 100%;
+  width: 70%;
 }
 .container {
     text-align: center;
     margin: auto;
-    padding: 50px;
+    /* padding: 50px; */
+    width: 100%;
+    /* border: 1px solid red; */
   }
   
   .prodNav {
-    font-size: 12px;
+    font-size: 15px;
     /* background: #7e7e7e85; */
     border-radius: 20px;
     overflow: hidden;
     display: inline-block;
     vertical-align: middle;
     margin: 50px 0 20px;
-    line-height: 1.1;
+    line-height: 3.1;
   }
   .prodNav .ptItem {
+    width: 230px;
+    height: 40px;
     padding: 9px 35px;
     line-height: 20px;
     border-radius: 20px;
@@ -54,13 +58,13 @@ body
   
   .prodBody {
     /* border: 1px solid #e61414; */
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 5px;
   }
   
   .prodMain {
     display: none;
-    padding: 20px;
+    /* padding: 20px; */
     /* color: #e60a0a; */
   }
   

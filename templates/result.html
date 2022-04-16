@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html>
    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
   <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
@@ -8,11 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
    <meta id="recdata" data-rec="{{ data }}">
    <body>
-      <div class="data_container">
-         <!-- <img src="more_info.png" width="30" height="30"/> -->
+      <div id="loader" class="center"></div>
+      <div class="data_container" style="visibility:hidden">
+         <h1>Recipes As Per Your Query</h1>
          <table class="table table-dark table-striped table-hover dataTable display nowrap" id="tableID" cellspacing="0" width="auto">
             <thead>
                <tr>           
@@ -35,7 +35,6 @@
                   {% endfor %}
                   <th>
                      <button class="minfo" onclick="window.open('/result/rec_info/{{each[0]}}')">MORE INFO</button>
-                        <!-- <img src="/assets/more_info.png" width="30" height="30" onclick="window.open('/result/rec_info/{{each[0]}}')"/> -->
                      </th>
                </tr>
                {% endfor %}
@@ -48,20 +47,41 @@
       body{
          font-family: 'IBM Plex Sans Thai Looped', sans-serif;
       }
+
+
+      #loader {
+            border: 12px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 12px solid #444444;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+        }
+          
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+          
+        .center {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+
       .data_container
       {
+         text-align: center;
          width: 90%;
          margin: auto;
+         margin-top: 10vh;
+         visibility: hidden;
       }
-      /* #tableID
-      {
-         color: #ff6c6c;
-         width:100%;
-      }
-      #tableID thead
-      {
-         color: white;
-      } */
       .minfo
       {
          background-color: #000000;
@@ -70,7 +90,6 @@
          width: 150px;
          height: 40px;
          cursor: pointer;
-         /* background:url(/assets/more_info.png) */
       }
          ::-webkit-scrollbar{
       height: 4px;
@@ -85,39 +104,148 @@
       background: #000;
       border-radius: 10px;
    }
-      /* .page-item.active .page-link {
-         z-index: 3;
-         color: rgb(247, 106, 106);
-         background-color: #000000;
-         border-color: #000000;
-      }
-      .table-dark {
-         width: auto;
-         color: rgb(247, 106, 106);
-         background-color: #000000;
-      }
-      .page-link {
-         color: #000000;
-      } */
+   .page-link
+   {
+   color: black;
+   }
+   .page-item.active .page-link
+   {
+   border-color: #000;
+   color: red;
+   background-color: #000;
+   }
    </style>
    <script>
+      
       $(document).ready(function() {
          var restable=$('#tableID').DataTable({ responsive: true,scrollX: true});
          $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
       });
-
-      // $(function(){
-      // $('button.minfo').on('click',function(){
-      //       console.log($(this).closest('tr').index())
-      //    })
-      // });
-
-      // ('#tableID tbody').on('click','button',function(){
-      //    var dt = restable.row($(this).parents('tr')).data();
-      //    console.log(dt);
-      // });
-      
-      
-
+      document.onreadystatechange = function() {
+            if (document.readyState !== "complete") {
+                document.querySelector(
+                  ".data_container").style.visibility = "hidden";
+                document.querySelector(
+                  "#loader").style.visibility = "visible";
+            } else {
+                document.querySelector(
+                  "#loader").style.display = "none";
+                document.querySelector(
+                  ".data_container").style.visibility = "visible";
+            }
+        };
    </script>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Query Results</title>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Recipes As Per Your Query</h1>
+      <div class="table-responsive">
+        <table class="table table-dark table-striped table-hover" id="tableID" >
+          <thead>
+            <tr>
+               <th>Recipe ID</th>
+               <th>Recipe Title</th>
+               <th>Region</th>
+               <th>Country</th>
+               <th>Servings</th>
+               <th>Calories (KCal)</th>
+               <th>Protein (g)</th>
+               <th>Fat (g)</th>
+               <th>More Info</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for recipe in recipes %}
+            <tr>
+              <!-- <td>{{ loop.index + (page - 1) * per_page }}</td> -->
+              <td>{{ recipe[0] }}</td>
+              <td>{{ recipe[1] }}</td>
+              <td>{{ recipe[2] }}</td>
+              <td>{{ recipe[3] }}</td>
+              <td>{{ recipe[4] }}</td>
+              <td>{{ recipe[5] }}</td>
+              <td>{{ recipe[6] }}</td>
+              <td>{{ recipe[7] }}</td>
+              <td><button class="minfo" onclick="window.open('/result/rec_info/{{recipe[0]}}')">MORE INFO</button></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {{ pagination.links }}
+    </div>
+  </body>
+  <style>
+     body{
+         font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+      }
+     .container
+     {
+         /* border: 1px solid red; */
+         text-align: center;
+         width: 100%;
+         margin: auto;
+     }
+     /* .container table
+     {
+        margin: auto;
+     } */
+     .minfo
+      {
+         background-color: #000000;
+         color: #8fffdb;
+         border-radius: 15px;
+         width: 150px;
+         height: 40px;
+         cursor: pointer;
+      }
+      ::-webkit-scrollbar{
+         height: 4px;
+         width: 4px;
+         background: gray;
+      }
+      ::-webkit-scrollbar-thumb:horizontal{
+      background: #000;
+      border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:vertical{
+         background: #000;
+         border-radius: 10px;
+      }
+      .page-link
+      {
+         color: black;
+      }
+      .page-item.active .page-link
+      {
+         border-color: #000;
+         color: red;
+         background-color: #000;
+      }
+  </style>
+  <script>
+      
+   $(document).ready(function() {
+      var restable=$('#tableID').DataTable({ responsive: true,scrollX: true, "bPaginate": false});
+      $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+   });
+</script>
 </html>
