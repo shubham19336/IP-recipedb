@@ -157,7 +157,7 @@
   <body>
     <div class="container">
       <h1>Recipes As Per Your Query</h1>
-      <div class="table-responsive">
+      <!-- <div class="table-responsive"> -->
         <table class="table table-dark table-striped table-hover" id="tableID" >
           <thead>
             <tr>
@@ -189,7 +189,7 @@
             {% endfor %}
           </tbody>
         </table>
-      </div>
+      <!-- </div> -->
       {{ pagination.links }}
     </div>
   </body>
@@ -244,7 +244,7 @@
   <script>
       
    $(document).ready(function() {
-      var restable=$('#tableID').DataTable({ responsive: true,scrollX: true, "bPaginate": false});
+      var restable=$('#tableID').DataTable({ scrollY: false, scrollX: true, "bPaginate": false});
       $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
    });
 </script>
