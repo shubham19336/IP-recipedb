@@ -64,8 +64,6 @@ body
   
   .prodMain {
     display: none;
-    /* padding: 20px; */
-    /* color: #e60a0a; */
   }
   
   .prodMain.active {
