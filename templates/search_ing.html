@@ -89,8 +89,6 @@
                                 <td style="text-transform: capitalize">{{ (recipe['state'].strip() + " " + recipe['ingredient_name'].strip()).strip() }}</td>
                                 <td><a href="/recipedb/search_region/{{ recipe['Region'] }}" target="_blank">{{ recipe["Region"] }}</a></td>
                                 <td><a href="/recipedb/search_subregion/{{ recipe['Sub_region'] }}" target="_blank">{{ recipe["Sub_region"] }}</a></td>
-                                <!--<td>Unavailable</td>-->
-                                <!-- <td>{{ recipe["Source"] }}</td> -->
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -105,12 +103,6 @@
     
     
     
-    <!-- <p></p>
-    <p>----------------------------------------</p>
-    <p>{{forms_info}}</p>
-    <p>----------------------------------------</p>
-    <p>{{recipes_info}}</p> -->
-    
 </body>
 <style>
     .img_th
@@ -119,7 +111,6 @@
    }
    .ing_info
    {
-      /* border: 1px solid red; */
       text-align: center;
    }
    .ing_info table
@@ -141,48 +132,48 @@
         text-align: center;
     }
     .prodNav {
-        font-size: 12px;
-        border-radius: 20px;
-        overflow: hidden;
-        display: inline-block;
-        vertical-align: middle;
-        margin: 50px 0 20px;
-        line-height: 1.1;
-    }
-    .prodNav .ptItem {
-        padding: 9px 35px;
-        line-height: 20px;
-        border-radius: 20px;
-        background-color: rgb(243, 237, 237);
-        border: 1px solid transparent;
-        font-weight: 500;
-        cursor: pointer;
-        display: inline-block;
-        vertical-align: middle;
-        transition: all 0.3s ease-in-out;
-    }
+    font-size: 15px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 50px 0 20px;
+    line-height: 3.1;
+  }
+  .prodNav .ptItem {
+    width: 230px;
+    height: 40px;
+    padding: 9px 35px;
+    line-height: 20px;
+    border-radius: 20px;
+    background-color: rgb(243, 237, 237);
+    border: 1px solid transparent;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .prodNav .ptItem.active,
+  .prodNav .ptItem:hover {
+    background: #ff5656;
+    color: rgb(253, 253, 253);
 
-    .prodNav .ptItem.active,
-    .prodNav .ptItem:hover {
-        background: #ff5656;
-        color: rgb(253, 253, 253);
-
-    }
-
-    .prodBody {
-        padding: 20px;
-        border-radius: 5px;
-    }
-
-    .prodMain {
-        display: none;
-        padding: 20px;
-    }
-
-    .prodMain.active {
-        display: block; 
-        /* width: 100%; */
-    }
+  }
+  
+  .prodBody {
+    border-radius: 5px;
+  }
+  
+  .prodMain {
+    display: none;
+  }
+  
+  .prodMain.active {
+    display: block;
+  }
+  
     .page-link
    {
    color: black;
