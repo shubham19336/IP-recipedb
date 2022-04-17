@@ -246,7 +246,7 @@ ul.main_info>li
 	padding: 10px 20px;
 	width: 20%;
 	background-color: rgb(255, 0, 0);
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 	border-radius: 10px;
 	color: white;
 	cursor: pointer;
@@ -261,8 +261,6 @@ ul.main_info>li
 
 /* ------------------------------------Nutrition sliders form ------------------------------- */
 #Nutrition{
-    /* display: none; */
-    /* border: 1px solid red; */
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -275,9 +273,6 @@ ul.main_info>li
 #adv_Nutrition{
     display: none;
 	width: 100%;
-    /* border: 1px solid red; */
-    /* padding-left: 50px; */
-    /* padding-right: 50px; */
 }
 #adv_Nutrition label{
     font-size: 15px;
@@ -286,12 +281,7 @@ ul.main_info>li
 .advnutrition
 {
 	width: 100%;
-	/* border: 1px solid green; */
 }
-/* #advlist button
-{
-	width: 100%;
-} */
 /* -----------------------------------------advanced search form---------------------------------------- */
 #advlist li
 {
@@ -300,7 +290,6 @@ ul.main_info>li
 }
 #nutlist 
 {
-	/* display: flex; */
 	width: 100%;
 }
 
