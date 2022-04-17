@@ -85,7 +85,7 @@
                     <tbody>
                         {% for recipe in recipes_info %}
                             <tr>
-                                <td><a href="/recipedb/search_recipeInfo/{{recipe['Recipe_id']}}" target="_blank">{{ recipe["Recipe_title"] }}</a></td>
+                                <td><a href="/result/rec_info/{{recipe['Recipe_id']}}" target="_blank">{{ recipe["Recipe_title"] }}</a></td>
                                 <td style="text-transform: capitalize">{{ (recipe['state'].strip() + " " + recipe['ingredient_name'].strip()).strip() }}</td>
                                 <td><a href="/recipedb/search_region/{{ recipe['Region'] }}" target="_blank">{{ recipe["Region"] }}</a></td>
                                 <td><a href="/recipedb/search_subregion/{{ recipe['Sub_region'] }}" target="_blank">{{ recipe["Sub_region"] }}</a></td>
