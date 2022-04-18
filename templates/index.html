@@ -92,7 +92,7 @@
 		<li>
 			<nav class="dropnav" >
 				<label for="sbtouch" class="drop"><b>SEARCH BY</b></label>  
-				<input type="checkbox" id="sbtouch" onchange="navuncheck('sttouch')"> 
+				<input type="checkbox" id="sbtouch" > 
 				<ul class="slide">
 					<li><button value="cuisine" onclick="search_display('cform-inline')">CUISINE</button></li> 
 					<li><button value="ingredient" onclick="search_display('iform-inline')">INGREDIENT</button></li>
@@ -105,7 +105,7 @@
 		<li>
 			<nav class="dropnav">
 				<label for="sttouch" class="drop"><b>STATISTICS</b></label>               
-				<input type="checkbox" id="sttouch" onchange="navuncheck('sbtouch')"> 
+				<input type="checkbox" id="sttouch" > 
 				<ul class="slide">
 					<li><button value="recipes" onclick="stats_display('rec_geoplot')">RECIPES</button></li> 
 					<li><button value="categories" onclick="stats_display('heat_map')">CATEGORIES</button></li>
@@ -344,6 +344,8 @@
   border-bottom: none;
   border-top: none;
   z-index: 99;
+  max-height: 40%;
+  overflow: auto;
 }
 
 .autocomplete-items div {
@@ -496,8 +498,8 @@ autocomplete(document.getElementById("caused"), category);
 autocomplete(document.getElementById("advcaused"), category);
 autocomplete(document.getElementById("canotused"), category);
 autocomplete(document.getElementById("advcanotused"), category);
-autocomplete(document.getElementById("advcp"),processes)
-autocomplete(document.getElementById("advutensil"),utensils)
+autocomplete(document.getElementById("advcp"),processes);
+autocomplete(document.getElementById("advutensil"),utensils);
 
 
 </script>
