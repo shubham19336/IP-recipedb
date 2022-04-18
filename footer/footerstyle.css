@@ -93,6 +93,7 @@
 
 .social-media i:hover {
 	transform: scale(1.5);
+	color: #cf0000;
 }
 
 .footer-bottom {
