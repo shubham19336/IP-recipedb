@@ -55,7 +55,7 @@ body {
   display: none;
 }
 
-@media (max-width:600px) {
+@media (max-width:790px) {
   .nnav > .nav-btn {
     display: inline-block;
     position: fixed;

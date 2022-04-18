@@ -138,9 +138,15 @@ $(function(){
 })
   
 // ----------------------------------------------------------AUTOCOMPLETE ENDS -------------------------------------------------------
-  
+var statson=false;
 function search_display(form)
-{     
+{   
+statson=false;  
+const mediaQuery = window.matchMedia('(max-width: 1080px)');
+if (mediaQuery.matches) {
+    document.getElementById("statscontainer").style.overflowX="hidden";
+  }
+
     document.getElementById("sbtouch").checked=false;
     //get element by refernce and then modify
     var items=document.getElementsByClassName("search-by");
@@ -163,8 +169,16 @@ function search_display(form)
     } 
 }
 
+
+  
 function stats_display(stats)
 {
+const mediaQuery = window.matchMedia('(max-width: 1080px)');
+if (mediaQuery.matches) {
+    document.getElementById("statscontainer").style.overflowX="scroll";
+  }
+  statson=true;
+
   document.getElementById("sttouch").checked=false;
   var items=document.getElementsByClassName("search-by");
   for(var i=0;i<items.length;i++){
@@ -197,3 +211,18 @@ function getSlider() {
     }
   }
   
+  function reportWindowSize() {
+      console.log("hora");
+    const mediaQuery = window.matchMedia('(min-width: 1080px)');
+    if (mediaQuery.matches) {
+        document.getElementById("statscontainer").style.overflowX="hidden";
+    }
+    const mediaQuery2 = window.matchMedia('(max-width: 1080px)');
+    if (mediaQuery2.matches && statson) {
+        document.getElementById("statscontainer").style.overflowX="scroll";
+    }
+  }
+  
+  $(function(){
+    window.onresize = reportWindowSize;
+  });

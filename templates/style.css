@@ -415,6 +415,20 @@ ul.main_info>li
 	margin-top: 100px;
 	 overflow-x: scroll;
  }
+ #statscontainer{
+	 width: 100%;
+	/* overflow-x: scroll; */
+ }
+ /* @media (max-width: 1080px) {
+	#statscontainer{
+	   overflow-x: hidden;
+	}
+ } */
+ @media (min-width: 1080px) {
+	#statscontainer{
+	   overflow-x: hidden;
+	}
+ }
 
 
  /* -------------------------------------------------------- trying auto complete -------------------------------------------- */
