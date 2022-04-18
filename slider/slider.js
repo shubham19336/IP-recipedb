@@ -25,7 +25,7 @@ $(function(){
             pips: { mode: "count", values: 3,density:4 },
             range: {
                 'min': 0,
-                'max': i==1?1200:200
+                'max': (i==1 || i==5)?1200:200
             },
             format: numberFormat
         });
