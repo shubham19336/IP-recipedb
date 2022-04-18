@@ -19,6 +19,7 @@ except:
 
 
 result = []
+nutcheck=False
 app = Flask(__name__)
 
 @app.route('/')
@@ -162,72 +163,76 @@ def nutresult():
 def advresult():
    
    # if request.method == 'POST':
-      con = sqlite3.connect('my_data.db')
-      global result
-      temp = request.form
-      page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
-      if len(list(temp)) != 0:
-         result = temp
-      print(result)
-
+   con = sqlite3.connect('my_data.db')
+   global result
+   global nutcheck
+   temp = request.form
+   page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+   if len(list(temp)) != 0:
+      result = temp
       nutcheck=request.form.get("advcheck") != None
+   print(result)
 
-      keys=['ccontinent','cregion','ccountry','crecipe']
-      operands=['=']*4
-      vals=['']*4
-      for i in range(4):
-         k=keys[i]
-         vals[i]=result[k]
-         if vals[i]=='':
-            operands[i]='!='
-      operands[3]="LIKE"
-      vals[3]=f"%{result['crecipe']}%"   
+   keys=['ccontinent','cregion','ccountry','crecipe']
+   operands=['=']*4
+   vals=['']*4
+   for i in range(4):
+      k=keys[i]
+      vals[i]=result[k]
+      if vals[i]=='':
+         operands[i]='!='
+   operands[3]="LIKE"
+   vals[3]=f"%{result['crecipe']}%"   
 
-      cnotused=result['canotused']
-      if cnotused=="":
-         cnotused="zzzzzzzzzzz"
+   cnotused=result['canotused']
+   if cnotused=="":
+      cnotused="zzzzzzzzzzz"
 
-      inotused=result['inotused']
-      if inotused=="":
-         inotused="zzzzzzzzzzzz"
+   inotused=result['inotused']
+   if inotused=="":
+      inotused="zzzzzzzzzzzz"
 
-      energy = f"([Energy(kcal)] BETWEEN {result['enemin']} AND {result['enemax']})"
-      proteins = f"([Protein(g)] BETWEEN {result['promin']} AND {result['promax']})"
-      fats = f"([Totallipid(fat)(g)] BETWEEN {result['fatmin']} AND {result['fatmax']})"
-      carbo = f"([Carbohydratebydifference(g)] BETWEEN {result['carmin']} AND {result['carmax']})"
-      st=f" AND Recipe_id IN (SELECT DISTINCT Recipe_id FROM recipes2 WHERE {energy} AND {proteins} AND {fats} AND {carbo})"
-      
-      str=f"""SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE 
-            Recipe_id IN
-               (SELECT DISTINCT Recipe_id from ingredients where ingredient_name LIKE '%{result['iused']}%')
-            AND Recipe_id IN
-               (
-                  SELECT DISTINCT Recipe_id FROM ingredients 
-                  WHERE Ing_ID IN 
-                  (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_RX" LIKE '%{result['caused']}%') 
-                  AND Ing_ID NOT IN 
-                  (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_RX" LIKE '%{cnotused}%')
-               )
-            AND Recipe_id NOT IN 
-               (SELECT DISTINCT Recipe_id from ingredients where ingredient_name LIKE '%{inotused}%')
-            AND Recipe_id IN
-               (SELECT DISTINCT Recipe_id FROM recipes2 WHERE Continent {operands[0]} '{vals[0]}' AND Region {operands[1]} '{vals[1]}' AND Sub_region {operands[2]} '{vals[2]}' AND Recipe_title {operands[3]} '{vals[3]}')
-            """
-    
-      if(nutcheck):
-         str+=st
+   energy = f"([Energy(kcal)] BETWEEN {result['enemin']} AND {result['enemax']})"
+   proteins = f"([Protein(g)] BETWEEN {result['promin']} AND {result['promax']})"
+   fats = f"([Totallipid(fat)(g)] BETWEEN {result['fatmin']} AND {result['fatmax']})"
+   carbo = f"([Carbohydratebydifference(g)] BETWEEN {result['carmin']} AND {result['carmax']})"
+   st=f" AND Recipe_id IN (SELECT DISTINCT Recipe_id FROM recipes2 WHERE {energy} AND {proteins} AND {fats} AND {carbo})"
+   
+   str=f"""SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE 
+         Recipe_id IN
+            (SELECT DISTINCT Recipe_id from ingredients where ingredient_name LIKE '%{result['iused']}%')
+         AND Recipe_id IN
+            (
+               SELECT DISTINCT Recipe_id FROM ingredients 
+               WHERE Ing_ID IN 
+               (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_RX" LIKE '%{result['caused']}%') 
+               AND Ing_ID NOT IN 
+               (SELECT DISTINCT Ing_ID from unique_ingredients where "Category-D_RX" LIKE '%{cnotused}%')
+            )
+         AND Recipe_id NOT IN 
+            (SELECT DISTINCT Recipe_id from ingredients where ingredient_name LIKE '%{inotused}%')
+         AND Recipe_id IN
+            (SELECT DISTINCT Recipe_id FROM recipes2 WHERE Processes LIKE '%{result['advcp']}%')
+         AND Recipe_id IN
+            (SELECT DISTINCT Recipe_id FROM recipes2 WHERE Utensils LIKE '%{result['advutensil']}%')
+         AND Recipe_id IN
+            (SELECT DISTINCT Recipe_id FROM recipes2 WHERE Continent {operands[0]} '{vals[0]}' AND Region {operands[1]} '{vals[1]}' AND Sub_region {operands[2]} '{vals[2]}' AND Recipe_title {operands[3]} '{vals[3]}')
+         """
+   
+   if(nutcheck):
+      str+=st
 
-      cursor=con.execute(str)
-      lst = []
-      for row in cursor:
-         lst.append(row)
-      
-      total = len(lst)
-      pagination_recipes = lst[offset: offset + per_page]
-      pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-      value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
-      con.close()
-      return value
+   cursor=con.execute(str)
+   lst = []
+   for row in cursor:
+      lst.append(row)
+   
+   total = len(lst)
+   pagination_recipes = lst[offset: offset + per_page]
+   pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   con.close()
+   return value
 
 
 @app.route('/result/rec_info/<string:id>',methods = ['POST', 'GET'])
