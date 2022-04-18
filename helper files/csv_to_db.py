@@ -11,12 +11,26 @@ import os
 import sys
 from io import BytesIO, IOBase
 
-sys.stdout = open('unique.txt', 'w',encoding="utf-8")
+# sys.stdout = open('unique.txt', 'w',encoding="utf-8")
 
 
-df=pd.read_sql(f"SELECT DISTINCT Ing_name FROM unique_ingredients ",conn)
+df=pd.read_sql(f"SELECT Processes FROM recipes2 ",conn)
 # print(df.shape)
-l=list(df['Ing_name'])
+l=list(df['Processes'])
+# print(l)
+st=set()
 for i in l:
-    print('"'+i+'"',end=", ")
-# print(len(l))
+    if len(i)==0:
+        continue
+    if i.count("|")==0:
+        st.add(i)
+        continue
+    
+    temp=i.split("||")
+    # print(temp)
+    for j in temp:
+        st.add(j)
+
+print(st)
+print(len(st))
+    
