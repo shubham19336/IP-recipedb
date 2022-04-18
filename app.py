@@ -20,6 +20,8 @@ except:
 
 result = []
 nutcheck=False
+search_region=""
+search_country=""
 app = Flask(__name__)
 
 @app.route('/')
@@ -375,6 +377,51 @@ def redirect_to_ingredient(name):
    value = redirect((url_for('search_ing', id=t)))
    conn.close()
    return value
+
+@app.route('/recipedb/search_region/<string:region>',  methods = ['GET', 'POST'])
+def search_region(region):
+   conn = sqlite3.connect('my_data.db')
+   global search_region
+   page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+   if len(region) != 0:
+      search_region = region
+
+   str = f'''SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE  Region = '{search_region}';'''
+   print(str)
+   cursor=conn.execute(str)
+   lst = []
+   for row in cursor:
+      lst.append(row)
+   
+   total = len(lst)
+   pagination_recipes = lst[offset: offset + per_page]
+   pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   conn.close()
+   return value
+
+@app.route('/recipedb/search_subregion/<string:country>',  methods = ['GET', 'POST'])
+def search_subregion(country):
+   conn = sqlite3.connect('my_data.db')
+   global search_country
+   page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+   if len(country) != 0:
+      search_country = country
+
+   str = f'''SELECT Recipe_id,Recipe_title,Region,Sub_region,Servings,Calories,[Protein(g)],[Totallipid(fat)(g)] FROM recipes2 WHERE  Sub_region = '{search_country}';'''
+   print(str)
+   cursor=conn.execute(str)
+   lst = []
+   for row in cursor:
+      lst.append(row)
+   
+   total = len(lst)
+   pagination_recipes = lst[offset: offset + per_page]
+   pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   conn.close()
+   return value
+
 
 @app.route('/recipedb/search_ingre/<string:id>',  methods = ['GET', 'POST']) 
 def search_ing(id):
