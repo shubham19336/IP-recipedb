@@ -63,7 +63,7 @@ def cuisine_result():
    total = len(lst)
    pagination_recipes = lst[offset: offset + per_page]
    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   value = render_template('recipe_main_info.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    conn.close()
    return value
 
@@ -92,7 +92,7 @@ def ingresult():
    total = len(lst)
    pagination_recipes = lst[offset: offset + per_page]
    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   value = render_template('recipe_main_info.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    con.close()
    return value
 
@@ -127,7 +127,7 @@ def catresult():
    total = len(lst)
    pagination_recipes = lst[offset: offset + per_page]
    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   value = render_template('recipe_main_info.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    con.close()
    return value
 
@@ -159,7 +159,7 @@ def nutresult():
    total = len(lst)
    pagination_recipes = lst[offset: offset + per_page]
    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   value = render_template('recipe_main_info.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    con.close()
    return value
 
@@ -234,7 +234,7 @@ def advresult():
    total = len(lst)
    pagination_recipes = lst[offset: offset + per_page]
    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   value = render_template('recipe_main_info.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    con.close()
    return value
 
@@ -323,7 +323,7 @@ def rec_info_result(id):
       con2.close()
       con3.close()
       con4.close()
-      value = render_template("base.html",data=data,profile=full_profile,instructions=ins, ing_names=ing_names)
+      value = render_template("recipe_more_info.html",data=data,profile=full_profile,instructions=ins, ing_names=ing_names)
       return value
 
 @app.route('/recipedb/category/<string:id>',  methods = ['GET', 'POST'])
@@ -357,7 +357,7 @@ def category(id):
    img=cur.fetchone()
    # print(img)
 
-   value = render_template("category.html", cat=id, img = img,ing=ing, recps=recps)
+   value = render_template("recipe_by_category.html", cat=id, img = img,ing=ing, recps=recps)
    con1.close()
    con2.close()
    con.close()
@@ -371,8 +371,6 @@ def redirect_to_ingredient(name):
    cur.execute("select Ing_id from ingredients where ingredient_name like \"{}\"".format(name))
    row = cur.fetchone()
    t = "a_b_" + str(row[0])
-   # print(name)
-   # t="a_b_"
    value = redirect((url_for('search_ing', id=t)))
    conn.close()
    return value
@@ -395,7 +393,7 @@ def search_region(region):
    total = len(lst)
    pagination_recipes = lst[offset: offset + per_page]
    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   value = render_template('recipe_main_info.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    conn.close()
    return value
 
@@ -417,7 +415,7 @@ def search_subregion(country):
    total = len(lst)
    pagination_recipes = lst[offset: offset + per_page]
    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
-   value = render_template('result.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
+   value = render_template('recipe_main_info.html', recipes=pagination_recipes,page=page,per_page=per_page, pagination=pagination,)
    conn.close()
    return value
 
@@ -453,7 +451,7 @@ def search_ing(id):
    forms_info = [dict(k) for k in curr.fetchall()]
    currr.execute("select * from recipes2 natural join ingredients where ingredients.Ing_ID = '{}' group by Recipe_id limit 20".format(ingredient_id))
    recipes_info = [dict(k) for k in currr.fetchall()]
-   return render_template("search_ing.html",generic_ingredient_info=generic_ingredient_info, forms_info=forms_info, recipes_info=recipes_info)
+   return render_template("recipe_by_ingredient.html",generic_ingredient_info=generic_ingredient_info, forms_info=forms_info, recipes_info=recipes_info)
 
 
 if __name__ == '__main__':
