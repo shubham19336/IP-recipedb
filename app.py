@@ -18,7 +18,11 @@ except:
 	print("instruction json file issue ig")
 
 
-result = []
+result1 = []
+result2 = []
+result3 = []
+result4 = []
+result5= []
 nutcheck=False
 search_region=""
 search_country=""
@@ -32,12 +36,12 @@ def home():
 @app.route('/cuisine_result',methods = ['POST', 'GET'])
 def cuisine_result():
    conn = sqlite3.connect('my_data.db')
-   global result
+   global result1
    temp = request.form
    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
    if len(list(temp)) != 0:
-      result = temp
-   print(result)
+      result1 = temp
+   result = result1
    keys=['ccontinent','cregion','ccountry','crecipe']
    operands=['=']*4
    vals=['']*4
@@ -68,12 +72,12 @@ def cuisine_result():
 def ingresult():
    # if request.method == 'POST':
    con = sqlite3.connect('my_data.db')
-   global result
+   global result2
    temp = request.form
    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
    if len(list(temp)) != 0:
-      result = temp
-
+      result2 = temp
+   result = result2
    inotused=result['inotused']
    if inotused=="":
       inotused="zzzzzzzzzzzzzzzzz"
@@ -96,12 +100,12 @@ def ingresult():
 def catresult():
    # if request.method == 'POST':
    con = sqlite3.connect('my_data.db')
-   global result
+   global result3
    temp = request.form
    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
    if len(list(temp)) != 0:
-      result = temp
-   print(result)
+      result3 = temp
+   result = result3
 
    cnotused=result['canotused']
    if cnotused=="":
@@ -134,14 +138,12 @@ def nutresult():
    
    # if request.method == 'POST':
    con = sqlite3.connect('my_data.db')
-   global result
+   global result4
    temp = request.form
    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
    if len(list(temp)) != 0:
-      result = temp
-   print(result)
-
-
+      result4 = temp
+   result = result4
    energy = f"([Energy(kcal)] BETWEEN {result['enemin']} AND {result['enemax']})"
    proteins = f"([Protein(g)] BETWEEN {result['promin']} AND {result['promax']})"
    fats = f"([Totallipid(fat)(g)] BETWEEN {result['fatmin']} AND {result['fatmax']})"
@@ -166,14 +168,14 @@ def advresult():
    
    # if request.method == 'POST':
    con = sqlite3.connect('my_data.db')
-   global result
+   global result5
    global nutcheck
    temp = request.form
    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
    if len(list(temp)) != 0:
-      result = temp
+      result5 = temp
       nutcheck=request.form.get("advcheck") != None
-   print(result)
+   result = result5
 
    keys=['ccontinent','cregion','ccountry','crecipe']
    operands=['=']*4
@@ -238,15 +240,13 @@ def advresult():
 
 
 @app.route('/result/rec_info/<string:id>',methods = ['POST', 'GET'])
-def result2(id):
+def rec_info_result(id):
    if request.method == 'GET':
-		# id=request.args.get('id')
       con1=sqlite3.connect('my_data.db')
       con1.row_factory=dict_factory
       cur1=con1.cursor()
       cur1.execute("select * from 'Recipe_nutrition_full' where Recipe_id = '" + id + "'")
       full_profile=dict(cur1.fetchone())
-      # print(full_profile)
 
       con2 = sqlite3.connect('my_data.db')
       con2.row_factory=dict_factory
@@ -298,7 +298,6 @@ def result2(id):
                break
          dict_row["nutrient_info"] = nutr
          ing_names.append(dict_row)
-      # print(ing_names)
 
       recipeSteps = "Recipe Steps are not available."
       if stepsJSON != {}:
