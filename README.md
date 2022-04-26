@@ -5,6 +5,9 @@ Add the following files to main directory:
  a) clean_recipes.json (having recipes instructions)  
  b) my_data.db (the sqlite3 database)  
 
+Requirements:  
+flask, flask_paginate, sqlite3, json (imports in app.py)  
+
 To run: Run flask file and host the index.html (kept in templates)  
 
 Repository structure is self explanatory.  
